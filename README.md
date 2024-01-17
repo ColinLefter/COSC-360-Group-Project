@@ -4,7 +4,7 @@
 
 - Colin Lefter
 - Jarod Parish
-- TBD
+- Abdirahman Hajj Salad
 
 ## Project Description
 
