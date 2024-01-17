@@ -8,9 +8,9 @@
 
 ## Project Description
 
-Our project model a modern-day online discussion platform where users have the freedom to engage in online conversations by creating posts and adding to discussion threads. Registered users can create posts on a diverse range of topics and can build their reputation on the platform by engaging with others. Users can browse by topic, search for specific topics and explore trending topics through a responsive interface. Unregistered users can browse existing posts and threads but will need to create an account in order to leave comments, like and share posts.
+Our project models a modern-day online discussion platform where users have the freedom to engage in online conversations by creating posts and adding to discussion threads. Registered users can create posts on a diverse range of topics, building their reputation on the platform through engagement with others. All users can browse and search for specific topics, or explore trending topics through a responsive interface. Unregistered users can browse existing posts and threads but are required to create an account in order to leave comments, like and share posts.
 
-Administrators of the platform will have access to a comprehensive suite of tools that enable them to view core analytics for the platform. A variety of site-wide aggregated data will be made available, such as the number of daily, monthly and quarterly active users, number of registered accounts and metrics by category. In addition, administrators will also have access to querying user account data when providing customer service. Having access to user account data is also crucial to ensuring the security of the platform and preventing harmful content from being published.
+Administrators of the platform will have access to a comprehensive suite of tools that enable them to view core analytics for the platform. A variety of site-wide aggregated data will be made available, such as the number of daily, monthly and quarterly active users, number of registered accounts and metrics by category. In addition, administrators will also have the ability to query user account data when providing customer service. Having access to user account data is also crucial to ensuring the security of the platform and preventing harmful content from being published.
 
 ## Requirements List
 
@@ -18,6 +18,7 @@ Administrators of the platform will have access to a comprehensive suite of tool
 
 - (Our addition) Browse posts by topic
 - (Our addition) Emoji support
+- (Our addition) User reputation tracking
 - Browse discussions without registering
 - Search for items/posts by keyword without registering
 - Register at the site by providing their name, e-mail and image
