@@ -16,9 +16,9 @@ Administrators of the platform will have access to a comprehensive suite of tool
 
 ### Website user’s objectives:
 
-- (Our addition) Browse posts by topic
-- (Our addition) Emoji support
-- (Our addition) User reputation tracking
+- **(Our addition)** Browse posts by topic
+- **(Our addition)** Emoji support
+- **(Our addition)** User reputation tracking
 - Browse discussions without registering
 - Search for items/posts by keyword without registering
 - Register at the site by providing their name, e-mail and image
@@ -28,10 +28,20 @@ Administrators of the platform will have access to a comprehensive suite of tool
 
 ### Website administrator’s objectives:
 
+**Level 1 (Moderator):**
+
+- **(Our addition) User Warnings and Temporary Bans:** Allow moderators to issue warnings to users for minor infractions and enforce temporary bans for repeated or more severe violations
+- **(Our addition) Tag Management:** Enable moderators to add, edit, or remove tags from posts to ensure content is correctly categorized and easier to find
+- **(Our addition) Community Engagement Metrics:** Give moderators access to basic analytics about user engagement, such as the number of active users, popular topics, and trending discussions
+
+**Level 2 (Senior Admin):**
+
+- **(Our addition) Advanced Analytics Dashboard:** Access to in-depth analytics, including user behavior patterns, post engagement statistics, and growth trends over time
+- **(Our addition) Site Configuration and Customization:** Enable senior admins to modify site settings, layout, and features, including the ability to implement major updates or redesigns
+- **(Our addition) Emergency Broadcast System:** Implement a system for urgent communications with all users, like site maintenance announcements or important updates
 - Search for user by name, email or post
 - Enable/disable users
 - Edit/remove posts items or complete posts 
-
 
 ### Minimum Functional Requirements:
 
