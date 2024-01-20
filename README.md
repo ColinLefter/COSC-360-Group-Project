@@ -2,7 +2,7 @@
 
 ## The Team
 
-- Colin Lefter
+- Colin Lefter (student number: 79054243)
 - Jarod Parish
 - Abdirahman Hajj Salad
 
