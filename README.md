@@ -2,9 +2,9 @@
 
 ## The Team
 
-- Colin Lefter (student number: 79054243)
+- Colin Lefter (79054243)
 - Jarod Parish (20286563)
-- Abdirahman Hajj Salad (#48005805)
+- Abdirahman Hajj Salad (48005805)
 
 ## Project Description
 
@@ -13,8 +13,6 @@ Our project models a modern online discussion platform where users have the free
 The forum will consist of user generated threads, categorized by use of tags. Each thread will represent a linear format with every response(or comment) following in chronological order. For organization, responses can be linked through a post's id. This supports navigation of specific conversation in a large or busy thread.
 
 Administrators of the platform will have access to a comprehensive suite of tools that enable them to view core analytics for the platform. A variety of site-wide aggregated data will be made available, such as the number of daily, monthly and quarterly active users, number of registered accounts and metrics by category. In addition, administrators will also have the ability to query user account data when providing customer service. Having access to user account data is also crucial to ensuring the security of the platform and preventing harmful content from being published. Content moderation through use of sub-administrator accounts(moderators) allows approved users to moderate content to a safe extent, whilst providing an appropriate level of privacy.
-
-
 
 ## Requirements List
 
