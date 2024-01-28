@@ -1,0 +1,43 @@
+.grid-container {
+  display: grid;
+  column-gap: 2em;
+}
+
+.navbar {
+  overflow: hidden;
+  font-family: 'Inter', sans-serif;
+  text-align: center;
+  padding: 1em;
+  word-spacing: .5em;
+  position: relative; /* Positioning the pseudo-element */
+}
+
+.navbar::after {
+  content: ''; /* Required for pseudo-elements */
+  display: block; /* Block-level element */
+  height: 0.05em; /* Height of the border */
+  background-color: gray; /* Color of the border */
+  width: calc(100% - 2em); /* The width of the border */
+  position: absolute; /* Positions the pseudo-element */
+  left: 1em; /* Left padding */
+  right: 1em; /* Right padding */
+  bottom: 0; /* Aligns to the bottom of the navbar */
+}
+
+.navbar a { /* Treating each element as a box */
+  text-decoration: none; /* No underline */
+  color: black; /* No highlight */
+  padding: 0.5em; /* Create a box-like highlight */
+  display: inline-block; /* Allows padding to be applied properly */
+  border-radius: 5px; /* Rounded corners */
+  transition: background-color 0.3s; /* Smooth transition for background color */
+}
+
+.navbar a:hover, .navbar a:focus {
+  background-color: rgb(244, 243, 243);
+}
+
+.navbar .word {
+  display: inline-block;
+  word-spacing: normal;
+}
