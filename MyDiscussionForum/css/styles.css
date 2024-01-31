@@ -1,8 +1,3 @@
-.grid-container {
-  display: grid;
-  column-gap: 2em;
-}
-
 .circle {
   height: 25px;
   width: 25px;
@@ -121,27 +116,17 @@
 
 body.dark {
   background-color: hsl(20, 14%, 4%); /* Dark background for body */
-  color: white; /* Light text for body */
+  color: hsl(60 9.1% 97.8%); /* Light text for body */
 }
 
-body.dark .navbar, body.dark .header, body.dark .footer {
-  background-color: hsl(20 14.3% 4.1%); /* Darker background for navbar, header, footer */
+body.dark .navbar, body.dark .header, body.dark .footer, body.dark a {
+  background-color: hsl(20 14.3% 4.1%); /* Darker background for navbar, header, footer, and links */
   color: hsl(60 9.1% 97.8%);
 }
 
-body.dark a {
-  color: hsl(60 9.1% 97.8%);
-  background-color: hsl(20 14.3% 4.1%);
-}
-
-body.dark .custom-dropdown {
+body.dark .custom-dropdown, body.dark .primary-button {
   background-color: hsl(12 6.5% 15.1%);
   color: hsl(60 9.1% 97.8%);
-}
-
-body.dark .primary-button {
-  background-color: hsl(12 6.5% 15.1%);
-  color: hsl(60 9.1% 97.8);
 }
 
 body.dark .header {
@@ -161,8 +146,8 @@ body.dark .search-bar::placeholder {
 /* Forum */
 #forum-body {
   margin: auto;
-  width: 70%; /*  */
-  margin-top: 25px;
+  width: 100%; /*  */
+  margin-top: 60px;
   margin-bottom: 25px;
   padding-bottom: 0;
   background-color: #f9f9f9;
@@ -190,8 +175,13 @@ body.dark .search-bar::placeholder {
   border-bottom: solid 0.05em rgb(209, 209, 209);
   transition: background-color 0.3s;
 }
+
 .post-container:hover {
   background-color: rgb(244, 243, 243);
+}
+
+body.dark .primary-button:hover {
+  background-color: rgb(22, 22, 22);
 }
 
 .post-title {
@@ -229,6 +219,10 @@ body.dark .search-bar::placeholder {
 }
 
 /* Forum Dark Mode */
-body.dark .threadview, body.dark .load-posts {
-  background-color: hsl(20 14.3% 4.1%); /* Darker background for navbar, header, footer */
-}  
+body.dark .threadview, body.dark .load-posts, body.dark .post-container, body.dark .post-title {
+  background-color: hsl(12 6.5% 15.1%); /* Darker background for navbar, header, footer */
+}
+
+body.dark .load-posts {
+  color: hsl(60 9.1% 97.8%);
+}
