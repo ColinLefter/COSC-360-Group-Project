@@ -138,3 +138,78 @@ body.dark .search-bar { /* Targeting the input element */
 body.dark .search-bar::placeholder {
   color: hsl(60 9.1% 97.8%);
 }
+
+/* Forum */
+#forum-body {
+  margin: auto;
+  width: 70%; /*  */
+  margin-top: 25px;
+  margin-bottom: 25px;
+  padding-bottom: 0;
+  background-color: #f9f9f9;
+  border-radius: 15px;
+  border: solid 0.05em hsl(12 6.5% 15.1%);
+  border-color: rgb(209, 209, 209);
+}
+
+.threadview-category {
+  margin: auto;
+  width: 95%;
+  padding-top: 0.5em;
+  /* padding-bottom: 0.1em; */
+  padding-left: 0.1em;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  border-bottom: solid 0.05em rgb(21, 21, 21);
+}
+
+.post-container {
+  margin: auto;
+  width: 95%;
+  margin-top: 0.1em;
+  padding: 1em 1em 1em 1em;
+  border-bottom: solid 0.05em rgb(209, 209, 209);
+  transition: background-color 0.3s;
+}
+.post-container:hover {
+  background-color: rgb(244, 243, 243);
+}
+
+.post-title {
+  width: fit-content;
+  margin: 0%;
+  padding: 0%;
+  padding-right: 0em;
+  color: #1b1b1b;
+  text-decoration: none;
+}
+.post-title:hover {
+  text-decoration: underline;
+}
+.post-author, .post-datetime {
+  display: inline-block;
+  font-style: italic;
+  font-size: 80%;
+}
+.post-author {
+  margin-left: 0.1em;
+}
+
+.load-posts {
+  text-align: center;
+  vertical-align: middle;
+  margin: auto;
+  padding: 1em 0em 1em 0em;
+  color: #1b1b1b;
+  text-decoration: none;
+  transition: background-color 0.3s;
+  border-radius: 15px;
+}
+.load-posts:hover {
+  background-color: rgb(244, 243, 243);
+}
+
+/* Forum Dark Mode */
+body.dark .threadview, body.dark .load-posts {
+  background-color: hsl(20 14.3% 4.1%); /* Darker background for navbar, header, footer */
+}  
