@@ -4,6 +4,7 @@
 }
 
 .navbar {
+  background-color: #f9f9f9;
   display: flex;
   font-family: 'Inter', sans-serif;
   align-items: center;
@@ -24,7 +25,14 @@
 
 .navbar-right {
   display: flex;
+  padding-right: 1em;
   justify-content: flex-end;
+}
+
+.navbar-left {
+  display: flex;
+  padding-left: 1em;
+  justify-content: flex-start;
 }
 
 .search-bar {
@@ -37,26 +45,34 @@
 }
 
 .header {
-  border-bottom: 0.05em solid rgb(175, 175, 175);
-  width: calc(100% - 2em); /* The width of the border */
+  border-bottom: 0.05em solid rgb(209, 209, 209);
   position: relative; /* Positions the pseudo-element */
-  left: 1em; /* Left padding */
-  right: 1em; /* Right padding */
+  left: 0px; /* Left padding */
+  right: 1px; /* Right padding */
   bottom: 0; /* Aligns to the bottom of the navbar */
 }
 
-.navbar-box { /* Treating each element as a box */
-  text-decoration: none; /* No underline */
-  color: black; /* No highlight */
+.primary-button { /* Treating each element as a box */
   padding: 0.5em; /* Create a box-like highlight */
   display: inline-block; /* Allows padding to be applied properly */
   border-radius: 5px; /* Rounded corners */
   transition: background-color 0.3s; /* Smooth transition for background color */
+  outline: none;
+  border: none;
+  background-color: white;
+}
+
+.navbar-right button {
+  margin-right: 10px; /* Add margin between all buttons */
+}
+
+/* Remove margin from last button to prevent excess spacing */
+.navbar-right button:last-child {
+  margin-right: 0;
 }
 
 .nav-logo {
   text-decoration: none; /* No underline */
-  color: black; /* No highlight */
   font-size: 1.1rem;
   color: #1b1b1b;
   font-weight: 400;
@@ -68,7 +84,7 @@
   align-items: center;
 }
 
-.navbar-box:hover, .navbar-box:focus {
+.primary-button:hover, .primary-button:focus {
   background-color: rgb(244, 243, 243);
 }
 
@@ -85,4 +101,40 @@
   padding: 0.3em;
   border-radius: 50px;
   background-color: rgb(227, 227, 227);
+}
+
+body.dark {
+  background-color: hsl(20, 14%, 4%); /* Dark background for body */
+  color: white; /* Light text for body */
+}
+
+body.dark .navbar, body.dark .header, body.dark .footer {
+  background-color: hsl(20 14.3% 4.1%); /* Darker background for navbar, header, footer */
+}
+
+body.dark a {
+  color: hsl(60 9.1% 97.8%);
+}
+
+body.dark .primary-button {
+  background-color: hsl(12 6.5% 15.1%);
+  color: hsl(60 9.1% 97.8);
+}
+
+body.dark a {
+  background-color: hsl(20 14.3% 4.1%);
+}
+
+body.dark .header {
+  border-bottom: 0.05em solid hsl(12 6.5% 15.1%);
+}
+
+body.dark .search-bar { /* Targeting the input element */
+  background-color: hsl(12, 6.5%, 15.1%); /* Corrected HSL syntax */
+  color: hsl(60 9.1% 97.8%);
+  border-color: hsl(12 6.5% 15.1%);
+}
+
+body.dark .search-bar::placeholder {
+  color: hsl(60 9.1% 97.8%);
 }
