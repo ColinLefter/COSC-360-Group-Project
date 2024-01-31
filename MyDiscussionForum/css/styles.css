@@ -4,27 +4,48 @@
 }
 
 .navbar {
-  overflow: hidden;
+  display: flex;
   font-family: 'Inter', sans-serif;
-  text-align: center;
+  align-items: center;
   padding: 1em;
-  word-spacing: .5em;
-  position: relative; /* Positioning the pseudo-element */
+  justify-content: space-between;
 }
 
-.navbar::after {
-  content: ''; /* Required for pseudo-elements */
-  display: block; /* Block-level element */
-  height: 0.05em; /* Height of the border */
-  background-color: gray; /* Color of the border */
+/* Using a flex box */
+.navbar-left,
+.navbar-center,
+.navbar-right {
+  flex: 1; /* All containers take equal space */
+}
+
+.navbar-center {
+  flex: 1; /* Take up the remaining space */
+}
+
+.navbar-right {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.search-bar {
+  display: flex;
+  width: 100% /* Take up the full container width */
+}
+
+.search-bar .form-control {
+  width: 100%; /* Stretching the input field for the form, given by Bootstrap's form-control */
+}
+
+.header {
+  border-bottom: 0.05em solid rgb(175, 175, 175);
   width: calc(100% - 2em); /* The width of the border */
-  position: absolute; /* Positions the pseudo-element */
+  position: relative; /* Positions the pseudo-element */
   left: 1em; /* Left padding */
   right: 1em; /* Right padding */
   bottom: 0; /* Aligns to the bottom of the navbar */
 }
 
-.navbar a { /* Treating each element as a box */
+.navbar-box { /* Treating each element as a box */
   text-decoration: none; /* No underline */
   color: black; /* No highlight */
   padding: 0.5em; /* Create a box-like highlight */
@@ -33,11 +54,35 @@
   transition: background-color 0.3s; /* Smooth transition for background color */
 }
 
-.navbar a:hover, .navbar a:focus {
+.nav-logo {
+  text-decoration: none; /* No underline */
+  color: black; /* No highlight */
+  font-size: 1.1rem;
+  color: #1b1b1b;
+  font-weight: 400;
+}
+
+.nav-menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-box:hover, .navbar-box:focus {
   background-color: rgb(244, 243, 243);
 }
 
 .navbar .word {
   display: inline-block;
   word-spacing: normal;
+}
+
+#form {
+  display: inline-block; /* Aligns the form with the links */
+}
+
+#nav-search {
+  padding: 0.3em;
+  border-radius: 50px;
+  background-color: rgb(227, 227, 227);
 }
