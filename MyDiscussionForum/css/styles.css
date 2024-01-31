@@ -3,6 +3,22 @@
   column-gap: 2em;
 }
 
+.circle {
+  height: 25px;
+  width: 25px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.settings { /* circular icon */
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+  background-size: cover;
+}
+
 .navbar {
   background-color: #f9f9f9;
   display: flex;
@@ -110,19 +126,22 @@ body.dark {
 
 body.dark .navbar, body.dark .header, body.dark .footer {
   background-color: hsl(20 14.3% 4.1%); /* Darker background for navbar, header, footer */
+  color: hsl(60 9.1% 97.8%);
 }
 
 body.dark a {
+  color: hsl(60 9.1% 97.8%);
+  background-color: hsl(20 14.3% 4.1%);
+}
+
+body.dark .custom-dropdown {
+  background-color: hsl(12 6.5% 15.1%);
   color: hsl(60 9.1% 97.8%);
 }
 
 body.dark .primary-button {
   background-color: hsl(12 6.5% 15.1%);
   color: hsl(60 9.1% 97.8);
-}
-
-body.dark a {
-  background-color: hsl(20 14.3% 4.1%);
 }
 
 body.dark .header {
