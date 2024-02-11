@@ -300,3 +300,50 @@ body.dark .post-title { /* .post-title refuses to use the right background color
 .text-accent {
   color: rgb(48, 73, 255);
 }
+
+#left-side {
+  margin: auto;
+  margin-top: 60px;
+  border-radius: 15px;
+  text-align: center;
+  border: solid 0.05em hsl(10, 14%, 84%);
+  background-color: #f9f9f9;
+}
+#right-side{
+  text-align: center;
+  margin: auto;
+  margin-top: 60px;
+  border-radius: 15px;
+  border: solid 0.05em hsl(10, 14%, 84%);
+  background-color: #f9f9f9;
+}
+
+.recent-container, .topic-container, .popular-container{
+  width: 80%;
+  margin: auto;
+  border-radius: 2px;
+}
+.recent-communities p, .topic-communities p, .popular-communities p {
+  display: block;
+  margin-bottom: 15px;
+  padding: 0.5em;
+  background-color: #f8f4f4;
+  border-radius: 2px;
+  text-decoration: none;
+}
+.recent-communities a, .topic-communities a, .popular-communities a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.recent h3 , .topics h3, .popular h3 {
+  padding-top: 0.5em;
+  text-align: left;
+  margin-left: 1em;
+}
+.recent-communities p:hover, .topic-communities p:hover, .popular-communities p:hover {
+  background-color: rgb(229, 213, 213);
+}
+#row {
+  display: flex;
+}
