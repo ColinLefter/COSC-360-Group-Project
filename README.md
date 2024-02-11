@@ -47,11 +47,12 @@ Administrators of the platform will have access to a comprehensive suite of tool
 
 ### Minimum Functional Requirements:
 
+- Functionality for searching/categorizing items
 - Hand-styled layout with contextual menus (i.e. when a user has logged on to the site, menus reflect the change). Layout frameworks are not permitted other than Bootstrap (see above).
 - 2 or 3-column layout using appropriate design principles (i.e. highlighting nav links when hovered over, etc) responsive design
 - Form validation with JavaScript
 - Server-side scripting with PHP
-- ata storage in MySQL
+- Data storage in MySQL
 - Appropriate security for data
 - Site must maintain state (user state being logged on, etc)
 - Responsive design philosophy (minimum requirements for different non-mobile display sizes)
