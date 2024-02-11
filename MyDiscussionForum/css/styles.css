@@ -277,9 +277,3 @@ body.dark .post-container:hover, body.dark .load-posts:hover {
 body.dark .post-title { /* .post-title refuses to use the right background color otherwise */
   background-color: inherit;
 }
-
-h1 {
-  font-size: 2.5em;
-  font-weight: 500;
-  font-family: 'Inter', sans-serif;
-}
