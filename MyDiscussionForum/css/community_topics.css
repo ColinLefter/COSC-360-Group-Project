@@ -1,4 +1,4 @@
-#community-header-body {
+#community-topics-header-body {
     margin: auto;
     width: 100%; /*  */
     margin-top: 60px;
@@ -21,7 +21,7 @@
     border-color: rgb(209, 209, 209);
 }
 
-.community-header {
+.community-topics-header {
     margin: auto;
     width: 95%;
     padding-top: 0.75em;
@@ -48,3 +48,25 @@
 .community-column-section {
     padding: 1em;
 }
+
+
+.topics-header-buttons {
+
+    border: none;
+    vertical-align: middle;
+    background-color: white;
+    display:inline-block;
+    border-radius: 5px;
+    padding: 0;
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    margin-right: 0.5em;
+    margin-bottom: 0.5em;
+    transition: background-color 0.3s; /* Smooth transition for background color */
+}
+
+.topics-header-buttons:hover, .topics-header-buttons:focus {
+    background-color: rgb(244, 243, 243);
+  }
