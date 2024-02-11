@@ -1,4 +1,4 @@
-.form-input {
+.text-center {
   text-align: center;
 }
 
@@ -6,7 +6,7 @@
   text-align: center;
   color: black;
   margin-bottom: .5em;
-  font-weight: 800;
+  font-weight: 700;
 }
 
 .center-container {
@@ -17,7 +17,7 @@
 }
 
 .create-account-form {
-  width: 50%;
+  width: 40%;
   padding: 2em;
   background-color: hsl(0, 0%, 93%);
   border-radius: 10px;
