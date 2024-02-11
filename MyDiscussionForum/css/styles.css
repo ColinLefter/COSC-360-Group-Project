@@ -73,6 +73,18 @@
   background-color: white;
 }
 
+.primary-button-highlight { /* Treating each element as a box */
+  padding: 0.5em; /* Create a box-like highlight */
+  display: inline-block; /* Allows padding to be applied properly */
+  border-radius: 5px; /* Rounded corners */
+  transition: background-color 0.3s; /* Smooth transition for background color */
+  outline: none;
+  border: none;
+  background-color: rgb(15, 15, 15);
+  color: white;
+  width: 100%;
+}
+
 .navbar-right button {
   margin-right: 10px; /* Add margin between all buttons */
 }
@@ -264,4 +276,10 @@ body.dark .post-container:hover, body.dark .load-posts:hover {
 
 body.dark .post-title { /* .post-title refuses to use the right background color otherwise */
   background-color: inherit;
+}
+
+h1 {
+  font-size: 2.5em;
+  font-weight: 500;
+  font-family: 'Inter', sans-serif;
 }
