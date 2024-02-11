@@ -85,6 +85,10 @@
   width: 100%;
 }
 
+.primary-button-highlight:hover {
+  background-color: rgb(53, 53, 53);
+}
+
 .navbar-right button {
   margin-right: 10px; /* Add margin between all buttons */
 }
@@ -277,6 +281,26 @@ body.dark .post-container:hover, body.dark .load-posts:hover {
 body.dark .post-title { /* .post-title refuses to use the right background color otherwise */
   background-color: inherit;
 }
+
+.text-icon-wrapper {
+  text-align: center;
+}
+
+.inline-text {
+  display: inline;
+}
+
+.inline-svg {
+  display: inline-block;
+  vertical-align: middle;
+  width: 12px;
+  height: 12px;
+}
+
+.text-accent {
+  color: rgb(48, 73, 255);
+}
+
 #left-side {
   margin: auto;
   margin-top: 60px;
