@@ -1,0 +1,26 @@
+.large-heading {
+  font-size: 5em;
+  font-weight: 700;
+}
+
+.right-column {
+  text-align: center;
+}
+
+.setting {
+  font-size: 1.3em;
+  font-weight: 200;
+}
+
+.minor-spacer {
+  margin-bottom: 1em;
+}
+
+.row-margin-bottom {
+  margin-bottom: 1.5em;
+}
+
+.left-column, .right-column {
+  max-height: 50vh; /* This will limit the height of the columns */
+  overflow-y: auto; /* This will add a scrollbar if the content exceeds the column height */
+}
