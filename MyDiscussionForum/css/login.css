@@ -1,12 +1,7 @@
 .create-account-form {
   width: 30%;
   padding: 2em;
-  background-color: hsl(0, 0%, 93%);
   border-radius: 10px;
-}
-
-.text-icon-wrapper a {
-  text-decoration: none; /* Removes underline from the link */
 }
 
 .no-account-text {

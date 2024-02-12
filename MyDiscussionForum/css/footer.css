@@ -1,0 +1,49 @@
+footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; /* Aligns content to the bottom */
+  margin-top: 3em;
+  padding: 3em; /* Padding around the footer */
+}
+
+.col-12 {
+  display: flex;
+  justify-content: space-between; /* Keeps topics and links spaced apart */
+  align-items: flex-end; /* Aligns items to the bottom */
+}
+
+.footer-links {
+  display: flex;
+  justify-content: flex-end; /* Align links to the right */
+  gap: 1em; /* Adjust spacing between links */
+}
+
+.footer-links a {
+  color: rgb(89, 89, 89);
+}
+
+footer a {
+  text-decoration: none;
+  color: black;
+}
+
+.footer-content p {
+  color: rgb(89, 89, 89);
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.footer-content p:last-child {
+  margin-bottom: 0; /* Eliminates the bottom margin of the last topic */
+}
+
+/* Indirect spacing override */
+.footer-content, .footer-links {
+  flex-grow: 1;
+  margin-right: -35em; /* Reduces the spacing between the two topics and communities columns */
+}
+
+/* We want to keep the links on the bottom right unaffected by the spacing reduction*/
+.footer-content:last-child, .footer-links:last-child {
+  margin-right: 0;
+}

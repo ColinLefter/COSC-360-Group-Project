@@ -9,17 +9,9 @@
   font-weight: 700;
 }
 
-.center-container {
-  display: flex;
-  justify-content: center; /* Horizontally centers the child */
-  align-items: center; /* Vertically centers the child */
-  height: 100vh; /* Takes the full viewport height */
-}
-
 .create-account-form {
   width: 40%;
   padding: 2em;
-  background-color: hsl(0, 0%, 93%);
   border-radius: 10px;
 }
 
