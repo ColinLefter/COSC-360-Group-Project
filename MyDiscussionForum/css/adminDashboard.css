@@ -1,0 +1,22 @@
+.card {
+  padding: 2em;
+}
+
+.card-title {
+  font-size: 1.1em;
+}
+
+.unit h2 {
+  text-align: right;
+  font-size: small;
+}
+
+.analytic h2 {
+  text-align: center;
+  margin-top: 0.5em;
+}
+
+.announcements {
+  max-height: 15em;
+  overflow-y: auto; /* Enables vertical scrolling */
+}

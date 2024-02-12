@@ -375,3 +375,28 @@ body > #footer-placeholder { /* Sticky footer */
 .text-icon-wrapper a {
   text-decoration: none; /* Removes underline from the link */
 }
+
+.right-align {
+  text-align: right;
+}
+
+.badge {
+  background-color: black;
+}
+
+#announcementContent {
+  min-height: 7em; /* Minimum text box height */
+}
+
+.announcement {
+  height: 2em;
+  margin-bottom: 1em;
+}
+
+.bullet-point::before {
+  content: '\2022'; /* Unicode character for a bullet point */
+  color: black;
+  font-size: 1em;
+  margin: 0 0.5em; /* Space around the bullet -- 0 implies no top and bottom margins, then 0.5em left and right margins */
+  display: inline-block;
+}
