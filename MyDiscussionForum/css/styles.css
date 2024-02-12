@@ -14,8 +14,11 @@
   background-size: cover;
 }
 
-.navbar {
+.light-accent {
   background-color: #f9f9f9;
+}
+
+.navbar {
   display: flex;
   font-family: 'Inter', sans-serif;
   align-items: center;
@@ -346,4 +349,8 @@ body.dark .post-title { /* .post-title refuses to use the right background color
 }
 #row {
   display: flex;
+}
+
+.secondary-accent {
+  background-color: hsl(0, 0%, 93%);
 }
