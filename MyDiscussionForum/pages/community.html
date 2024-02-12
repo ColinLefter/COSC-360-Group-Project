@@ -6,6 +6,7 @@
     <link rel="stylesheet" type="text/css" href="../css/reset.css">
     <link rel="stylesheet" type="text/css" href="../css/styles.css">
     <link rel="stylesheet" type="text/css" href="../css/community.css">
+    <link rel="stylesheet" type="text/css" href="../css/footer.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -22,34 +23,11 @@
     </section> -->
     <div class="container-fluid">
       <div class="row">
+
         <div class="col">
-          <section id="left-side">
-            <div class="recent-topics">
-              <div class="recent">
-                <h3>Recent</h3>
-                <div class="recent-container">
-                  <div class="recent-communities">
-                    <p><a class="community-1" href="#">Community 1</a></p>
-                    <p><a class="community-2" href="#">Community 2</a></p>
-                    <p><a class="community-2" href="#">Community 3</a></p>
-                    <p><a class="community-2" href="#">Community 4</a></p>
-                </div>
-                </div>
-              </div>
-              <div class="topics">
-                <h3>Topics</h3>
-                <div class="topic-container">
-                  <div class="topic-communities">
-                    <p><a class="community-1" href="#">Community 1</a></p>
-                    <p><a class="community-2" href="#">Community 2</a></p>
-                    <p><a class="community-2" href="#">Community 3</a></p>
-                    <p><a class="community-2" href="#">Community 4</a></p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
+          <div id="left-column-placeholder"></div>
         </div>
+
         <div class="col-7">
 
             <section id="community-topics-header-body">
@@ -140,6 +118,11 @@
     <script>
       $(function(){
         $("#footer-placeholder").load("/MyDiscussionForum/components/footer.html");
+      });
+    </script>
+    <script>
+      $(function(){
+        $("#left-column-placeholder").load("/MyDiscussionForum/components/leftColumn.html");
       });
     </script>
   </body>

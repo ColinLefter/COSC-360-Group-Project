@@ -24,38 +24,13 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col">
-            <section id="left-side">
-              <div class="recent-topics">
-                <div class="recent">
-                  <h3>Recent</h3>
-                  <div class="recent-container">
-                    <div class="recent-communities">
-                      <p><a class="community-1" href="#">Community 1</a></p>
-                      <p><a class="community-2" href="#">Community 2</a></p>
-                      <p><a class="community-2" href="#">Community 3</a></p>
-                      <p><a class="community-2" href="#">Community 4</a></p>
-                  </div>
-                  </div>
-                </div>
-                <div class="topics">
-                  <h3>Topics</h3>
-                  <div class="topic-container">
-                    <div class="topic-communities">
-                      <p><a class="community-1" href="#">Community 1</a></p>
-                      <p><a class="community-2" href="#">Community 2</a></p>
-                      <p><a class="community-2" href="#">Community 3</a></p>
-                      <p><a class="community-2" href="#">Community 4</a></p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </section>
-          </div>
+          <div id="left-column-placeholder"></div>
+        </div>
         <div class="col-7">
 
             <section id="community-topics-header-body">
                 <div class="community-topics-header">
-                    <h2 class=><strong>/topica</strong></h2>
+                    <h2 class=><strong>/topic_a</strong></h2>
                     <button href="#tagPosts" class="topics-header-buttons">Posts</button>
                     <button href="#tagCommunities" class="topics-header-buttons">Communities</button>
                 </div>
@@ -107,26 +82,8 @@
         </div>
 
         <div class="col">
-            <section id="right-side">
-              <div class="popular">
-                <h3 class="recent-topics-category">Popular Communities</h3>
-                <div class="popular-container">
-                  <div class="popular-communities">
-                    <p><a class="community-1" href="#">Community 1</a></p>
-                    <p><a class="community-2" href="#">Community 2</a></p>
-                    <p><a class="community-2" href="#">Community 3</a></p>
-                    <p><a class="community-2" href="#">Community 4</a></p>
-                    <p><a class="community-2" href="#">Community 5</a></p>
-                    <p><a class="community-2" href="#">Community 6</a></p>
-                    <p><a class="community-2" href="#">Community 7</a></p>
-                    <p><a class="community-2" href="#">Community 8</a></p>
-                    <p><a class="community-2" href="#">Community 9</a></p>
-                  </div>
-                </div>
-              </div>
-            </section>
-          </div>
-
+          <div id="right-column-placeholder"></div>
+        </div>
       </div>
     </div>
 
@@ -143,6 +100,16 @@
     <script>
       $(function(){
         $("#footer-placeholder").load("/MyDiscussionForum/components/footer.html");
+      });
+    </script>
+    <script>
+      $(function(){
+        $("#left-column-placeholder").load("/MyDiscussionForum/components/leftColumn.html");
+      });
+    </script>
+    <script>
+      $(function(){
+        $("#right-column-placeholder").load("/MyDiscussionForum/components/rightColumn.html");
       });
     </script>
   </body>
