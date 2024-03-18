@@ -11,6 +11,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="../js/createAccount.js"></script>
     <title>MyDiscussionForum</title>
   </head>
 <body>
@@ -31,20 +33,20 @@
           <form class="needs-validation" style="display: flex; flex-direction: column; gap: 10px;">
             <div style="display: flex; justify-content: space-between; gap: 10px;">
               <div style="flex: 1;">
-                <input type="text" class="form-control text-center" id="validationDefault01" placeholder="First name" pattern="[A-Za-z]+" title="First name should only contain letters." required>
+                <input type="text" class="form-control text-center" id="validationDefault01" name="firstname" placeholder="First name" pattern="[A-Za-z]+" title="First name should only contain letters." required>
               </div>
               <div style="flex: 1;">
-                <input type="text" class="form-control text-center" id="validationDefault02" placeholder="Last name" pattern="[A-Za-z]+" title="Last name should only contain letters." required>
+                <input type="text" class="form-control text-center" id="validationDefault02" name="lastname" placeholder="Last name" pattern="[A-Za-z]+" title="Last name should only contain letters." required>
               </div>
             </div>
             <div style="flex: 1;">
-              <input type="email" class="form-control text-center" id="validationDefault03" placeholder="Email" required>
+              <input type="email" class="form-control text-center" id="validationDefault03" name="email" placeholder="Email" required>
             </div>
             <div style="flex: 1;">
-              <input type="text" class="form-control text-center" id="validationDefault04" placeholder="Username" required>
+              <input type="text" class="form-control text-center" id="validationDefault04" name="username" placeholder="Username" required>
             </div>
             <div style="flex: 1;">
-              <input type="password" class="form-control text-center" id="validationDefault05" placeholder="Password" pattern="(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}" title="Password must be at least 8 characters long and include at least one special character." required>
+              <input type="password" class="form-control text-center" id="validationDefault05" name="password" placeholder="Password" pattern="(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}" title="Password must be at least 8 characters long and include at least one special character." required>
             </div>
             <button class="primary-button-highlight" type="submit" style="align-self: center;">Create account</button>
           </form>
@@ -56,17 +58,16 @@
 
 <div id="footer-placeholder"></div>
 
-<script src="functions.js"></script>
+<script src="../functions.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script>
   $(function(){
-    $("#navbar-placeholder").load("/MyDiscussionForum/components/navbarNoSearch.html");
+    $("#navbar-placeholder").load("../components/navbarNoSearch.html");
   });
 </script>
 <script>
   $(function(){
-    $("#footer-placeholder").load("/MyDiscussionForum/components/footer.html");
+    $("#footer-placeholder").load("../components/footer.html");
   });
 </script>
 </body>
