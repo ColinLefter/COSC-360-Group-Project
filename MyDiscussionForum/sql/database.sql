@@ -21,6 +21,7 @@ CREATE TABLE userDetails (
     accountDate DATE DEFAULT CAST(NOW() AS DATE),
     dateOfBirth DATE,
     bio VARCHAR(250),
+    profilePicName VARCHAR(50) DEFAULT 'default.png',
     FOREIGN KEY(userId) REFERENCES user(userId)
     ON DELETE CASCADE
 );
