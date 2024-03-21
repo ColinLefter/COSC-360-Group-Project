@@ -1,6 +1,13 @@
 <?php
 /* Run on register account */
 include "databaseCred.php";
+include "validation.php";
+
+// Return array
+$returnData = array();
+
+// Validate post
+validateMethodPost();
 
 // Variables are subject to change
 $firstname = $_POST['firstname'];
@@ -10,9 +17,6 @@ $email = $_POST['email'];
 $password = $_POST['password'];
 
 $passhash = md5($password);
-
-// Return array
-$returnData = array();
 
 // Connect to database and check success.
 $connection = mysqli_connect($host, $user, $dbpassword, $database);
