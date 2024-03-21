@@ -1,6 +1,6 @@
 <?php
 /* Run on register account */
-include "databaseCred.php";
+include "databaseFunc.php";
 include "validation.php";
 
 // Return array
@@ -16,18 +16,11 @@ $username = $_POST['username'];
 $email = $_POST['email'];
 $password = $_POST['password'];
 
+// Hash the password, 128 bit output
 $passhash = md5($password);
 
-// Connect to database and check success.
-$connection = mysqli_connect($host, $user, $dbpassword, $database);
-$error = mysqli_connect_error();
-if($error != null) {
-    $returnData['result'] = "FAIL";
-    $returnData['type'] = "DATABASE_CONNECT_ERROR";
-    $returnData['msg'] = "Could not connect to database!";
-    echo json_encode($returnData);
-    exit();
-}
+// Connect to database
+$connection = connectToDB();
 
 // check for users
 $sql = "SELECT username, email FROM user WHERE username='".$username."' OR email='".$email."';";    
@@ -46,7 +39,7 @@ if(mysqli_num_rows($results) > 0) {
 
 }
 
-mysqli_close($connection);
+closeBD($connection);
 echo json_encode($returnData);
 exit();
 
