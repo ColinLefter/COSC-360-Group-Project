@@ -21,16 +21,21 @@ $(document).ready( function () {
             dataType : 'json',
             success : function (data) {
                 
+                // Debug
+                // console.log(data);
+
                 // Check whether the data was added successfully
                 var result = data['result'];
                 if(result == "FAIL") {
 
                     var msg = data['msg'];
                     var type = data['type'];
-                    if(type == "DATABASE_CONNECT_ERROR") {
-                        console.log(msg);
-                    } else if (type == "USER_EXISTS") {
+                    if (type == "USER_EXISTS") {
                         $('form').after(msg);
+                    } else {
+                        // Debug
+                        console.log(type);
+                        console.log(msg);
                     }
 
                 } else if(result == "SUCCESS") {
@@ -45,8 +50,10 @@ $(document).ready( function () {
                     console.log("Unreachable Error, debug php.");
                 }
             },
-            error : function () {
+            error : function (xhr, ajaxOptions, thrownError) {
             alert("Error registering account.");
+            console.log(xhr.status);
+            console.log(thrownError);
             }
         })
     });

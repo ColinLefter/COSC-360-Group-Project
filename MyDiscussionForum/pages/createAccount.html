@@ -46,7 +46,7 @@
               <input type="text" class="form-control text-center" id="validationDefault04" name="username" placeholder="Username" required>
             </div>
             <div style="flex: 1;">
-              <input type="password" class="form-control text-center" id="validationDefault05" name="password" placeholder="Password" pattern="(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}" title="Password must be at least 8 characters long and include at least one special character." required>
+              <input type="password" class="form-control text-center" id="validationDefault05" name="password" placeholder="Password" pattern="(?=.*[A-Za-z])(?=.*[!@#$%^&*])(?=.*\d)[A-Za-z\d!@#$%^&*]{8,}" title="Password must be at least 8 characters long and include at least one letter, one number, and one special character." required>
             </div>
             <button class="primary-button-highlight" type="submit" style="align-self: center;">Create account</button>
           </form>
