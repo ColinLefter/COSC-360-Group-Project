@@ -262,6 +262,7 @@ body.dark .primary-button:hover {
 }
 .load-posts:hover {
   background-color: rgb(244, 243, 243);
+  cursor: pointer;
 }
 
 /* Forum Dark Mode */

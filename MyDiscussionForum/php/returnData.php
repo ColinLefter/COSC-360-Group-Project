@@ -4,7 +4,7 @@
 // For example, if FAIL, there will be a msg that can be printed to console
 // If we only need confirmation that we succeeded, we only need to return the result
 
-function returnData($msgType, $conn = false) {
+function returnData($msgType, $conn = false, $data = null) {
 
     // Big ol' switch
     $dataToReturn = array();
@@ -31,6 +31,11 @@ function returnData($msgType, $conn = false) {
             $dataToReturn['type'] = $msgType;
             $dataToReturn['msg'] = "First name, last name, or username is empty!";
             break;
+        case "EMPTY_INPUT_GENERAL":
+            $dataToReturn['result'] = "FAIL";
+            $dataToReturn['type'] = $msgType;
+            $dataToReturn['msg'] = "Data passed to PHP is not set!";
+            break;
         case "USER_EXISTS": // Tested
             $dataToReturn['result'] = "FAIL";
             $dataToReturn['type'] = $msgType;
@@ -47,6 +52,18 @@ function returnData($msgType, $conn = false) {
             $dataToReturn['result'] = "FAIL";
             $dataToReturn['type'] = $msgType;
             $dataToReturn['msg'] = "Could not connect to database!";
+            break;
+        // recent posts
+        case "RECENT_POSTS": // Tested
+            $dataToReturn['result'] = "SUCCESS";
+            $dataToReturn['type'] = $msgType;
+            $dataToReturn['msg'] = "Recent posts returned successfully!";
+            $dataToReturn['data'] = $data;
+            break;
+        case "RECENT_POSTS_EMPTY": // Tested
+            $dataToReturn['result'] = "SUCCESS";
+            $dataToReturn['type'] = $msgType;
+            $dataToReturn['msg'] = "Recent posts reached end of posts!";
             break;
 
         default:
