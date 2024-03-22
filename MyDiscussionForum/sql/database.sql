@@ -1,9 +1,11 @@
 -- NEEDS REVIEW
 -- NOTE: if you have extra data, make sure to save it!
-DROP DATABASE mydiscussionforum;
+-- DROP DATABASE mydiscussionforum;
 CREATE DATABASE mydiscussionforum;
-
 USE mydiscussionforum;
+
+-- If you are importing onto cosc360.ok.ubc.ca, change the number to your student number.
+-- USE db_20286563;
 
 CREATE TABLE user (
     userId int NOT NULL AUTO_INCREMENT,
@@ -20,7 +22,7 @@ CREATE TABLE userDetails (
     useLightMode boolean,
     userAuthority int DEFAULT 0, -- For now, 0 = normal user, 1 = moderator, 2 = admin
     isBanned boolean DEFAULT 0,
-    accountDate DATE DEFAULT CAST(NOW() AS DATE),
+    accountDate TIMESTAMP NOT NULL DEFAULT NOW(),
     dateOfBirth DATE,
     bio VARCHAR(250),
     profilePicName VARCHAR(50) DEFAULT 'default.png',
@@ -49,7 +51,7 @@ CREATE TABLE post (
     communityId int,
     postTitle VARCHAR(100),
     postContent TEXT, -- BLOB stores as binary data, but can store images and such, otherwise change this to TEXT
-    creationDate DATETIME DEFAULT NOW(),
+    creationDate TIMESTAMP DEFAULT NOW(),
     PRIMARY KEY(postId),
     FOREIGN KEY(authorId) REFERENCES user(userId),
     FOREIGN KEY(communityId) REFERENCES community(communityId)
@@ -61,7 +63,7 @@ CREATE TABLE comment (-- Basically the same
     parentId int, -- if NULL, postId is the parent
     authorId VARCHAR(30),
     commentContent BLOB,
-    creationDate DATETIME DEFAULT NOW(),
+    creationDate TIMESTAMP DEFAULT NOW(),
     PRIMARY KEY(commentId),
     FOREIGN KEY(postId) REFERENCES post(postId)
     ON DELETE CASCADE,
