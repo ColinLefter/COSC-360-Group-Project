@@ -29,19 +29,9 @@
         </div>
 
         <div class="col-7">
-          <section id="forum-body">
-            <div class="threadview">
-              <h2 class="threadview-category"><strong>Recent Posts</strong></h2>
-              
-              <!-- Recent Posts are loaded here -->
-
-            </div>
-      
-            <div class="threadview-more">
-              <p class="load-posts">Load More</p>
-            </div>
-          </section>
+          <div id="recent-posts-placeholder"></div>
         </div>
+        
         <div class="col">
           <div id="right-column-placeholder"></div>
         </div>
@@ -66,6 +56,11 @@
       $(function(){
         $("#left-column-placeholder").load("components/leftColumn.html");
       });
+    </script>
+    <script>
+    $(function(){
+      $("#recent-posts-placeholder").load("components/recentPosts.html");
+    });
     </script>
     <script>
       $(function(){
