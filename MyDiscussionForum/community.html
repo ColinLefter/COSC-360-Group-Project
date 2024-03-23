@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="../css/reset.css">
-    <link rel="stylesheet" type="text/css" href="../css/styles.css">
-    <link rel="stylesheet" type="text/css" href="../css/topics.css">
-    <link rel="stylesheet" type="text/css" href="../css/footer.css">
+    <link rel="stylesheet" type="text/css" href="css/reset.css">
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <link rel="stylesheet" type="text/css" href="css/community.css">
+    <link rel="stylesheet" type="text/css" href="css/footer.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -23,16 +23,17 @@
     </section> -->
     <div class="container-fluid">
       <div class="row">
+
         <div class="col">
           <div id="left-column-placeholder"></div>
         </div>
+
         <div class="col-7">
 
             <section id="community-topics-header-body">
                 <div class="community-topics-header">
-                    <h2 class=><strong>/topic_a</strong></h2>
-                    <button href="#tagPosts" class="topics-header-buttons">Posts</button>
-                    <button href="#tagCommunities" class="topics-header-buttons">Communities</button>
+                    <h2 class=><strong>/community_a</strong></h2>
+                    <p>xx Members &#x2022; xx Online </p>
                 </div>
             </section>
 
@@ -82,8 +83,25 @@
         </div>
 
         <div class="col">
-          <div id="right-column-placeholder"></div>
+          <section id="right-community-column">
+            <div class="community-column-section">
+                <h5><strong>community a</strong></h5>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+            <div class="community-column-section">
+                <h5><strong>Bookmarks</strong></h5>
+                <p>No bookmarks</p>
+            </div>
+            <div class="community-column-section">
+                <h5><strong>Rules</strong></h5>
+                <p>&#x2022; No Profanity</p>
+                <p>&#x2022; Keep spoilers to a minimum</p>
+                <p>&#x2022; Use the appropriate tags</p>
+                <p>&#x2022; No unrelated content</p>
+            </div>
+          </section>
         </div>
+
       </div>
     </div>
 
@@ -94,22 +112,17 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script>
       $(function(){
-        $("#navbar-placeholder").load("/MyDiscussionForum/components/navbar.html");
+        $("#navbar-placeholder").load("components/navbar.html");
       });
     </script>
     <script>
       $(function(){
-        $("#footer-placeholder").load("/MyDiscussionForum/components/footer.html");
+        $("#footer-placeholder").load("components/footer.html");
       });
     </script>
     <script>
       $(function(){
-        $("#left-column-placeholder").load("/MyDiscussionForum/components/leftColumn.html");
-      });
-    </script>
-    <script>
-      $(function(){
-        $("#right-column-placeholder").load("/MyDiscussionForum/components/rightColumn.html");
+        $("#left-column-placeholder").load("components/leftColumn.html");
       });
     </script>
   </body>
