@@ -15,7 +15,7 @@ $(document).ready( function () {
           };
 
         $.ajax({
-            url : '../php/register.php',
+            url : 'php/register.php',
             type : 'POST',
             data : formData,
             dataType : 'json',
@@ -44,7 +44,7 @@ $(document).ready( function () {
                     // TODO: log in, set session, etc
 
                     $('form').after("<p style='text-align: center;'> Success! Redirecting...");
-                    setTimeout(() => { location.href = "../index.html"}, 2000);
+                    setTimeout(() => { location.href = "index.html"}, 2000);
                 
                 } else {
                     console.log("Unreachable Error, debug php.");

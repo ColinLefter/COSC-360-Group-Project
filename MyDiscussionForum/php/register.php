@@ -24,11 +24,17 @@ if (!isset($firstname) || !isset($lastname) || !isset($username)) {
 validateEmail($email);
 validatePassword($password);
 
-// Hash the password, 128 bit output
+// Hash the password, 128 bit output. Needs no sanitization
 $passhash = md5($password);
 
 // Connect to database
 $connection = connectToDB();
+
+// Sanitization
+$firstname = mysqli_real_escape_string($connection, $firstname);
+$lastname = mysqli_real_escape_string($connection, $lastname);
+$username = mysqli_real_escape_string($connection, $username);
+$email = mysqli_real_escape_string($connection, $email);
 
 // check for users
 $sql = "SELECT username, email FROM user WHERE username='".$username."' OR email='".$email."';";    

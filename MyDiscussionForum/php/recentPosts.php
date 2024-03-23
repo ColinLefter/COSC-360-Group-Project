@@ -19,6 +19,10 @@ if (!isset($rowOffset) || !isset($numPosts)) {
 // Connect
 $connection = connectToDB();
 
+// Sanitize
+$rowOffset = mysqli_real_escape_string($connection, $rowOffset);
+$numPosts = mysqli_real_escape_string($connection, $numPosts);
+
 $sql = "SELECT postId, authorName, postTitle, postContent FROM post ORDER BY creationDate DESC LIMIT ".$numPosts." OFFSET ".$rowOffset.";";    
 //  echo $sql;
 $results = mysqli_query($connection, $sql);
