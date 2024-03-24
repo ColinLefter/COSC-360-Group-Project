@@ -70,10 +70,10 @@ CREATE TABLE comment (-- Comments belong to a parent post
     FOREIGN KEY(parentId) REFERENCES comment(commentId)
 );
 
-CREATE TABLE tag (
+CREATE TABLE topic (
     postId int NOT NULL,
-    tagName VARCHAR(10) NOT NULL,
-    tagDesc VARCHAR(100),
+    topicName VARCHAR(10) NOT NULL,
+    topicDesc VARCHAR(100),
     FOREIGN KEY(postId) REFERENCES post(postId)
 );
 
