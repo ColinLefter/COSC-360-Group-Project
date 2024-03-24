@@ -26,12 +26,12 @@ $passhash = md5($password);
 $connection = connectToDB();
 
 $stmt = $connection -> prepare("SELECT * FROM user WHERE userName = ?;");
-$stmp -> bind_param("s", $username); // Using prepared statements to prevent SQL injections
+$stmt -> bind_param("s", $username); // Using prepared statements to prevent SQL injections
 $stmt -> execute();
 $result = $stmt -> get_result();
 
-if ($result->num_rows > 0) {
-  $row = $result->fetch_assoc();
+if ($result -> num_rows > 0) {
+  $row = $result -> fetch_assoc();
   if ($row['password'] == $passhash) {
       session_start(); // Start the session now that we have validated the user
       $_SESSION['userLoggedIn'] = true;
