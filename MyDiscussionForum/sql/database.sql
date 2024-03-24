@@ -51,10 +51,12 @@ CREATE TABLE post (
     -- authorName VARCHAR(30), -- Removed, can pull from user
     communityId int,
     postTitle VARCHAR(100),
-    postContent BLOB, -- BLOB stores as binary data, but can store images and such, otherwise change this to TEXT
+    postContent TEXT, -- BLOB stores as binary data, but can store images and such, otherwise change this to TEXT
     creationDate TIMESTAMP DEFAULT NOW(),
     postViews int DEFAULT 0,
     PRIMARY KEY(postId),
+    FULLTEXT INDEX (postTitle),
+    FULLTEXT INDEX (postContent),
     FOREIGN KEY(authorId) REFERENCES user(userId),
     FOREIGN KEY(communityId) REFERENCES community(communityId)
 );

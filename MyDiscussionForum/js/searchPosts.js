@@ -34,7 +34,7 @@ function loadQueriedPosts(numPosts, searchQuery, searchTopic) {
         success : function (data) {
             
             // Debug
-            console.log(data);
+            // console.log(data);
             var result = data['result'];
             if (result == "FAIL") {
             
