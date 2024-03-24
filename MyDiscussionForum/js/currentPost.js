@@ -17,7 +17,7 @@ function loadPost(postId) {
     };
 
     $.ajax({
-        url : 'php/getPost.php',
+        url : 'backend/getPost.php',
         type : 'POST',
         data : formData,
         dataType : 'json',
@@ -94,7 +94,7 @@ function loadComments(postId) {
     };
 
     $.ajax({
-        url : 'php/getComments.php',
+        url : 'backend/getComments.php',
         type : 'POST',
         data : formData,
         dataType : 'json',

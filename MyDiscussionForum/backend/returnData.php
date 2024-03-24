@@ -87,6 +87,12 @@ function returnData($msgType, $conn = false, $data = null) {
             $dataToReturn['type'] = $msgType;
             $dataToReturn['msg'] = "No comments found!";
             break;         
+        case "USER_SSO":
+            $dataToReturn['result'] = "SUCCESS";
+            $dataToReturn['type'] = $msgType;
+            $dataToReturn['msg'] = "User SSO successful!";
+            $dataToReturn['data'] = $data;
+            break;
         case "QUERIED_POSTS":
             $dataToReturn['result'] = "SUCCESS";
             $dataToReturn['type'] = $msgType;

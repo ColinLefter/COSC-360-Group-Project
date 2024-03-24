@@ -39,7 +39,6 @@
 
 .navbar-right {
   display: flex;
-  padding-right: 1em;
   justify-content: flex-end;
 }
 
@@ -94,11 +93,6 @@
 
 .navbar-right button {
   margin-right: 10px; /* Add margin between all buttons */
-}
-
-/* Remove margin from last button to prevent excess spacing */
-.navbar-right button:last-child {
-  margin-right: 0;
 }
 
 .nav-logo {
