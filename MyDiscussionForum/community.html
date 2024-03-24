@@ -83,23 +83,7 @@
         </div>
 
         <div class="col">
-          <section id="right-community-column">
-            <div class="community-column-section">
-                <h5><strong>community a</strong></h5>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            </div>
-            <div class="community-column-section">
-                <h5><strong>Bookmarks</strong></h5>
-                <p>No bookmarks</p>
-            </div>
-            <div class="community-column-section">
-                <h5><strong>Rules</strong></h5>
-                <p>&#x2022; No Profanity</p>
-                <p>&#x2022; Keep spoilers to a minimum</p>
-                <p>&#x2022; Use the appropriate tags</p>
-                <p>&#x2022; No unrelated content</p>
-            </div>
-          </section>
+          <div id="right-column-community-placeholder"></div>
         </div>
 
       </div>
@@ -123,6 +107,11 @@
     <script>
       $(function(){
         $("#left-column-placeholder").load("components/leftColumn.html");
+      });
+    </script>    
+    <script>
+      $(function(){
+        $("#right-column-community-placeholder").load("components/rightColumnCommunity.html");
       });
     </script>
   </body>
