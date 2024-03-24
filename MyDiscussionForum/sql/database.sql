@@ -19,7 +19,7 @@ CREATE TABLE user (
 
 CREATE TABLE userDetails (
     userId int NOT NULL,
-    useLightMode boolean,
+    useLightMode boolean DEFAULT 1,
     userAuthority int DEFAULT 0, -- For now, 0 = normal user, 1 = moderator, 2 = admin
     isBanned boolean DEFAULT 0,
     accountDate TIMESTAMP NOT NULL DEFAULT NOW(),
@@ -47,26 +47,26 @@ CREATE TABLE community (
 CREATE TABLE post (
     postId int NOT NULL AUTO_INCREMENT,
     authorId int,
-    authorName VARCHAR(30),
+    -- authorName VARCHAR(30), -- Removed, can pull from user
     communityId int,
     postTitle VARCHAR(100),
-    postContent TEXT, -- BLOB stores as binary data, but can store images and such, otherwise change this to TEXT
+    postContent BLOB, -- BLOB stores as binary data, but can store images and such, otherwise change this to TEXT
     creationDate TIMESTAMP DEFAULT NOW(),
     PRIMARY KEY(postId),
     FOREIGN KEY(authorId) REFERENCES user(userId),
     FOREIGN KEY(communityId) REFERENCES community(communityId)
 );
 
-CREATE TABLE comment (-- Basically the same 
+CREATE TABLE comment (-- Comments belong to a parent post
     postId int NOT NULL,
     commentId int NOT NULL AUTO_INCREMENT,
     parentId int, -- if NULL, postId is the parent
-    authorId VARCHAR(30),
+    -- authorId VARCHAR(30),
     commentContent BLOB,
     creationDate TIMESTAMP DEFAULT NOW(),
     PRIMARY KEY(commentId),
     FOREIGN KEY(postId) REFERENCES post(postId)
-    ON DELETE CASCADE,
+    ON DELETE CASCADE, -- Only delete a comment if its post is deleted. If the parent comment is deleted, keep the comment.
     FOREIGN KEY(parentId) REFERENCES comment(commentId)
 );
 
@@ -91,14 +91,16 @@ INSERT INTO user (userName, firstName, lastName, email, password) VALUES ('bross
 
 -- Sample data (community)
 INSERT INTO community (communityName, description) VALUES ('general', 'A place for general topics, ideas, and such.');
+INSERT INTO community (communityName, description) VALUES ('sports', 'Football, soccer, baseball, et cetera.');
+INSERT INTO community (communityName, description) VALUES ('computer science', 'Discussion for computer science topics.');
 
 -- Sample data (posts)
-INSERT INTO post (authorId, authorName, communityId, postTitle, postContent) VALUES ('1', 'jsmith', '1', 'This is my first post', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.');
-INSERT INTO post (authorId, authorName, communityId, postTitle, postContent) VALUES ('2', 'jparish', '1', 'Should I get training before I base jump?', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.');
-INSERT INTO post (authorId, authorName, communityId, postTitle, postContent) VALUES ('3', 'jdoe', '1', 'Why does everyone think my name sounds funny', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.');
-INSERT INTO post (authorId, authorName, communityId, postTitle, postContent) VALUES ('4', 'tcruise', '1', 'I accidently dropped my database. What do?', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.');
-INSERT INTO post (authorId, authorName, communityId, postTitle, postContent) VALUES ('5', 'rmcdonald', '1', 'Hot take: McChickens are better than big macs.', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.');
-INSERT INTO post (authorId, authorName, communityId, postTitle, postContent) VALUES ('6', 'jjjschmidt', '1', 'Everyone thinks my name is a joke', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.');
-INSERT INTO post (authorId, authorName, communityId, postTitle, postContent) VALUES ('7', 'dmartinez', '1', 'I got to moon :)', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.');
-INSERT INTO post (authorId, authorName, communityId, postTitle, postContent) VALUES ('8', 'roppenheimer', '1', 'Everyone is comparing me to barbie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.');
-INSERT INTO post (authorId, authorName, communityId, postTitle, postContent) VALUES ('9', 'bross', '1', 'Nature is beautiful.', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.');
+INSERT INTO post (authorId, communityId, postTitle, postContent) VALUES ('1', '1', 'This is my first post', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.');
+INSERT INTO post (authorId, communityId, postTitle, postContent) VALUES ('3', '1', 'Why does everyone think my name sounds funny', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.');
+INSERT INTO post (authorId, communityId, postTitle, postContent) VALUES ('2', '1', 'Should I get training before I base jump?', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.');
+INSERT INTO post (authorId, communityId, postTitle, postContent) VALUES ('4', '1', 'I accidently dropped my database. What do?', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.');
+INSERT INTO post (authorId, communityId, postTitle, postContent) VALUES ('5', '1', 'Hot take: McChickens are better than big macs.', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.');
+INSERT INTO post (authorId, communityId, postTitle, postContent) VALUES ('6', '1', 'Everyone thinks my name is a joke', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.');
+INSERT INTO post (authorId, communityId, postTitle, postContent) VALUES ('7', '1', 'I got to moon :)', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.');
+INSERT INTO post (authorId, communityId, postTitle, postContent) VALUES ('8', '1', 'Everyone is comparing me to barbie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.');
+INSERT INTO post (authorId, communityId, postTitle, postContent) VALUES ('9', '1', 'Nature is beautiful.', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.');
