@@ -26,7 +26,7 @@ $passhash = md5($password);
 $connection = connectToDB();
 
 $stmt = $connection -> prepare("SELECT userName, password FROM user WHERE userName = ?;");
-$stmpt -> bind_param("s", $username); // Using prepared statements to prevent SQL injections
+$stmp -> bind_param("s", $username); // Using prepared statements to prevent SQL injections
 $stmt -> execute();
 $result = $stmt -> get_result();
 

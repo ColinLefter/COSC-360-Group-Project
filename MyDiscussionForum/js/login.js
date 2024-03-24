@@ -17,6 +17,7 @@ $(document).ready( function () {
           data : formData,
           dataType : 'json',
           success : function (data) {
+            console.log(data);
             // Check whether the data was added successfully
             let result = data['result'];
             if (result == "FAIL") {
