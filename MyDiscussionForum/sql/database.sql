@@ -34,6 +34,7 @@ CREATE TABLE community (
     communityId int NOT NULL AUTO_INCREMENT,
     communityName VARCHAR(30),
     postCount int DEFAULT 0,
+    communityViews int DEFAULT 0,
     description VARCHAR(250),
     PRIMARY KEY(communityId)
 );
@@ -52,6 +53,7 @@ CREATE TABLE post (
     postTitle VARCHAR(100),
     postContent BLOB, -- BLOB stores as binary data, but can store images and such, otherwise change this to TEXT
     creationDate TIMESTAMP DEFAULT NOW(),
+    postViews int DEFAULT 0;
     PRIMARY KEY(postId),
     FOREIGN KEY(authorId) REFERENCES user(userId),
     FOREIGN KEY(communityId) REFERENCES community(communityId)
@@ -75,6 +77,12 @@ CREATE TABLE topic (
     topicName VARCHAR(10) NOT NULL,
     topicDesc VARCHAR(100),
     FOREIGN KEY(postId) REFERENCES post(postId)
+);
+
+-- Modify as necessary
+CREATE TABLE statistic (
+    statisticDate DATE,
+    dailyVisitors int
 );
 
 -- Sample data (users)
