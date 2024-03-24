@@ -77,8 +77,8 @@ function insertPosts(data) {
         $("div.post" + id).append("<div class='post-preview'>" + data[i]['postContent'] + "</div>");
         $("div.post" + id + " div.post-header").append("<div></div>");
         $("div.post" + id + " div.post-header").append("<p class='post-author post-subheader'>" + data[i]['authorName'] + "</p>");
-        $("div.post" + id + " div.post-header").append("<p class='post-datetime post-subheader'> &#x2022; 17:04</p>");
-        $("div.post" + id + " div.post-header div").append("<h4 class='post-title'><a class='post-title' href=''>" + data[i]['postTitle'] + "</a></h4>");
+        $("div.post" + id + " div.post-header").append("<p class='post-datetime post-subheader'> &nbsp;&#x2022; 17:04</p>");
+        $("div.post" + id + " div.post-header div").append("<h4 class='post-title'><a class='post-title' href='post.html?p=" + data[i]['postId'] + "'>" + data[i]['postTitle'] + "</a></h4>");
 
     }
 

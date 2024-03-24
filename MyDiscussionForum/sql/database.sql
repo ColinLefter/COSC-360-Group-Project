@@ -53,7 +53,7 @@ CREATE TABLE post (
     postTitle VARCHAR(100),
     postContent BLOB, -- BLOB stores as binary data, but can store images and such, otherwise change this to TEXT
     creationDate TIMESTAMP DEFAULT NOW(),
-    postViews int DEFAULT 0;
+    postViews int DEFAULT 0,
     PRIMARY KEY(postId),
     FOREIGN KEY(authorId) REFERENCES user(userId),
     FOREIGN KEY(communityId) REFERENCES community(communityId)
@@ -62,6 +62,7 @@ CREATE TABLE post (
 CREATE TABLE comment (-- Comments belong to a parent post
     postId int NOT NULL,
     commentId int NOT NULL AUTO_INCREMENT,
+    userId int NOT NULL,
     parentId int, -- if NULL, postId is the parent
     -- authorId VARCHAR(30),
     commentContent BLOB,
@@ -69,7 +70,8 @@ CREATE TABLE comment (-- Comments belong to a parent post
     PRIMARY KEY(commentId),
     FOREIGN KEY(postId) REFERENCES post(postId)
     ON DELETE CASCADE, -- Only delete a comment if its post is deleted. If the parent comment is deleted, keep the comment.
-    FOREIGN KEY(parentId) REFERENCES comment(commentId)
+    FOREIGN KEY(parentId) REFERENCES comment(commentId),
+    FOREIGN KEY(userId) REFERENCES user(userId)
 );
 
 CREATE TABLE topic (
@@ -112,3 +114,10 @@ INSERT INTO post (authorId, communityId, postTitle, postContent) VALUES ('6', '1
 INSERT INTO post (authorId, communityId, postTitle, postContent) VALUES ('7', '1', 'I got to moon :)', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.');
 INSERT INTO post (authorId, communityId, postTitle, postContent) VALUES ('8', '1', 'Everyone is comparing me to barbie', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.');
 INSERT INTO post (authorId, communityId, postTitle, postContent) VALUES ('9', '1', 'Nature is beautiful.', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.');
+
+-- Sample comments (comment)
+INSERT INTO comment (postId, userId, parentId, commentContent) VALUES ('1', '3', NULL, 'I am your first comment!');
+INSERT INTO comment (postId, userId, parentId, commentContent) VALUES ('1', '5', NULL, 'I am your second comment :)');
+INSERT INTO comment (postId, userId, parentId, commentContent) VALUES ('1', '6', '1', 'Is it your first comment, though?');
+INSERT INTO comment (postId, userId, parentId, commentContent) VALUES ('1', '4', '3', 'Must be. Their comment Id is 1.');
+

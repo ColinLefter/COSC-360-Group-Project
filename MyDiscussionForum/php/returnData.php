@@ -65,7 +65,28 @@ function returnData($msgType, $conn = false, $data = null) {
             $dataToReturn['type'] = $msgType;
             $dataToReturn['msg'] = "Recent posts reached end of posts!";
             break;
-
+        case "CURRENT_POST":
+            $dataToReturn['result'] = "SUCCESS";
+            $dataToReturn['type'] = $msgType;
+            $dataToReturn['msg'] = "Post returned successfully!";
+            $dataToReturn['data'] = $data;
+            break;
+        case "CURRENT_POST_EMPTY":
+            $dataToReturn['result'] = "FAIL";
+            $dataToReturn['type'] = $msgType;
+            $dataToReturn['msg'] = "Post not found!";
+            break;           
+        case "CURRENT_COMMENTS":
+            $dataToReturn['result'] = "SUCCESS";
+            $dataToReturn['type'] = $msgType;
+            $dataToReturn['msg'] = "Comments returned successfully!";
+            $dataToReturn['data'] = $data;
+            break;
+        case "CURRENT_COMMENTS_EMPTY":
+            $dataToReturn['result'] = "SUCCESS";
+            $dataToReturn['type'] = $msgType;
+            $dataToReturn['msg'] = "No comments found!";
+            break;         
         default:
             // TODO: Add error logging here
             break;
