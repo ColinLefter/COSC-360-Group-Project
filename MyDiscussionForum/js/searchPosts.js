@@ -27,7 +27,7 @@ function loadQueriedPosts(numPosts, searchQuery, searchTopic) {
     };
 
     $.ajax({
-        url : 'php/searchPosts.php',
+        url : 'backend/searchPosts.php',
         type : 'POST',
         data : formData,
         dataType : 'json',
