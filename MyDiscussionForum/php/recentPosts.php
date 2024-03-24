@@ -23,7 +23,7 @@ $connection = connectToDB();
 $rowOffset = mysqli_real_escape_string($connection, $rowOffset);
 $numPosts = mysqli_real_escape_string($connection, $numPosts);
 
-$sql = "SELECT postId, authorName, postTitle, postContent FROM post ORDER BY creationDate DESC LIMIT ".$numPosts." OFFSET ".$rowOffset.";";    
+$sql = "SELECT postId, user.userName, postTitle, postContent FROM post INNER JOIN user ON post.authorId=user.userId ORDER BY creationDate DESC LIMIT ".$numPosts." OFFSET ".$rowOffset.";";    
 //  echo $sql;
 $results = mysqli_query($connection, $sql);
 $postData = array();
@@ -33,7 +33,7 @@ if(mysqli_num_rows($results) > 0) {
     while ($row = mysqli_fetch_assoc($results)) {
         $postData[$i] = array();
         $postData[$i]['postId'] = $row['postId'];
-        $postData[$i]['authorName'] = $row['authorName'];
+        $postData[$i]['authorName'] = $row['userName'];
         $postData[$i]['postTitle'] = $row['postTitle'];
         $postData[$i]['postContent'] = $row['postContent'];
         $i++;

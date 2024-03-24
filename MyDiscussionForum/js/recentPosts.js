@@ -51,7 +51,7 @@ function loadPosts(numPosts) {
             }
         },
         error : function (xhr, ajaxOptions, thrownError) {
-        alert("Error registering account.");
+        alert("Error loading recent posts.");
         console.log("STATUS: " + xhr.status);
         console.log(thrownError);
         }
@@ -71,7 +71,7 @@ function insertPosts(data) {
         // Generate html
         var id = data[i]['postId'];
 
-        // Sequentially add post data
+        // Sequentially add post data, consider using a component
         postsContainer.append("<div class='post-container post" + data[i]['postId'] + "'></div>");
         $("div.post" + id).append("<div class='post-header'></div>");
         $("div.post" + id).append("<div class='post-preview'>" + data[i]['postContent'] + "</div>");
