@@ -16,6 +16,21 @@ function returnData($msgType, $conn = false, $data = null) {
             $dataToReturn['type'] = $msgType;
             $dataToReturn['msg'] = "Account creation successful!";
             break;
+        case "ACCOUNT_UPDATED":
+            $dataToReturn['result'] = "SUCCESS";
+            $dataToReturn['type'] = $msgType;
+            $dataToReturn['msg'] = "Account changes successfully applied.";
+            break;
+        case "NO_NEW_ACCOUNT_CHANGES":
+            $dataToReturn['result'] = "SUCCESS";
+            $dataToReturn['type'] = $msgType;
+            $dataToReturn['msg'] = "No new account changes.";
+            break;
+        case "ACCOUNT_UPDATE_FAILED":
+            $dataToReturn['result'] = "FAIL";
+            $dataToReturn['type'] = $msgType;
+            $dataToReturn['msg'] = "Unable to update account settings.";
+            break;
         case "INVALID_PASSWORD":
             $dataToReturn['result'] = "FAIL";
             $dataToReturn['type'] = $msgType;
