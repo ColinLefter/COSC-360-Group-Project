@@ -12,7 +12,7 @@ $(document).ready( function () {
         };
 
       $.ajax({
-          url : 'php/login.php',
+          url : 'backend/login.php',
           type : 'POST',
           data : formData,
           dataType : 'json',
@@ -32,9 +32,8 @@ $(document).ready( function () {
               }
 
             } else if (result == "SUCCESS") {
-                console.log("Success! Logged in.")
-                $('form').after("<p class='login-feedback' style='text-align: center;'>Success! Redirecting to home page.</p>");
-                setTimeout(() => { location.href = "index.html" }, 2000); // Home page is at index.html
+              console.log("Success! Logged in.");
+              window.location.href = "index.html"; // Instantly redirects to home page
             }
           },
           error: function(xhr, status, error) {

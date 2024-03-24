@@ -15,7 +15,7 @@ $(document).ready( function () {
           };
 
         $.ajax({
-            url : 'php/register.php',
+            url : 'backend/register.php',
             type : 'POST',
             data : formData,
             dataType : 'json',
@@ -34,13 +34,9 @@ $(document).ready( function () {
                     }
 
                 } else if(result == "SUCCESS") {
-
                     console.log("Success! Account added.");
-                    // TODO: log in, set session, etc
-
-                    $('form').after("<p style='text-align: center;'> Success! Redirecting to home page.");
-                    setTimeout(() => { location.href = "index.html"}, 2000);
-                
+                    // Instantly redirects to login page so the user can sign in with their new account. We set the session variables there.
+                    window.location.href = "login.html";
                 } else {
                     console.log("Unreachable Error, debug php.");
                 }

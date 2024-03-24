@@ -1,3 +1,4 @@
+<?php session_start();?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -24,7 +25,15 @@
     </div>
 
     <div class="navbar-right">
-      <button id="loginButton" class="primary-button">Log In</button>
+      <?php if(isset($_SESSION['userLoggedIn']) && $_SESSION['userLoggedIn'] === true): ?>
+        <!-- Display logout button -->
+        <form action="backend/logout.php" method="POST">
+          <button type="submit" class="primary-button">Log Out</button>
+        </form>
+      <?php else: ?>
+        <!-- Display login button -->
+        <button id="loginButton" class="primary-button">Log In</button>
+      <?php endif; ?>
     </div>
     <button class="btn-secondary dropdown-toggle primary-button" type="button" data-bs-toggle="dropdown" aria-expanded="false">
     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gear" viewBox="0 0 16 16" id="themeIcon">
@@ -56,7 +65,7 @@
 <script src="functions.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 <script>
-  document.getElementById('loginButton').addEventListener('click', function() {
+  document.getElementById('loginButton')?.addEventListener('click', function() { // Optional chaining: just in case the element is not found
       window.location.assign("login.html");
   });
   </script>  

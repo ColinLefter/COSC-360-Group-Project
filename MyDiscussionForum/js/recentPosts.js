@@ -18,7 +18,7 @@ function loadPosts(numPosts) {
     };
 
     $.ajax({
-        url : 'php/recentPosts.php',
+        url : 'backend/recentPosts.php',
         type : 'POST',
         data : formData,
         dataType : 'json',
