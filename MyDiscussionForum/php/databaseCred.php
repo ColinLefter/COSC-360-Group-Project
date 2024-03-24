@@ -2,7 +2,7 @@
 
 $host = "localhost";
 $database = "mydiscussionforum";
-$user = "jparish";
-$dbpassword = "A33c*4KIid_q(2dM";
+$user = "colinlefter";
+$dbpassword = "/LS@MA9ZEbTS1HWl";
 
 ?>
