@@ -25,7 +25,7 @@ $passhash = md5($password);
 // Connect to database
 $connection = connectToDB();
 
-$stmt = $connection -> prepare("SELECT userName, password FROM user WHERE userName = ?;");
+$stmt = $connection -> prepare("SELECT * FROM user WHERE userName = ?;");
 $stmp -> bind_param("s", $username); // Using prepared statements to prevent SQL injections
 $stmt -> execute();
 $result = $stmt -> get_result();
@@ -33,6 +33,12 @@ $result = $stmt -> get_result();
 if ($result->num_rows > 0) {
   $row = $result->fetch_assoc();
   if ($row['password'] == $passhash) {
+      session_start(); // Start the session now that we have validated the user
+      $_SESSION['userLoggedIn'] = true;
+      $_SESSION['username'] = $username;
+      $_SESSION['firstName'] = $row['firstName'];
+      $_SESSION['lastName'] = $row['lastName'];
+      $_SESSION['email'] = $row['email'];      
       returnData("USER_SSO", $connection);
   } else {
       returnData("INVALID_PASSWORD", $connection);

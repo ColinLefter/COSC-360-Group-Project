@@ -6,7 +6,7 @@ $(document).ready( function () {
         // Delete user exists message, if exists
         $('p.user-exists').remove();
 
-        var formData = {
+        let formData = {
             firstname: $("input[name='firstname']").val(),
             lastname: $("input[name='lastname']").val(),
             username: $("input[name='username']").val(),
@@ -20,16 +20,11 @@ $(document).ready( function () {
             data : formData,
             dataType : 'json',
             success : function (data) {
-                
-                // Debug
-                // console.log(data);
-
-                // Check whether the data was added successfully
-                var result = data['result'];
+                let result = data['result'];
                 if(result == "FAIL") {
 
-                    var msg = data['msg'];
-                    var type = data['type'];
+                    let msg = data['msg'];
+                    let type = data['type'];
                     if (type == "USER_EXISTS") {
                         $('form').after(msg);
                     } else {
@@ -43,7 +38,7 @@ $(document).ready( function () {
                     console.log("Success! Account added.");
                     // TODO: log in, set session, etc
 
-                    $('form').after("<p style='text-align: center;'> Success! Redirecting...");
+                    $('form').after("<p style='text-align: center;'> Success! Redirecting to home page.");
                     setTimeout(() => { location.href = "index.html"}, 2000);
                 
                 } else {

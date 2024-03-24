@@ -12,6 +12,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> <!-- This has to be present in any front-end file that uses forms so we can handle the GET/POST requests via AJAX -->
     <script src="js/login.js"></script>
     <title>Log In</title>
   </head>
@@ -30,7 +31,7 @@
     <div class="row">
       <div class="col d-flex justify-content-center">
         <div class="create-account-form secondary-accent">
-          <form class="needs-validation" style="display: flex; flex-direction: column; gap: 10px;">
+          <form method="POST" class="needs-validation" style="display: flex; flex-direction: column; gap: 10px;">
             <div style="flex: 1;">
               <input type="text" class="form-control text-center" id="validationDefault04" name="username" placeholder="Username" required>
             </div>
