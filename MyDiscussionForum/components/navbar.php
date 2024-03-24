@@ -73,5 +73,20 @@
       });
   }  
 </script>  
+  document.getElementById('loginButton')?.addEventListener('click', function() { // Optional chaining: just in case the element is not found
+      window.location.assign("login.html");
+  });
+  </script> 
+     <script>
+    $("input[type='search']").on("search", function (e) {
+        e.preventDefault();
+        // console.log($("input[type='search']").val());
+        window.location.assign("searchResults.html?q=" + ($("input[type='search']").val()).replaceAll(" ", "+")); 
+    } );
+    $("form").on("submit", function (e) {
+        e.preventDefault();
+    } );
+
+    </script>  
 </body>
 </html>

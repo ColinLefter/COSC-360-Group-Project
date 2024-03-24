@@ -27,14 +27,14 @@ function loadQueriedPosts(numPosts, searchQuery, searchTopic) {
     };
 
     $.ajax({
-        url : 'php/searchPosts.php',
+        url : 'backend/searchPosts.php',
         type : 'POST',
         data : formData,
         dataType : 'json',
         success : function (data) {
             
             // Debug
-            console.log(data);
+            // console.log(data);
             var result = data['result'];
             if (result == "FAIL") {
             

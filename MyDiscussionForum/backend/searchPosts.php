@@ -30,7 +30,11 @@ $topic = mysqli_real_escape_string($connection, $topic);
 // Get statement for query, or prepared statement for topic query
 
 $values = explode(' ',$query);
-$sql = "SELECT postId, user.userName, postTitle, postContent FROM post INNER JOIN user ON post.authorId=user.userId WHERE ";
+$sql = "SELECT postId, user.userName, postTitle, postContent, 
+    MATCH (postTitle) AGAINST ('".$query."' IN BOOLEAN MODE) AS titleRel,
+    MATCH (postContent) AGAINST ('".$query."' IN BOOLEAN MODE) AS contentRel
+    FROM post INNER JOIN user ON post.authorId=user.userId WHERE ";
+
 $i = 0;
 foreach($values as $v){
     $v=trim($v);
@@ -47,14 +51,15 @@ foreach($values as $v){
 $sql = $sql.") ";
 
 if  (strcmp($topic, "none") == 0) {
-    $sql = $sql."LIMIT ".$numPosts." OFFSET ".$rowOffset.";";
+    $sql = $sql."ORDER BY (titleRel + contentRel) DESC LIMIT ".$numPosts." OFFSET ".$rowOffset.";";
 } else {
     // Figure out topics
     // $sql = $sql." AND LIMIT ".$numPosts." OFFSET ".$rowOffset";";    
 }
+// echo $sql;
+
 $postData = array();
 $results = mysqli_query($connection, $sql);
-// echo $sql;
 
 if(mysqli_num_rows($results) > 0) {
     $i = 0;
