@@ -1,0 +1,4 @@
+# git ignore
+
+MyDiscussionForum/backend/databaseCred.php
+.vscode
