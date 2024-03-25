@@ -73,9 +73,6 @@
       });
   }  
 </script>  
-  document.getElementById('loginButton')?.addEventListener('click', function() { // Optional chaining: just in case the element is not found
-      window.location.assign("login.html");
-  });
   </script> 
      <script>
     $("input[type='search']").on("search", function (e) {
