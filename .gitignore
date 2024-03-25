@@ -1,0 +1,4 @@
+# git ignore
+
+/php/databaseCred.php
+.vscode
