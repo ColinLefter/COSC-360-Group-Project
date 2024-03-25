@@ -19,7 +19,7 @@
   </div>
 
   <div class="navbar-center">
-    <form class="d-flex" role="search">
+    <form class="d-flex" role="search" id="searchForm">
       <input class="form-control search-bar" type="search" placeholder="Search threads" aria-label="Search">
     </form>
   </div>
@@ -65,24 +65,24 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 <script src="./js/functions.js"></script>
 <script>
-  // IMPORTANT: Only add this event listener if the login button is present in the navbar. This is not always the case. Sometimes it is log out.
+  // Handling login button click event
   let loginButton = document.getElementById('loginButton');
   if (loginButton) {
       loginButton.addEventListener('click', function() {
         window.location.assign("login.html");
       });
-  }  
-</script>  
-<script> 
-  $("input[type='search']").on("search", function (e) {
-      e.preventDefault();
-      // console.log($("input[type='search']").val());
-      window.location.assign("searchResults.html?q=" + ($("input[type='search']").val()).replaceAll(" ", "+")); 
-  } );
-  $("form").on("submit", function (e) {
-      e.preventDefault();
-  } );
+  }
 
-</script>  
+  // Handling search form submission
+  $("#searchForm").on("submit", function (e) {
+      e.preventDefault();
+      window.location.assign("searchResults.html?q=" + ($("input[type='search']").val()).replaceAll(" ", "+")); 
+  });
+
+  // Ensure this only prevents the default action for the search input, not the whole form
+  $("input[type='search']").on("search", function () {
+      window.location.assign("searchResults.html?q=" + ($(this).val()).replaceAll(" ", "+"));
+  });
+</script>
 </body>
 </html>
