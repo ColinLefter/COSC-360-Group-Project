@@ -73,17 +73,16 @@
       });
   }  
 </script>  
-  </script> 
-     <script>
-    $("input[type='search']").on("search", function (e) {
-        e.preventDefault();
-        // console.log($("input[type='search']").val());
-        window.location.assign("searchResults.html?q=" + ($("input[type='search']").val()).replaceAll(" ", "+")); 
-    } );
-    $("form").on("submit", function (e) {
-        e.preventDefault();
-    } );
+<script> 
+  $("input[type='search']").on("search", function (e) {
+      e.preventDefault();
+      // console.log($("input[type='search']").val());
+      window.location.assign("searchResults.html?q=" + ($("input[type='search']").val()).replaceAll(" ", "+")); 
+  } );
+  $("form").on("submit", function (e) {
+      e.preventDefault();
+  } );
 
-    </script>  
+</script>  
 </body>
 </html>
