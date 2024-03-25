@@ -284,6 +284,10 @@ body.dark .post-title { /* .post-title refuses to use the right background color
   text-align: center;
 }
 
+.text-center {
+  text-align: center;
+}
+
 .inline-text {
   display: inline;
 }

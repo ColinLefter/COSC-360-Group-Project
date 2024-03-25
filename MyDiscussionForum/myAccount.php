@@ -1,3 +1,13 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['userLoggedIn']) || $_SESSION['userLoggedIn'] !== true) {
+  // Redirect them to the login page
+  header("Location: login.html");
+  exit;
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -22,15 +32,34 @@
   <div class="row">
     <div class="col-md-6 center-container left-column">
       <!-- Account settings in the first column -->
-      <div class="row">
+      <form id="accountForm" action="backend/updateAccount.php" method="POST">
+        <div class="row">
           <h2 class="minor-spacer">Basic Settings</h2>
+
+          <div class="row row-margin-bottom">
+            <div class="col">
+              <h3 class="setting">First name: </h3>
+            </div>
+            <div class="col">
+              <input type="text" name="firstName" class="form-control text-center" id="validationDefault01" value="<?php echo $_SESSION['firstName'] ?>">
+            </div>
+          </div>
+
+          <div class="row row-margin-bottom">
+            <div class="col">
+              <h3 class="setting">Last name: </h3>
+            </div>
+            <div class="col">
+              <input type="text" name="lastName" class="form-control text-center" id="validationDefault02" value="<?php echo $_SESSION['lastName'] ?>">
+            </div>
+          </div>
 
           <div class="row row-margin-bottom">
             <div class="col">
               <h3 class="setting">Username: </h3>
             </div>
             <div class="col">
-              <input type="text" class="form-control text-center" id="validationDefault04" value="user1">
+              <input type="text" name="username" class="form-control text-center" id="validationDefault03" value="<?php echo $_SESSION['username'] ?>">
             </div>
           </div>
 
@@ -39,7 +68,7 @@
               <h3 class="setting">Email: </h3>
             </div>
             <div class="col">
-              <input type="text" class="form-control text-center" id="validationDefault04" value="user1@email.com">
+              <input type="text"name="email" class="form-control text-center" id="validationDefault04" value="<?php echo $_SESSION['email'] ?>">
             </div>
           </div>
 
@@ -62,7 +91,11 @@
           <div class="row space-above">
             <button class="primary-button-highlight" type="submit">Save changes</button>
           </div>
-      </div>
+          <div class="row space-above text-center">
+            <p id="responseMessage"></p>
+          </div>          
+        </div>
+      </form>
     </div>
     <div class="col-md-6 center-container right-column">
       <h1 class="large-heading">My Account</h1>
@@ -75,6 +108,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="js/updateAccount.js"></script>
 <script>
   $(function(){
     $("#navbar-placeholder").load("components/navbarNoSearch.html");
