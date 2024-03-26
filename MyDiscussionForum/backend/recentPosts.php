@@ -1,41 +1,44 @@
 <?php
 
-/* For use on the home page */
-
 include_once "returnData.php";
 include "databaseFunc.php";
 include "validation.php";
 
-// Validate post
+// Validate POST request
 validateMethodPost();
 
-$rowOffset = $_POST['offset'];
-$numPosts = $_POST['posts'];
+$rowOffset = isset($_POST['offset']) ? (int)$_POST['offset'] : 0; // Default to 0 if not set
+$numPosts = isset($_POST['posts']) ? (int)$_POST['posts'] : 10; // Default to 10 posts if not set
 
-if (!isset($rowOffset) || !isset($numPosts)) {
-    returnData("EMPTY_INPUT_GENERAL");
+if ($rowOffset < 0 || $numPosts <= 0) {
+    returnData("INVALID_INPUT");
+    exit;
 }
 
-// Connect
+// Connect to the database
 $connection = connectToDB();
 
-// Sanitize
-$rowOffset = mysqli_real_escape_string($connection, $rowOffset);
-$numPosts = mysqli_real_escape_string($connection, $numPosts);
+// Since prepared statements do not support binding LIMIT and OFFSET directly, these must be integers
+$sql = "SELECT postId, user.userName, postTitle, postContent FROM post INNER JOIN user ON post.authorId=user.userId ORDER BY creationDate DESC LIMIT ? OFFSET ?;";
+$stmt = $connection->prepare($sql);
 
-$sql = "SELECT postId, user.userName, postTitle, postContent FROM post INNER JOIN user ON post.authorId=user.userId ORDER BY creationDate DESC LIMIT ".$numPosts." OFFSET ".$rowOffset.";";    
-//  echo $sql;
-$results = mysqli_query($connection, $sql);
+// Bind parameters. The "ii" string means we are binding two integers
+$stmt->bind_param("ii", $numPosts, $rowOffset);
+
+// Execute the query
+$stmt->execute();
+$result = $stmt->get_result();
 $postData = array();
 
-if(mysqli_num_rows($results) > 0) {
+if ($result -> num_rows > 0) {
     $i = 0;
-    while ($row = mysqli_fetch_assoc($results)) {
-        $postData[$i] = array();
-        $postData[$i]['postId'] = $row['postId'];
-        $postData[$i]['authorName'] = $row['userName'];
-        $postData[$i]['postTitle'] = $row['postTitle'];
-        $postData[$i]['postContent'] = $row['postContent'];
+    while ($row = $result -> fetch_assoc()) {
+        $postData[$i] = array(
+            'postId' => $row['postId'],
+            'authorName' => $row['userName'],
+            'postTitle' => $row['postTitle'],
+            'postContent' => $row['postContent'],
+        );
         $i++;
     }
 
@@ -44,5 +47,8 @@ if(mysqli_num_rows($results) > 0) {
 } else {
     returnData("RECENT_POSTS_EMPTY", $connection);
 }
+
+$stmt->close();
+closeDB($connection);
 
 ?>

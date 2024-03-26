@@ -1,49 +1,67 @@
 <?php
 
-/* For use on post page, adding comment */
-
 include_once "returnData.php";
 include "databaseFunc.php";
 include "validation.php";
 
-// Check for login
 session_start();
-if(isset($_SESSION['userLoggedIn']) && $_SESSION['userLoggedIn'] === true) {
-    $userName = $_SESSION['username'];
+if (!isset($_SESSION['userLoggedIn']) || $_SESSION['userLoggedIn'] !== true) {
+    // Handle the case where the user is not logged in
+    returnData("USER_NOT_LOGGED_IN");
+    exit;
 }
 
-// Validate post
+$userName = $_SESSION['username'];
+
+// Validate POST request
 validateMethodPost();
 
-$postId = $_POST['postId'];
-$parentId = $_POST['parentId'];
-$content = $_POST['content'];
-
-if (!isset($postId) || !isset($content) || !isset($parentId)) {
+// Validate input presence
+if (empty($_POST['postId']) || empty($_POST['content'])) {
     returnData("EMPTY_INPUT_GENERAL");
+    exit;
 }
 
-// Connect
+$postId = $_POST['postId'];
+$content = $_POST['content'];
+$parentId = isset($_POST['parentId']) ? $_POST['parentId'] : null;
+
+// Connect to the database
 $connection = connectToDB();
 
-// // Sanitize
-$postId = mysqli_real_escape_string($connection, $postId);
-$parentId = mysqli_real_escape_string($connection, $parentId);
-$content = mysqli_real_escape_string($connection, $content);
-
-if (strcmp($parentId, "NULL") == 0) {
-    $sql = "INSERT INTO comment (postId, userId, parentId, commentContent) VALUES ('".$postId."', (SELECT userId from user WHERE userName='".$userName."'), NULL, '".$content."');";    
+// Prepare the userId query to get userId from userName
+$stmt = $connection->prepare("SELECT userId FROM user WHERE userName = ?");
+$stmt->bind_param("s", $userName);
+$stmt->execute();
+$result = $stmt->get_result();
+if ($row = $result->fetch_assoc()) {
+    $userId = $row['userId'];
 } else {
-    $sql = "INSERT INTO comment (postId, userId, parentId, commentContent) VALUES ('".$postId."', (SELECT userId from user WHERE userName='".$userName."'), '".$parentId."', '".$content."');";    
+    returnData("USER_NOT_FOUND", $connection);
+    exit;
 }
-// echo $sql;
-$results = mysqli_query($connection, $sql);
 
-if(mysqli_affected_rows($connection) > 0) {
+// Prepare the insert statement for the comment
+if ($parentId === null || $parentId === "NULL") {
+    $stmt = $connection->prepare("INSERT INTO comment (postId, userId, parentId, commentContent) VALUES (?, ?, NULL, ?)");
+} else {
+    $stmt = $connection->prepare("INSERT INTO comment (postId, userId, parentId, commentContent) VALUES (?, ?, ?, ?)");
+}
+
+if ($parentId === null || $parentId === "NULL") {
+    $stmt->bind_param("iis", $postId, $userId, $content);
+} else {
+    $stmt->bind_param("iiis", $postId, $userId, $parentId, $content);
+}
+
+// Execute the statement
+if ($stmt->execute()) {
     returnData("COMMENT_ADDED", $connection);
-
 } else {
     returnData("COMMENT_NOT_ADDED", $connection);
 }
+
+$stmt->close();
+$connection->close();
 
 ?>
