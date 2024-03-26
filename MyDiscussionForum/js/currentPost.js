@@ -1,13 +1,28 @@
+var loggedIn = false; // Set in currentPost.php component just after this file if a user is logged in.
 var commentRowOffset = 0; // Keep track of how many comments have been loaded, necessary for async
 var comments = new Array(); // necessary for ids and name replies
 var currentPostId;
+var currentPostUsername;
+var replyToId;
 $(document).ready( function () {
 
-    // Get query from url
+    /* LOAD POST AND COMMENTS */
     const urlParams = new URLSearchParams(window.location.search);
     currentPostId = urlParams.get('p');
 
     loadPost(currentPostId);
+
+    /* ADD COMMENT */ 
+    $(document).on("click", "a.reply", function(e) {
+        e.preventDefault();
+        replyToId = e.target.id; // if this id is 0, it is the original post
+
+        // Load jquery
+        $("#comment-box-placeholder").load("components/commentBox.php");
+
+    } );
+
+
 });
 
 function loadPost(postId) {
@@ -65,20 +80,21 @@ function insertPost(data) {
     // Append to post container, threadview
     postContainer = $("div.threadview");
 
-    for(var i = 0; i < data.length; i++) {
-        // Generate html
-        var id = data[i]['postId'];
+    // Generate html
+    var id = data[0]['postId'];
+    currentPostUsername = data[0]['authorName'];
 
-        // Sequentially add post data, consider using a component
-        postContainer.append("<div class='post-container-single post" + data[i]['postId'] + "'></div>");
-        $("div.post" + id).append("<div class='post-header'></div>");
-        $("div.post" + id).append("<div class='post-content'>" + data[i]['postContent'] + "</div>");
-        $("div.post" + id + " div.post-header").append("<div></div>");
-        $("div.post" + id + " div.post-header").append("<p class='post-author post-subheader'>" + data[i]['authorName'] + "</p>");
-        $("div.post" + id + " div.post-header").append("<p class='post-datetime post-subheader'> &nbsp;&#x2022; 17:04</p>");
-        $("div.post" + id + " div.post-header div").append("<h4 class='post-large-title-loaded'>" + data[i]['postTitle'] + "</h4>");
-
+    // Sequentially add post data, consider using a component
+    postContainer.append("<div class='post-container-single post" + data[0]['postId'] + "'></div>");
+    $("div.post" + id).append("<div class='post-header'></div>");
+    $("div.post" + id).append("<div class='post-content'>" + data[0]['postContent'] + "</div>");
+    if (loggedIn) {
+        $("div.post" + id).append("<p class='post-datetime post-subheader'><a class='reply' id='0' href=''>Reply</a></p>");
     }
+    $("div.post" + id + " div.post-header").append("<div></div>");
+    $("div.post" + id + " div.post-header").append("<p class='post-author post-subheader'>" + data[0]['authorName'] + "</p>");
+    $("div.post" + id + " div.post-header").append("<p class='post-datetime post-subheader'> &nbsp;&#x2022; 17:04</p>");
+    $("div.post" + id + " div.post-header div").append("<h4 class='post-large-title-loaded'>" + data[0]['postTitle'] + "</h4>");
 
 }
 
@@ -148,6 +164,9 @@ function insertComments(data) {
         postContainer.append("<div class='post-container-single' id='" + data[i]['commentId'] + "'></div>");
         $("div#" + id).append("<div class='post-header'></div>");
         $("div#" + id).append("<div class='post-content'>" + data[i]['commentContent'] + "</div>");
+        if (loggedIn) {
+            $("div#" + id).append("<p class='post-datetime post-subheader reply' id='" + id + "'><a class='reply' id='" + id + "' href=''>Reply</a></p>");
+        }
         $("div#" + id + " div.post-header").append("<p class='post-author post-subheader'>" + data[i]['userName'] + "</p>");
         $("div#" + id + " div.post-header").append("<p class='post-datetime post-subheader'> &nbsp;&#x2022; 17:04 </p>");
         

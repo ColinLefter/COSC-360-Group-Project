@@ -118,6 +118,16 @@ function returnData($msgType, $conn = false, $data = null) {
             $dataToReturn['result'] = "SUCCESS";
             $dataToReturn['type'] = $msgType;
             $dataToReturn['msg'] = "No posts match query!";
+            break;
+        case "COMMENT_ADDED":
+            $dataToReturn['result'] = "SUCCESS";
+            $dataToReturn['type'] = $msgType;
+            $dataToReturn['msg'] = "Comment added successfully!";
+            break;
+        case "QUERIED_POSTS_EMPTY":
+            $dataToReturn['result'] = "FAIL";
+            $dataToReturn['type'] = $msgType;
+            $dataToReturn['msg'] = "Comment not added!";
             break; 
         default:
             // TODO: Add error logging here
