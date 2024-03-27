@@ -28,18 +28,18 @@ if (!$connection) { // Something went wrong, so we call our custom handleError f
 
 // We are using the session to get the username of the currently logged in user
 $username = $_SESSION['username'];
-$stmt = $connection -> prepare("SELECT username, password FROM users WHERE username = ?;");
+$stmt = $connection -> prepare("SELECT username, password FROM user WHERE username = ?;");
 $stmt -> bind_param("s", $username);
 $stmt -> execute();
 $results = $stmt -> get_result();
 
-if ($result -> num_rows > 0) {
-  $row = $result -> fetch_assoc();
+if ($results -> num_rows > 0) {
+  $row = $results -> fetch_assoc();
   // We are using password_verify for secure password checking
   if (password_verify($currentPassword, $row['password'])) { // If the current password matches the one we just retrieved
-    $stmt = $connection -> prepare("UPDATE users SET password = ? WHERE username = ?;");
+    $stmt = $connection -> prepare("UPDATE user SET password = ? WHERE username = ?;");
     $newPassword = password_hash($newPassword, PASSWORD_DEFAULT); // Hash the new password
-    $stmt -> bind_param("s", $newPassword, $username);
+    $stmt -> bind_param("ss", $newPassword, $username);
     $stmt -> execute();
     $results = $stmt -> get_result();
 
