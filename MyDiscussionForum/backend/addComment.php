@@ -13,8 +13,9 @@ if (!isset($_SESSION['userLoggedIn']) || $_SESSION['userLoggedIn'] !== true) {
 
 $userName = $_SESSION['username'];
 
-// Validate POST request
-validateMethodPost();
+if (!validateMethodPost()) {
+    exit(); // Stop script execution if not POST
+}
 
 // Validate input presence
 if (empty($_POST['postId']) || empty($_POST['content'])) {
