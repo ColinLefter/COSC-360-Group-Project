@@ -86,9 +86,9 @@ function addPost () {
     var title = $("input#create-post-title").val();
     var content = $("textarea#create-post-content").val();
 
-    // console.log(cid);
-    // console.log(title);
-    // console.log(content);
+    console.log(cid);
+    console.log(title);
+    console.log(content);
 
     var formData = {
         communityId: cid,
