@@ -3,6 +3,7 @@
 include_once "returnData.php";
 include "databaseFunc.php";
 include "validation.php";
+include "commonFunctions.php";
 
 if (!validateMethodPost()) {
     exit(); // Stop script execution if not POST

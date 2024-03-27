@@ -28,10 +28,10 @@
       <div class="card">
         <div class="container">
           <div class="row">
-            <div class="col">
-              <h2 class="card-title">Daily Active Users</h2>
+            <div class="col-8">
+              <h2 class="card-title">Number of Accounts</h2>
             </div>
-            <div class="col unit">
+            <div class="col-4 unit">
               <h2>%</h2>
             </div>
           </div>
@@ -64,11 +64,11 @@
       <div class="card">
         <div class="container">
           <div class="row">
-            <div class="col">
-              <h2 class="card-title">Daily Active Users</h2>
+            <div class="col-8">
+              <h2 class="card-title">Monthly Active Users</h2>
             </div>
-            <div class="col unit">
-              <h2>%</h2>
+            <div class="col-4 unit">
+              <h2>#</h2>
             </div>
           </div>
           <div class="row analytic">

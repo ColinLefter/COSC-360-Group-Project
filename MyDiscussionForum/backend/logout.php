@@ -1,6 +1,10 @@
 <?php
+
+include "commonFunctions.php";
+
 // First start the session to access the session variables
 session_start();
+trackUserActivity($connection, $_SESSION['userId'], "LOGOUT");
 
 // Unset all of the session variables
 $_SESSION = array(); // Setting the session to an empty array

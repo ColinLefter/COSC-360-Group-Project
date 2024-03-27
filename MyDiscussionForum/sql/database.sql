@@ -17,6 +17,16 @@ CREATE TABLE user (
     PRIMARY KEY (userId)
 );
 
+CREATE TABLE userActivity ( -- This is to track whenever a user performs an action
+    activityId INT NOT NULL AUTO_INCREMENT,
+    userId INT NOT NULL,
+    activityDate DATE NOT NULL,
+    activityType VARCHAR(30) NOT NULL,
+    PRIMARY KEY(activityId),
+    FOREIGN KEY(userId) REFERENCES user(userId)
+    ON DELETE CASCADE
+);
+
 CREATE TABLE userDetails (
     userId int NOT NULL,
     useLightMode boolean DEFAULT 1,
