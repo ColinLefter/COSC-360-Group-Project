@@ -3,9 +3,11 @@
 include_once "returnData.php";
 include "databaseFunc.php";
 include "validation.php";
+include "commonFunctions.php";
 
-// Validate request method
-validateMethodPost();
+if (!validateMethodPost()) {
+    exit(); // Stop script execution if not POST
+}
 
 // Collect input
 $firstname = $_POST['firstname'];
@@ -19,6 +21,7 @@ if (empty($firstname) || empty($lastname) || empty($username) || empty($email) |
     returnData("EMPTY_INPUT");
     exit();
 }
+
 validateEmail($email);
 validatePassword($password);
 
@@ -29,20 +32,20 @@ $passhash = password_hash($password, PASSWORD_DEFAULT);
 $connection = connectToDB();
 
 // Prepared statement for user existence check
-$stmt = $connection->prepare("SELECT username, email FROM user WHERE username = ? OR email = ?");
-$stmt->bind_param("ss", $username, $email);
-$stmt->execute();
-$result = $stmt->get_result();
+$stmt = $connection -> prepare("SELECT username, email FROM user WHERE username = ? OR email = ?");
+$stmt -> bind_param("ss", $username, $email);
+$stmt -> execute();
+$result = $stmt -> get_result();
 
-if($result->num_rows > 0) {
+if ($result -> num_rows > 0) {
     returnData("USER_EXISTS", $connection);
     exit();
 } else {
     // Prepared statement for inserting user information
-    $insertStmt = $connection->prepare("INSERT INTO user (userName, firstName, lastName, email, password) VALUES (?, ?, ?, ?, ?)");
-    $insertStmt->bind_param("sssss", $username, $firstname, $lastname, $email, $passhash);
+    $insertStmt = $connection -> prepare("INSERT INTO user (userName, firstName, lastName, email, password) VALUES (?, ?, ?, ?, ?)");
+    $insertStmt -> bind_param("sssss", $username, $firstname, $lastname, $email, $passhash);
 
-    if ($insertStmt->execute()) {
+    if ($insertStmt -> execute()) {
         returnData("ACCOUNT_CREATION_SUCCESS", $connection);
     } else {
         // Handle potential errors in account creation

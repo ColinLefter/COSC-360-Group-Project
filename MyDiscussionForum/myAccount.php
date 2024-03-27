@@ -34,7 +34,7 @@ if (!isset($_SESSION['userLoggedIn']) || $_SESSION['userLoggedIn'] !== true) {
       <!-- Account settings in the first column -->
       <form id="accountForm" action="backend/updateAccount.php" method="POST">
         <div class="row">
-          <h2 class="minor-spacer">Basic Settings</h2>
+          <h2 class="minor-spacer">Account Settings</h2>
 
           <div class="row row-margin-bottom">
             <div class="col">
@@ -79,7 +79,7 @@ if (!isset($_SESSION['userLoggedIn']) || $_SESSION['userLoggedIn'] !== true) {
             <div class="col">
               <div class="text-icon-wrapper text-accent">
                 <a href="resetPassword.html">
-                  <p class="text-center inline-text">Change password</p>
+                  <p class="text-center inline-text">Reset password</p>
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="inline-svg w-6 h-6">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
                   </svg>
@@ -106,8 +106,8 @@ if (!isset($_SESSION['userLoggedIn']) || $_SESSION['userLoggedIn'] !== true) {
 
 <div id="footer-placeholder"></div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 <script src="js/updateAccount.js"></script>
 <script>
   $(function(){

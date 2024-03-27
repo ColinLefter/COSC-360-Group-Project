@@ -13,7 +13,7 @@ CREATE TABLE user (
     firstName VARCHAR(30),
     lastName VARCHAR(30),
     email VARCHAR(30),
-    password VARCHAR(32), -- Password is always 32 hex values long, (128-bit md5)
+    password VARCHAR(255), -- We are storing hashed passwords and these can be up to 255 characters long.
     PRIMARY KEY (userId)
 );
 
