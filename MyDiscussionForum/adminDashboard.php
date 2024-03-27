@@ -32,11 +32,11 @@
               <h2 class="card-title">Number of Accounts</h2>
             </div>
             <div class="col-4 unit">
-              <h2>%</h2>
+              <h2>#</h2>
             </div>
           </div>
           <div class="row analytic">
-            <h2>X.X</h2>
+            <h2 class="number-of-accounts"></h2>
           </div>
         </div>
       </div>
@@ -46,15 +46,15 @@
       <div class="card">
         <div class="container">
           <div class="row">
-            <div class="col">
+            <div class="col-8">
               <h2 class="card-title">Daily Active Users</h2>
             </div>
-            <div class="col unit">
-              <h2>%</h2>
+            <div class="col-4 unit">
+              <h2>#</h2>
             </div>
           </div>
           <div class="row analytic">
-            <h2>X.X</h2>
+            <h2 class="daily-active-users"></h2>
           </div>
         </div>
       </div>
@@ -72,7 +72,7 @@
             </div>
           </div>
           <div class="row analytic">
-            <h2>X.X</h2>
+            <h2 class="monthly-active-users"></h2>
           </div>
         </div>
       </div>
@@ -191,8 +191,9 @@
 
 <div id="footer-placeholder"></div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+<script src="js/fetchAnalytics.js"></script>
 <script>
   $(function(){
     $("#navbar-placeholder").load("components/navbarNoSearch.html");
