@@ -94,7 +94,7 @@ function addComment(replyId, commentContent) {
         console.log("STATUS: " + xhr.status);
         console.log(thrownError);
         }
-    })
+    });
 
 }
 

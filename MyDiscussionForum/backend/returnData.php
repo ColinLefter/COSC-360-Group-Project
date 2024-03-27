@@ -128,6 +128,27 @@ function returnData($msgType, $conn = false, $data = null) {
             $dataToReturn['result'] = "FAIL";
             $dataToReturn['type'] = $msgType;
             $dataToReturn['msg'] = "Comment not added!";
+            break;
+        case "CREATE_POST_COMMUNITIES":
+            $dataToReturn['result'] = "SUCCESS";
+            $dataToReturn['type'] = $msgType;
+            $dataToReturn['msg'] = "Community names and id returned successfully!";
+            $dataToReturn['data'] = $data;
+            break;
+        case "CREATE_POST_COMMUNITIES_EMPTY":
+            $dataToReturn['result'] = "FAIL";
+            $dataToReturn['type'] = $msgType;
+            $dataToReturn['msg'] = "Communities not returned!";
+            break;
+        case "POST_ADDED":
+            $dataToReturn['result'] = "SUCCESS";
+            $dataToReturn['type'] = $msgType;
+            $dataToReturn['msg'] = "Post added successfully!";
+            break;
+        case "POST_NOT_ADDED":
+            $dataToReturn['result'] = "FAIL";
+            $dataToReturn['type'] = $msgType;
+            $dataToReturn['msg'] = "Post not added!";
             break; 
         default:
             // TODO: Add error logging here
