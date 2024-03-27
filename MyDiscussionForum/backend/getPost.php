@@ -1,38 +1,44 @@
 <?php
 
-/* For use on post.html through currentPost.html */
-
 include_once "returnData.php";
 include "databaseFunc.php";
 include "validation.php";
 
-// Validate post
+// Validate POST request
 validateMethodPost();
 
-$postId = $_POST['id'];
+// Assuming 'id' is always expected to be an integer
+$postId = isset($_POST['id']) ? (int)$_POST['id'] : 0;
 
-if (!isset($postId)) {
+if ($postId <= 0) {
     returnData("EMPTY_INPUT_GENERAL");
+    exit();
 }
 
-// Connect
+// Connect to the database
 $connection = connectToDB();
 
-// Sanitize
-$postId = mysqli_real_escape_string($connection, $postId);
+// Prepared statement for fetching the post details
+$sql = "SELECT postId, user.userName, postTitle, postContent FROM post INNER JOIN user ON post.authorId=user.userId WHERE post.postId= ?;";    
+$stmt = $connection->prepare($sql);
 
-$sql = "SELECT postId, user.userName, postTitle, postContent FROM post INNER JOIN user ON post.authorId=user.userId WHERE post.postId=".$postId.";";    
-$results = mysqli_query($connection, $sql);
+// Bind the integer parameter
+$stmt->bind_param("i", $postId);
+
+// Execute the query
+$stmt->execute();
+$result = $stmt->get_result();
 $postData = array();
 
-if(mysqli_num_rows($results) > 0) {
+if($result->num_rows > 0) {
     $i = 0;
-    while ($row = mysqli_fetch_assoc($results)) {
-        $postData[$i] = array();
-        $postData[$i]['postId'] = $row['postId'];
-        $postData[$i]['authorName'] = $row['userName'];
-        $postData[$i]['postTitle'] = $row['postTitle'];
-        $postData[$i]['postContent'] = $row['postContent'];
+    while ($row = $result->fetch_assoc()) {
+        $postData[$i] = array(
+            'postId' => $row['postId'],
+            'authorName' => $row['userName'],
+            'postTitle' => $row['postTitle'],
+            'postContent' => $row['postContent'],
+        );
         $i++;
     }
 
@@ -41,5 +47,8 @@ if(mysqli_num_rows($results) > 0) {
 } else {
     returnData("CURRENT_POST_EMPTY", $connection);
 }
+
+$stmt->close();
+closeDB($connection);
 
 ?>

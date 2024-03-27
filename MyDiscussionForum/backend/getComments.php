@@ -1,41 +1,45 @@
 <?php
 
-/* For use on post.html through currentPost.html component */
-
 include_once "returnData.php";
 include "databaseFunc.php";
 include "validation.php";
 
-// Validate post
+// Validate POST request
 validateMethodPost();
 
-$postId = $_POST['id'];
-$rowOffset = $_POST['offset'];
+$postId = $_POST['id'] ?? null;
+$rowOffset = intval($_POST['offset'] ?? 0); // Default offset to 0 if not set
 
-if (!isset($postId) || !isset($rowOffset)) {
+if (empty($postId)) {
     returnData("EMPTY_INPUT_GENERAL");
+    exit;
 }
 
-// Connect
+// Connect to the database
 $connection = connectToDB();
 
-// Sanitize
-$postId = mysqli_real_escape_string($connection, $postId);
+// Prepared statement for fetching comments
+$sql = "SELECT postId, commentId, parentId, user.userName, commentContent FROM comment INNER JOIN user ON comment.userId=user.userId WHERE postId= ? LIMIT 1000 OFFSET ?;";
+$stmt = $connection->prepare($sql);
 
-    $sql = "SELECT postId, commentId, parentId, user.userName, commentContent FROM comment INNER JOIN user ON comment.userId=user.userId WHERE postId='".$postId."' LIMIT 1000 OFFSET ".$rowOffset.";";    
-//  echo $sql;
-$results = mysqli_query($connection, $sql);
+// Bind parameters. The "si" string means we are binding one string and one integer
+$stmt->bind_param("si", $postId, $rowOffset);
+
+// Execute the query
+$stmt->execute();
+$result = $stmt->get_result();
 $commentData = array();
 
-if(mysqli_num_rows($results) > 0) {
+if ($result->num_rows > 0) {
     $i = 0;
-    while ($row = mysqli_fetch_assoc($results)) {
-        $commentData[$i] = array();
-        $commentData[$i]['postId'] = $row['postId'];
-        $commentData[$i]['commentId'] = $row['commentId'];
-        $commentData[$i]['parentId'] = $row['parentId'];
-        $commentData[$i]['userName'] = $row['userName'];
-        $commentData[$i]['commentContent'] = $row['commentContent'];
+    while ($row = $result->fetch_assoc()) {
+        $commentData[$i] = array(
+            'postId' => $row['postId'],
+            'commentId' => $row['commentId'],
+            'parentId' => $row['parentId'],
+            'userName' => $row['userName'],
+            'commentContent' => $row['commentContent']
+        );
         $i++;
     }
 
@@ -44,5 +48,8 @@ if(mysqli_num_rows($results) > 0) {
 } else {
     returnData("CURRENT_COMMENTS_EMPTY", $connection);
 }
+
+$stmt->close();
+closeDB($connection);
 
 ?>
