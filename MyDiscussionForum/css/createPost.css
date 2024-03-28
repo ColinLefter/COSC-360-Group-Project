@@ -1,4 +1,4 @@
-#comment-box {
+#create-post-body {
     margin: auto;
     width: 100%; /*  */
     margin-top: 60px;
@@ -10,25 +10,35 @@
     border-color: rgb(209, 209, 209);
 }
 
-#comment-text-area {
+.create-post-inner {
+    border-radius: 15px;
+  }
+
+.create-post-header {
+    margin: auto;
+    width: 95%;
+    padding-top: 0.5em;
+    /* padding-bottom: 0.1em; */
+    padding-left: 0.1em;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom: solid 0.05em rgb(21, 21, 21);
+}
+
+.create-post-community-dropdown {
+    margin: 1em 1em 0em 1em;
+}
+
+#create-post-title, #create-post-content {
     margin: 1em;
     display: flex;
     flex: 1;
-    min-height: 10em;
-    border-radius: 2px;
-    padding-left: 0.5em;
-    padding-right: 0.5em;
+    border-radius: 5px;
+    border-width: 1px;
+    padding: 0.5em;
 }
 
-.reply-to {
-    margin-top: 1em;
-    margin-left: 1em;
-    display: inline-block;
-    font-style: italic;
-    font-size: 80%;
-}
-
-.comment-button {
+.create-post-button {
     padding: 0.5em;
     display: inline-block;
     border-radius: 5px;
@@ -40,6 +50,6 @@
     margin-bottom: 1em;
 }
 
-.comment-button:hover {
+.create-post-button:hover {
     background-color: rgb(244, 243, 243);
 }

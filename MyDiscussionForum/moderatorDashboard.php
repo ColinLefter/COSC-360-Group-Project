@@ -106,66 +106,6 @@
           </p>
         </div>
       </div>      
-  
-      <div class="card my-2">
-        <div class="announcement">
-          <h6>
-            Announcement 2
-            <span class="bullet-point"></span> 
-            Date
-            <span class="bullet-point"></span> 
-            Author
-          </h6>
-          <p class="mb-0">
-            Description.
-          </p>
-        </div>
-      </div>
-
-      <div class="card my-2">
-        <div class="announcement">
-          <h6>
-            Announcement 3
-            <span class="bullet-point"></span> 
-            Date
-            <span class="bullet-point"></span> 
-            Author
-          </h6>
-          <p class="mb-0">
-            Description.
-          </p>
-        </div>
-      </div>
-
-      <div class="card my-2">
-        <div class="announcement">
-          <h6>
-            Announcement 4
-            <span class="bullet-point"></span> 
-            Date
-            <span class="bullet-point"></span> 
-            Author
-          </h6>
-          <p class="mb-0">
-            Description.
-          </p>
-        </div>
-      </div>
-
-      <div class="card my-2">
-        <div class="announcement">
-          <h6>
-            Announcement 5
-            <span class="bullet-point"></span> 
-            Date
-            <span class="bullet-point"></span> 
-            Author
-          </h6>
-          <p class="mb-0">
-            Description.
-          </p>
-        </div>
-      </div>
 
       <div class="card my-2">
         <div class="announcement">

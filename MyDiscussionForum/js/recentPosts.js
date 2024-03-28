@@ -16,6 +16,10 @@ function loadPosts(numPosts) {
         offset: rowOffset,
         posts: numPosts,
     };
+    if (typeof communityId !== 'undefined') {
+        formData['cid'] = communityId;
+    }
+
 
     $.ajax({
         url : 'backend/recentPosts.php',

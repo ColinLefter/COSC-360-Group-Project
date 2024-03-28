@@ -18,9 +18,6 @@
       <div id="navbar-placeholder"></div>
     </header>
 
-    <!-- Featured post, announcement message, etc could go here -->
-    <!-- <section id="feature">
-    </section> -->
     <div class="container-fluid">
       <div class="row">
 
@@ -30,56 +27,10 @@
 
         <div class="col-7">
 
-            <section id="community-topics-header-body">
-                <div class="community-topics-header">
-                    <h2 class=><strong>/community_a</strong></h2>
-                    <p>xx Members &#x2022; xx Online </p>
-                </div>
-            </section>
+          <div id="community-banner-placeholder"></div>
 
-          <section id="forum-body-under-header">
-              <h2 class="threadview-category"><strong>Trending Posts</strong></h2>
-              
-              <div class="post-container">
-                <div class="post-header">
-                  <div>
-                    <h4 class="post-title"><a class="post-title" href="">I posted 3 days ago</a></h4>
-                    <!-- <h5 class="post-topic"><a class="post-topic" href="">General</a></h5> -->
-                  </div>
-                  <p class="post-author post-subheader">John Smith</p>
-                  <p class="post-datetime post-subheader"> &#x2022; 17:04</p>
-                </div>
-                <div class="post-preview">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
-              </div>
-      
-              <div class="post-container">
-                <div class="post-header">
-                  <div>
-                    <h4 class="post-title"><a class="post-title" href="">This is definitely a post</a></h4> 
-                    <!-- <h5 class="post-topic"><a class="post-topic" href="">General</a></h5> -->
-                  </div>
-                    <p class="post-author post-subheader">Jane Doe</p>
-                  <p class="post-datetime post-subheader"> &#x2022; 10:53</p>
-                </div>
-                <div class="post-preview">Lorem Ipsum.</div>
-              </div>
-      
-              <div class="post-container">
-                <div class="post-header">
-                  <div>
-                    <h4 class="post-title"><a class="post-title" href="">How to make forum?</a></h4>
-                    <!-- <h5 class="post-topic"><a class="post-topic" href="">CSS</a></h5> -->
-                  </div>
-                    <p class="post-author post-subheader">Jarod Parish</p>
-                  <p class="post-datetime post-subheader"> &#x2022; 12:00</p>
-                </div>
-                <div class="post-preview">I have a group project but I've never made a forum. Help?</div>
-              </div>
-      
-            <div class="threadview-more">
-              <a class="load-posts" href=""><p class="load-posts">Load More</p></a>
-            </div>
-          </section>
+          <div id="recent-posts-placeholder"></div>
+            
         </div>
 
         <div class="col">
@@ -108,10 +59,20 @@
       $(function(){
         $("#left-column-placeholder").load("components/leftColumn.html");
       });
-    </script>    
+    </script>
+    <script>
+      $(function(){
+        $("#community-banner-placeholder").load("components/communityBanner.html");
+      });
+    </script>
     <script>
       $(function(){
         $("#right-column-community-placeholder").load("components/rightColumnCommunity.html");
+      });
+    </script>
+    <script>
+      $(function(){
+        $("#recent-posts-placeholder").load("components/recentPosts.php");
       });
     </script>
   </body>
