@@ -149,6 +149,21 @@ function returnData($msgType, $conn = false, $data = null) {
             $dataToReturn['type'] = $msgType;
             $dataToReturn['msg'] = "Comment not added!";
             break;
+        case "BAD_NUM_ACCOUNTS_FETCH":
+            $dataToReturn['result'] = "FAIL";
+            $dataToReturn['type'] = $msgType;
+            $dataToReturn['msg'] = "Unable to retrieve the number of accounts!";
+            break;
+        case "BAD_DAU_FETCH":
+            $dataToReturn['result'] = "FAIL";
+            $dataToReturn['type'] = $msgType;
+            $dataToReturn['msg'] = "Unable to retrieve the number of daily active users!";
+            break;
+        case "BAD_MAU_FETCH":
+            $dataToReturn['result'] = "FAIL";
+            $dataToReturn['type'] = $msgType;
+            $dataToReturn['msg'] = "Unable to retrieve the number of monthly active users!";
+            break;
         case "CREATE_POST_COMMUNITIES":
             $dataToReturn['result'] = "SUCCESS";
             $dataToReturn['type'] = $msgType;

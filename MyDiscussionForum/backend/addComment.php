@@ -3,8 +3,10 @@
 include_once "returnData.php";
 include "databaseFunc.php";
 include "validation.php";
+include "commonFunctions.php";
 
 session_start();
+
 if (!isset($_SESSION['userLoggedIn']) || $_SESSION['userLoggedIn'] !== true) {
     // Handle the case where the user is not logged in
     returnData("USER_NOT_LOGGED_IN");
@@ -61,6 +63,8 @@ if ($stmt->execute()) {
 } else {
     returnData("COMMENT_NOT_ADDED", $connection);
 }
+
+trackUserActivity($connection, $_SESSION['userId'], "ADD_COMMENT");
 
 $stmt->close();
 $connection->close();

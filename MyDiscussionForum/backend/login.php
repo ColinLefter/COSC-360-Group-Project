@@ -34,11 +34,16 @@ if ($result -> num_rows > 0) {
     // We are using password_verify for secure password checking
     if (password_verify($password, $row['password'])) {
         session_start();
+        $_SESSION['userId'] = $row['userId'];
         $_SESSION['userLoggedIn'] = true;
         $_SESSION['username'] = $username;
         $_SESSION['firstName'] = $row['firstName'];
         $_SESSION['lastName'] = $row['lastName'];
         $_SESSION['email'] = $row['email'];
+
+        // Activity tracking
+        trackUserActivity($connection, $_SESSION['userId'], "LOGIN");
+
         returnData("USER_SSO", $connection);
     } else {
         returnData("INVALID_PASSWORD", $connection);

@@ -10,6 +10,14 @@ function validateMethodPost() {
     return true; // Indicates that the method is POST
 }
 
+function validateMethodGet() {
+    if ($_SERVER['REQUEST_METHOD'] !== 'GET') {
+        returnData("INVALID_REQUEST");
+        return false; // Indicates that the method is not GET
+    }
+    return true; // Indicates that the method is GET
+}
+
 function validatePassword($pass) {
     $specialChars = "/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/";
 

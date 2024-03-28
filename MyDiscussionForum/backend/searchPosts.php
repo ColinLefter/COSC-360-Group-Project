@@ -1,10 +1,11 @@
 <?php
 
-/* For use on the home page */
-
 include_once "returnData.php";
 include "databaseFunc.php";
 include "validation.php";
+include "commonFunctions.php";
+
+session_start();
 
 if (!validateMethodPost()) {
     exit(); // Stop script execution if not POST
@@ -73,6 +74,7 @@ if(mysqli_num_rows($results) > 0) {
         $i++;
     }
 
+    trackUserActivity($connection, $_SESSION['userId'], "SEARCH_POSTS");
     returnData("QUERIED_POSTS", $connection, $postData);
 
 } else {
