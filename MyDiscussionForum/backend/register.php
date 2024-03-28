@@ -53,7 +53,7 @@ if ($result -> num_rows > 0) {
         $userDetailsStmt -> bind_param("s", $email);
         $userDetailsStmt -> execute();
 
-        trackUserActivity($connection, $_SESSION['userId'], "ACCOUNT_CREATED");
+        // trackUserActivity($connection, $_SESSION['userId'], "ACCOUNT_CREATED");
         returnData("ACCOUNT_CREATION_SUCCESS", $connection);
     } else {
         // Handle potential errors in account creation
