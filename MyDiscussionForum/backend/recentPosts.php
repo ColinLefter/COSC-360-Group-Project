@@ -4,8 +4,9 @@ include_once "returnData.php";
 include "databaseFunc.php";
 include "validation.php";
 
-// Validate POST request
-validateMethodPost();
+if (!validateMethodPost()) {
+    exit(); // Stop script execution if not POST
+}
 
 $rowOffset = isset($_POST['offset']) ? (int)$_POST['offset'] : 0; // Default to 0 if not set
 $numPosts = isset($_POST['posts']) ? (int)$_POST['posts'] : 10; // Default to 10 posts if not set

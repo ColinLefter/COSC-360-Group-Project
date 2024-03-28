@@ -26,6 +26,11 @@ function returnData($msgType, $conn = false, $data = null) {
             $dataToReturn['type'] = $msgType;
             $dataToReturn['msg'] = "No new account changes.";
             break;
+        case "USER_NOT_FOUND":
+            $dataToReturn['result'] = "FAIL";
+            $dataToReturn['type'] = $msgType;
+            $dataToReturn['msg'] = "User not found!";
+            break;
         case "ACCOUNT_UPDATE_FAILED":
             $dataToReturn['result'] = "FAIL";
             $dataToReturn['type'] = $msgType;
@@ -36,10 +41,25 @@ function returnData($msgType, $conn = false, $data = null) {
             $dataToReturn['type'] = $msgType;
             $dataToReturn['msg'] = "Password is invalid!";
             break;
+        case "PASSWORDS_DO_NOT_MATCH":
+            $dataToReturn['result'] = "FAIL";
+            $dataToReturn['type'] = $msgType;
+            $dataToReturn['msg'] = "Passwords do not match!";
+            break;
+        case "PASSWORD_UPDATED":
+            $dataToReturn['result'] = "SUCCESS";
+            $dataToReturn['type'] = $msgType;
+            $dataToReturn['msg'] = "Your password has been successfully updated!";
+            break;
         case "INVALID_EMAIL":
             $dataToReturn['result'] = "FAIL";
             $dataToReturn['type'] = $msgType;
             $dataToReturn['msg'] = "Email is invalid!";
+            break;
+        case "INVALID_REQUEST":
+            $dataToReturn['result'] = "FAIL";
+            $dataToReturn['type'] = $msgType;
+            $dataToReturn['msg'] = "Request method is invalid!";
             break;
         case "EMPTY_INPUT":
             $dataToReturn['result'] = "FAIL";

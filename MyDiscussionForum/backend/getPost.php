@@ -4,8 +4,9 @@ include_once "returnData.php";
 include "databaseFunc.php";
 include "validation.php";
 
-// Validate POST request
-validateMethodPost();
+if (!validateMethodPost()) {
+    exit(); // Stop script execution if not POST
+}
 
 // Assuming 'id' is always expected to be an integer
 $postId = isset($_POST['id']) ? (int)$_POST['id'] : 0;

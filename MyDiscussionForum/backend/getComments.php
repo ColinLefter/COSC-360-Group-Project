@@ -4,8 +4,9 @@ include_once "returnData.php";
 include "databaseFunc.php";
 include "validation.php";
 
-// Validate POST request
-validateMethodPost();
+if (!validateMethodPost()) {
+    exit(); // Stop script execution if not POST
+}
 
 $postId = $_POST['id'] ?? null;
 $rowOffset = intval($_POST['offset'] ?? 0); // Default offset to 0 if not set

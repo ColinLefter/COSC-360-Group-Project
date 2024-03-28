@@ -7,10 +7,10 @@ function connectToDB() {
     include "databaseCred.php";
 
     try {
-    // Connect to database and check success.
-    $connection = mysqli_connect($host, $user, $dbpassword, $database);
-    $error = mysqli_connect_error();
-    if($error != null) {
+        // Connect to database and check success.
+        $connection = mysqli_connect($host, $user, $dbpassword, $database);
+        $error = mysqli_connect_error();
+    if ($error != null) {
         returnData("DATABASE_CONNECT_ERROR");
     }
     } catch(Exception $e) {
