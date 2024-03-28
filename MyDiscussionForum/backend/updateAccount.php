@@ -1,9 +1,11 @@
 <?php
-session_start();
 
 include_once "returnData.php";
 include "databaseFunc.php";
 include "validation.php";
+include "commonFunctions.php";
+
+session_start();
 
 $connection = connectToDB();
 
@@ -38,6 +40,7 @@ if ($changesMade) {
     $_SESSION['username'] = $username;
 
     header('Content-Type: application/json');
+    trackUserActivity($connection, $_SESSION['userId'], "UPDATE_ACCOUNT");
     returnData("ACCOUNT_UPDATED", $connection);
   } else {
     returnData("ACCOUNT_UPDATE_FAILED", $connection);

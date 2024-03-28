@@ -1,11 +1,11 @@
 <?php
 
-session_start();
-
 include_once "returnData.php";
 include "databaseFunc.php";
 include "validation.php";
 include "commonFunctions.php";
+
+session_start();
 
 if (!validateMethodPost()) {
     exit(); // Stop script execution if not POST
@@ -44,6 +44,7 @@ if ($results -> num_rows > 0) {
     $results = $stmt -> get_result();
 
     header('Content-Type: application/json');
+    trackUserActivity($connection, $_SESSION['userId'], "RESET_PASSWORD");
     returnData("PASSWORD_UPDATED", $connection);
   } else {
     returnData("INVALID_PASSWORD", $connection);

@@ -28,15 +28,15 @@
       <div class="card">
         <div class="container">
           <div class="row">
-            <div class="col">
-              <h2 class="card-title">Daily Active Users</h2>
+            <div class="col-8">
+              <h2 class="card-title">Number of Accounts</h2>
             </div>
-            <div class="col unit">
-              <h2>%</h2>
+            <div class="col-4 unit">
+              <h2>#</h2>
             </div>
           </div>
           <div class="row analytic">
-            <h2>X.X</h2>
+            <h2 class="number-of-accounts"></h2>
           </div>
         </div>
       </div>
@@ -46,15 +46,15 @@
       <div class="card">
         <div class="container">
           <div class="row">
-            <div class="col">
+            <div class="col-8">
               <h2 class="card-title">Daily Active Users</h2>
             </div>
-            <div class="col unit">
-              <h2>%</h2>
+            <div class="col-4 unit">
+              <h2>#</h2>
             </div>
           </div>
           <div class="row analytic">
-            <h2>X.X</h2>
+            <h2 class="daily-active-users"></h2>
           </div>
         </div>
       </div>
@@ -64,15 +64,15 @@
       <div class="card">
         <div class="container">
           <div class="row">
-            <div class="col">
-              <h2 class="card-title">Daily Active Users</h2>
+            <div class="col-8">
+              <h2 class="card-title">Monthly Active Users</h2>
             </div>
-            <div class="col unit">
-              <h2>%</h2>
+            <div class="col-4 unit">
+              <h2>#</h2>
             </div>
           </div>
           <div class="row analytic">
-            <h2>X.X</h2>
+            <h2 class="monthly-active-users"></h2>
           </div>
         </div>
       </div>
@@ -91,108 +91,20 @@
 
   <div class="row">
     <div class="col">
-      <input type="text" class="form-control text-center my-4" id="validationDefault04" placeholder="Title" required>
-      <textarea class="form-control text-center my-4" id="announcementContent" placeholder="Content" required></textarea>
-      <button class="primary-button-highlight" type="submit" style="align-self: center;">Post announcement</button>
+      <input type="text" name="announcement-title" class="form-control text-center my-4" id="validationDefault04" placeholder="Title" required>
+      <textarea class="form-control text-center my-4" name="announcement-content" id="announcementContent" placeholder="Content" required></textarea>
+      <button id="postAnnouncementBtn" class="primary-button-highlight" type="button">Post announcement</button>
     </div>
-    <div class="col announcements my-4">
-      <div class="card">
-        <div class="announcement">
-          <h6>
-            Announcement 1
-            <span class="bullet-point"></span> 
-            Date
-            <span class="bullet-point"></span> 
-            Author
-          </h6>
-          <p class="mb-0">
-            Description.
-          </p>
-        </div>
-      </div>      
-  
-      <div class="card my-2">
-        <div class="announcement">
-          <h6>
-            Announcement 2
-            <span class="bullet-point"></span> 
-            Date
-            <span class="bullet-point"></span> 
-            Author
-          </h6>
-          <p class="mb-0">
-            Description.
-          </p>
-        </div>
-      </div>
-
-      <div class="card my-2">
-        <div class="announcement">
-          <h6>
-            Announcement 3
-            <span class="bullet-point"></span> 
-            Date
-            <span class="bullet-point"></span> 
-            Author
-          </h6>
-          <p class="mb-0">
-            Description.
-          </p>
-        </div>
-      </div>
-
-      <div class="card my-2">
-        <div class="announcement">
-          <h6>
-            Announcement 4
-            <span class="bullet-point"></span> 
-            Date
-            <span class="bullet-point"></span> 
-            Author
-          </h6>
-          <p class="mb-0">
-            Description.
-          </p>
-        </div>
-      </div>
-
-      <div class="card my-2">
-        <div class="announcement">
-          <h6>
-            Announcement 5
-            <span class="bullet-point"></span> 
-            Date
-            <span class="bullet-point"></span> 
-            Author
-          </h6>
-          <p class="mb-0">
-            Description.
-          </p>
-        </div>
-      </div>
-
-      <div class="card my-2">
-        <div class="announcement">
-          <h6>
-            Announcement 6
-            <span class="bullet-point"></span> 
-            Date
-            <span class="bullet-point"></span> 
-            Author
-          </h6>
-          <p class="mb-0">
-            Description.
-          </p>
-        </div>
-      </div>
-    </div>
+    <div class="col announcements my-4"></div>
   </div>
 </div>
 
 <div id="footer-placeholder"></div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+<script src="js/fetchAnalytics.js"></script>
+<script src="js/handleAnnouncements.js"></script>
 <script>
   $(function(){
     $("#navbar-placeholder").load("components/navbarNoSearch.html");

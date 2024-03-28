@@ -5,6 +5,8 @@ include "databaseFunc.php";
 include "validation.php";
 include "commonFunctions.php";
 
+session_start();
+
 if (!validateMethodPost()) {
     exit(); // Stop script execution if not POST
 }
@@ -51,6 +53,7 @@ if ($result -> num_rows > 0) {
         $userDetailsStmt -> bind_param("s", $email);
         $userDetailsStmt -> execute();
 
+        trackUserActivity($connection, $_SESSION['userId'], "ACCOUNT_CREATED");
         returnData("ACCOUNT_CREATION_SUCCESS", $connection);
     } else {
         // Handle potential errors in account creation
