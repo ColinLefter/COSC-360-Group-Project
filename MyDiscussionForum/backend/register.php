@@ -46,6 +46,11 @@ if ($result -> num_rows > 0) {
     $insertStmt -> bind_param("sssss", $username, $firstname, $lastname, $email, $passhash);
 
     if ($insertStmt -> execute()) {
+        // Add user details
+        $userDetailsStmt = $connection -> prepare("INSERT INTO userdetails (userId) SELECT userId FROM user WHERE email=? LIMIT 1;");
+        $userDetailsStmt -> bind_param("s", $email);
+        $userDetailsStmt -> execute();
+
         returnData("ACCOUNT_CREATION_SUCCESS", $connection);
     } else {
         // Handle potential errors in account creation

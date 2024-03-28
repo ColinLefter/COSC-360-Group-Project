@@ -31,6 +31,7 @@ $(document).ready(function() {
                 data: formData,
                 dataType: 'json',
                 success: function(data) {
+                    console.log(data);
                     if (data['result'] === "FAIL") {
                         let msg = data['msg'];
                         $('form').after("<div style='color: red;'>" + msg + "</div>");
