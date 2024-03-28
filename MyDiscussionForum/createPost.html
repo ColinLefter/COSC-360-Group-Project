@@ -37,10 +37,10 @@
                     
                     <form id="create-post">
                         <div style='display: flex;'>
-                            <input type="text" id="create-post-title" name="post-title" placeholder="Title">
+                            <input type="text" id="create-post-title" name="post-title" placeholder="Title" required>
                         </div>
                         <div style='display: flex;'>
-                            <textarea id="create-post-content" name="post-content" placeholder="Lorem Ipsum..." rows="10"></textarea>
+                            <textarea id="create-post-content" name="post-content" placeholder="Lorem Ipsum..." rows="10" required></textarea>
                         </div>
                         <input type="submit" id="create-post-submit-button" class="create-post-button" value="Add Post">
                         <input action="action" onclick="window.history.go(-1); return false;" type="submit" class="create-post-button" value="Cancel">

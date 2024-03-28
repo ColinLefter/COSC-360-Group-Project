@@ -18,9 +18,6 @@
       <div id="navbar-placeholder"></div>
     </header>
 
-    <!-- Featured post, announcement message, etc could go here -->
-    <!-- <section id="feature">
-    </section> -->
     <div class="container-fluid">
       <div class="row">
 
@@ -30,12 +27,7 @@
 
         <div class="col-7">
 
-            <section id="community-topics-header-body">
-                <div class="community-topics-header">
-                    <h2 class=><strong>/community_a</strong></h2>
-                    <p>xx Members &#x2022; xx Online </p>
-                </div>
-            </section>
+          <div id="community-banner-placeholder"></div>
 
           <section id="forum-body-under-header">
               <h2 class="threadview-category"><strong>Trending Posts</strong></h2>
@@ -108,7 +100,12 @@
       $(function(){
         $("#left-column-placeholder").load("components/leftColumn.html");
       });
-    </script>    
+    </script>
+    <script>
+      $(function(){
+        $("#community-banner-placeholder").load("components/communityBanner.html");
+      });
+    </script>
     <script>
       $(function(){
         $("#right-column-community-placeholder").load("components/rightColumnCommunity.html");
