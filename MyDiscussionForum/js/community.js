@@ -1,4 +1,4 @@
-var communityId = 0;
+var communityId;
 var communityName;
 var communityDesc;
 // This page is loaded on the right community column, since it is loaded last
