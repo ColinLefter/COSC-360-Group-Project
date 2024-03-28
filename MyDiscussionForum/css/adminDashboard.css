@@ -1,5 +1,8 @@
 .card {
-  padding: 2em;
+  display: flex; /* Make the card a flex container */
+  flex-direction: column; /* Stack children vertically */
+  padding: 2em; /* Maintain padding */
+  box-sizing: border-box; /* Include padding in the element's total width and height */
 }
 
 .card-title {
@@ -18,5 +21,11 @@
 
 .announcements {
   max-height: 15em;
-  overflow-y: auto; /* Enables vertical scrolling */
+  overflow-y: auto;
+}
+
+.announcement {
+  display: flex;
+  flex-direction: column; 
+  width: 100%;
 }

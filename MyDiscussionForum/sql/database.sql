@@ -144,11 +144,11 @@ INSERT INTO userActivity (userId, activityDate, activityType) VALUES (4, '2024-0
 
 -- sample data (adminAnnouncement)
 INSERT INTO adminAnnouncement (announcementTitle, announcementAuthor, announcementContent) VALUES
-('Site Maintenance', 'Admin', 'We will be performing scheduled maintenance this Saturday at 10 PM. Expect some downtime.'),
+('Site Maintenance', 'Admin', 'We will be performing scheduled maintenance this Saturday at 10 PM.'),
 ('Feature Update', 'DevTeam', 'Exciting new features have been added to enhance your experience.'),
 ('Security Notice', 'SecurityTeam', 'Please update your passwords regularly to enhance security.'),
-('Community Guidelines Update', 'Moderator', 'Our community guidelines have been updated. Please review them to ensure compliance.'),
-('Holiday Schedule', 'HR', 'Our support team will be operating on a reduced schedule during the holiday season. Happy holidays!'),
+('Community Guidelines Update', 'Moderator', 'Our community guidelines have been updated. Please review them.'),
+('Holiday Schedule', 'HR', 'Our support team will be operating on a reduced schedule this holiday.'),
 ('New Forum Section', 'Admin', 'Check out the new forum section dedicated to frequently asked questions.');
 
 
