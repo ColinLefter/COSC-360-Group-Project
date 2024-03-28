@@ -13,6 +13,7 @@ CREATE TABLE user (
     firstName VARCHAR(30),
     lastName VARCHAR(30),
     email VARCHAR(30),
+    accountAge VARCHAR(30), -- This is a string for now, but will be changed to a date
     password VARCHAR(255), -- We are storing hashed passwords and these can be up to 255 characters long.
     PRIMARY KEY (userId)
 );
@@ -110,15 +111,15 @@ CREATE TABLE statistic (
 
 -- Sample data (users)
 -- Does not matter that the password is hashed, since its only for consistency
-INSERT INTO user (userName, firstName, lastName, email, password) VALUES ('jsmith', 'John', "Smith", 'john@smith.com', 'password1');
-INSERT INTO user (userName, firstName, lastName, email, password) VALUES ('jparish', 'Jarod', "Parish", 'jparish@example.com', 'password2');
-INSERT INTO user (userName, firstName, lastName, email, password) VALUES ('jdoe', 'Jane', "Doe", 'jane@doe.com', 'password3');
-INSERT INTO user (userName, firstName, lastName, email, password) VALUES ('tcruise', 'Tom', "Cruise", 'tom@gmail.com', 'password4');
-INSERT INTO user (userName, firstName, lastName, email, password) VALUES ('rmcdonald', 'Ronald', "Mcdonald", 'ronald@mcdonald.com', 'password5');
-INSERT INTO user (userName, firstName, lastName, email, password) VALUES ('jjjschmidt', 'John', "Schmidt", 'john@gmail.com', 'hisnameismynametoo');
-INSERT INTO user (userName, firstName, lastName, email, password) VALUES ('dmartinez', 'David', "Martinez", 'david@militech.com', 'punkcyber');
-INSERT INTO user (userName, firstName, lastName, email, password) VALUES ('roppenheimer', 'Robert', "Oppenheimer", 'rob@boom.com', 'Iambecomedeath');
-INSERT INTO user (userName, firstName, lastName, email, password) VALUES ('bross', 'Bob', "Ross", 'Bob@gmail.com', 'illaddafunnylittlecloud');
+INSERT INTO user (userName, firstName, lastName, email, accountAge, password) VALUES ('jsmith', 'John', "Smith", 'john@smith.com', '3 days', 'password1');
+INSERT INTO user (userName, firstName, lastName, email, accountAge, password) VALUES ('jparish', 'Jarod', "Parish", 'jparish@example.com', '30 days', 'password2');
+INSERT INTO user (userName, firstName, lastName, email, accountAge, password) VALUES ('jdoe', 'Jane', "Doe", 'jane@doe.com', '1 day', 'password3');
+INSERT INTO user (userName, firstName, lastName, email, accountAge, password) VALUES ('tcruise', 'Tom', "Cruise", 'tom@gmail.com', '12 days', 'password4');
+INSERT INTO user (userName, firstName, lastName, email, accountAge, password) VALUES ('rmcdonald', 'Ronald', "Mcdonald", 'ronald@mcdonald.com', '30 days', 'password5');
+INSERT INTO user (userName, firstName, lastName, email, accountAge, password) VALUES ('jjjschmidt', 'John', "Schmidt", 'john@gmail.com', '10 days', 'hisnameismynametoo');
+INSERT INTO user (userName, firstName, lastName, email, accountAge, password) VALUES ('dmartinez', 'David', "Martinez", 'david@militech.com', '9 days', 'punkcyber');
+INSERT INTO user (userName, firstName, lastName, email, accountAge, password) VALUES ('roppenheimer', 'Robert', "Oppenheimer", 'rob@boom.com', '8 days', 'Iambecomedeath');
+INSERT INTO user (userName, firstName, lastName, email, accountAge, password) VALUES ('bross', 'Bob', "Ross", 'Bob@gmail.com', '4 days', 'illaddafunnylittlecloud');
 
 -- Sample data (userActivity)
 INSERT INTO userActivity (userId, activityDate, activityType) VALUES (3, '2024-03-04', 'LOGIN');

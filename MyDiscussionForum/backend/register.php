@@ -44,8 +44,8 @@ if ($result -> num_rows > 0) {
     exit();
 } else {
     // Prepared statement for inserting user information
-    $insertStmt = $connection -> prepare("INSERT INTO user (userName, firstName, lastName, email, password) VALUES (?, ?, ?, ?, ?)");
-    $insertStmt -> bind_param("sssss", $username, $firstname, $lastname, $email, $passhash);
+    $insertStmt = $connection -> prepare("INSERT INTO user (userName, firstName, lastName, email, accountAge, password) VALUES (?, ?, ?, ?, ?)");
+    $insertStmt -> bind_param("ssssss", $username, $firstname, $lastname, $email, "30 days", $passhash); // For now every account age is 30 days. We will change this later.
 
     if ($insertStmt -> execute()) {
         trackUserActivity($connection, $_SESSION['userId'], "ACCOUNT_CREATED");

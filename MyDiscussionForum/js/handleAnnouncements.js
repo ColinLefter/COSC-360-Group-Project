@@ -50,7 +50,7 @@ $(document).ready(function () {
               </div>
             `;
           });
-          $('.announcements').html(announcementsHtml);
+          $('.announcements, .announcements-container').html(announcementsHtml); // This works for both dashboards as we target both containers
         } else {
           console.error('Failed to fetch announcements:', data.msg);
         }

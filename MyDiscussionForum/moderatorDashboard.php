@@ -36,7 +36,7 @@
   <div class="row">
     <div class="col">
       <div>
-        <input type="text" class="form-control text-center my-4" id="validationDefault04" value="u/user-1" required>
+        <input type="text" name="username" id="userLookupInput" class="form-control text-center my-4" required>
       </div>
 
       <h2>User data</h2>
@@ -46,7 +46,7 @@
         </div>
 
         <div class="col">
-          <h6 class="right-align">Username</h6>
+          <h6 class="right-align user-username"></h6>
         </div>
       </div>
 
@@ -56,7 +56,7 @@
         </div>
 
         <div class="col">
-          <h6 class="right-align">user1@domain.com</h6>
+          <h6 class="right-align user-email"></h6>
         </div>
       </div>
 
@@ -66,7 +66,7 @@
         </div>
 
         <div class="col">
-          <h6 class="right-align">30 days</h6>
+          <h6 class="right-align user-account-age"></h6>
         </div>
       </div>
 
@@ -74,10 +74,7 @@
         <div class="col">
           <h6>Frequent communities:</h6>
         </div>
-        <div class="col right-align">
-          <span class="badge">/community-1</span>
-          <span class="badge">/community-2</span>
-        </div>
+        <div class="col right-align user-communities"></div>
       </div>
 
       <h2 class="my-3">Actions</h2>
@@ -106,21 +103,6 @@
           </p>
         </div>
       </div>      
-
-      <div class="card my-2">
-        <div class="announcement">
-          <h6>
-            Announcement 6
-            <span class="bullet-point"></span> 
-            Date
-            <span class="bullet-point"></span> 
-            Author
-          </h6>
-          <p class="mb-0">
-            Description.
-          </p>
-        </div>
-      </div>
     </div>
   </div>
 </div>
@@ -131,6 +113,8 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+<script src="js/handleAnnouncements.js"></script>
+<script src="js/userLookup.js"></script>
 <script>
   $(function(){
     $("#navbar-placeholder").load("components/navbarNoSearch.html");
