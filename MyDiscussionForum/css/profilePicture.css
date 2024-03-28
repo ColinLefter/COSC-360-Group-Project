@@ -1,0 +1,28 @@
+.profile-picture-large {
+    display: block;
+    width: 150px; 
+    height: 150px; 
+    border-radius: 50%; 
+    overflow: hidden;
+    border: black 5px solid;
+    margin-left: 1em;
+    margin-right: 1em;
+}
+
+.profile-picture-large:hover {
+    filter: brightness(50%);
+    cursor: pointer;
+}
+
+.profile-picture-small {
+    width: 15px; 
+    height: 15px; 
+    border-radius: 50%; 
+    overflow: hidden; 
+}
+
+.profile-picture-large img, .profile-picture-small img {
+    width: 100%; 
+    height: auto; 
+    display: block;
+}
