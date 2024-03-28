@@ -27,6 +27,15 @@ CREATE TABLE userActivity ( -- This is to track whenever a user performs an acti
     ON DELETE CASCADE
 );
 
+CREATE TABLE adminAnnouncement(
+    announcementId INT NOT NULL AUTO_INCREMENT,
+    announcementTitle VARCHAR(50),
+    announcementDate TIMESTAMP DEFAULT NOW(),
+    announcementAuthor VARCHAR(30),
+    announcementContent VARCHAR(250),
+    PRIMARY KEY(announcementId)
+);
+
 CREATE TABLE userDetails (
     userId int NOT NULL,
     useLightMode boolean DEFAULT 1,
@@ -110,6 +119,38 @@ INSERT INTO user (userName, firstName, lastName, email, password) VALUES ('jjjsc
 INSERT INTO user (userName, firstName, lastName, email, password) VALUES ('dmartinez', 'David', "Martinez", 'david@militech.com', 'punkcyber');
 INSERT INTO user (userName, firstName, lastName, email, password) VALUES ('roppenheimer', 'Robert', "Oppenheimer", 'rob@boom.com', 'Iambecomedeath');
 INSERT INTO user (userName, firstName, lastName, email, password) VALUES ('bross', 'Bob', "Ross", 'Bob@gmail.com', 'illaddafunnylittlecloud');
+
+-- Sample data (userActivity)
+INSERT INTO userActivity (userId, activityDate, activityType) VALUES (3, '2024-03-04', 'LOGIN');
+INSERT INTO userActivity (userId, activityDate, activityType) VALUES (4, '2024-03-06', 'RESET_PASSWORD');
+INSERT INTO userActivity (userId, activityDate, activityType) VALUES (9, '2024-03-05', 'ADD_COMMENT');
+INSERT INTO userActivity (userId, activityDate, activityType) VALUES (6, '2024-03-21', 'LOGIN');
+INSERT INTO userActivity (userId, activityDate, activityType) VALUES (1, '2024-03-14', 'SEARCH_POSTS');
+INSERT INTO userActivity (userId, activityDate, activityType) VALUES (3, '2024-03-07', 'LOGIN');
+INSERT INTO userActivity (userId, activityDate, activityType) VALUES (8, '2024-03-17', 'RESET_PASSWORD');
+INSERT INTO userActivity (userId, activityDate, activityType) VALUES (7, '2024-03-01', 'ACCOUNT_CREATED');
+INSERT INTO userActivity (userId, activityDate, activityType) VALUES (8, '2024-03-09', 'ADD_COMMENT');
+INSERT INTO userActivity (userId, activityDate, activityType) VALUES (5, '2024-03-15', 'SEARCH_POSTS');
+INSERT INTO userActivity (userId, activityDate, activityType) VALUES (4, '2024-03-16', 'ADD_COMMENT');
+INSERT INTO userActivity (userId, activityDate, activityType) VALUES (2, '2024-03-02', 'LOGIN');
+INSERT INTO userActivity (userId, activityDate, activityType) VALUES (8, '2024-03-12', 'LOGOUT');
+INSERT INTO userActivity (userId, activityDate, activityType) VALUES (1, '2024-03-25', 'ADD_COMMENT');
+INSERT INTO userActivity (userId, activityDate, activityType) VALUES (9, '2024-03-26', 'ACCOUNT_CREATED');
+INSERT INTO userActivity (userId, activityDate, activityType) VALUES (2, '2024-03-03', 'LOGIN');
+INSERT INTO userActivity (userId, activityDate, activityType) VALUES (6, '2024-03-23', 'UPDATE_ACCOUNT');
+INSERT INTO userActivity (userId, activityDate, activityType) VALUES (7, '2024-03-11', 'LOGOUT');
+INSERT INTO userActivity (userId, activityDate, activityType) VALUES (5, '2024-03-19', 'SEARCH_POSTS');
+INSERT INTO userActivity (userId, activityDate, activityType) VALUES (4, '2024-03-27', 'LOGIN');
+
+-- sample data (adminAnnouncement)
+INSERT INTO adminAnnouncement (announcementTitle, announcementAuthor, announcementContent) VALUES
+('Site Maintenance', 'Admin', 'We will be performing scheduled maintenance this Saturday at 10 PM. Expect some downtime.'),
+('Feature Update', 'DevTeam', 'Exciting new features have been added to enhance your experience.'),
+('Security Notice', 'SecurityTeam', 'Please update your passwords regularly to enhance security.'),
+('Community Guidelines Update', 'Moderator', 'Our community guidelines have been updated. Please review them to ensure compliance.'),
+('Holiday Schedule', 'HR', 'Our support team will be operating on a reduced schedule during the holiday season. Happy holidays!'),
+('New Forum Section', 'Admin', 'Check out the new forum section dedicated to frequently asked questions.');
+
 
 -- Sample data (community)
 INSERT INTO community (communityName, description) VALUES ('general', 'A place for general topics, ideas, and such.');

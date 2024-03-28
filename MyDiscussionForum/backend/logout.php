@@ -1,9 +1,12 @@
 <?php
 
 include "commonFunctions.php";
+include "databaseFunc.php";
 
 // First start the session to access the session variables
 session_start();
+
+$connection = connectToDB();
 trackUserActivity($connection, $_SESSION['userId'], "LOGOUT");
 
 // Unset all of the session variables
