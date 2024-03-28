@@ -11,8 +11,21 @@ $(document).ready( function () {
         getCommunityInfo(communityId, 0);
     } else {
         // We are on the post page
-        console.log(currentPostId);
-        getCommunityInfo(currentPostId, 1);
+
+        // PostId might not be available right away, wait for it
+        function checkPostId() {
+
+            if (currentPostId != null) {
+                // Here is your next action
+                // console.log(currentPostId);
+                getCommunityInfo(currentPostId, 1);
+            }
+            else {
+                setTimeout(checkPostId, 10); // 10 ms
+            }
+          }
+         
+          setTimeout(checkPostId, 10); // 10 ms
     }
 
 });
