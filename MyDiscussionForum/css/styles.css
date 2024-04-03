@@ -65,14 +65,33 @@
   bottom: 0; /* Aligns to the bottom of the navbar */
 }
 
-.primary-button { /* Treating each element as a box */
-  padding: 0.5em; /* Create a box-like highlight */
-  display: inline-block; /* Allows padding to be applied properly */
-  border-radius: 5px; /* Rounded corners */
-  transition: background-color 0.3s; /* Smooth transition for background color */
+.button-base {
+  margin: 0.5em 0 0.5em 0;
+  padding: 0.5em;
+  border-radius: 5px;
+  transition: background-color 0.3s;
   outline: none;
   border: none;
-  background-color: white;
+  background-color: rgb(249, 249, 249);
+  cursor: pointer; /* Add cursor pointer to signify clickable items */
+}
+
+.dark .button-base {
+  background-color: hsl(12 6.5% 8.1%);
+  color: rgb(249, 249, 249);
+}
+
+.primary-button {
+  display: inline-block;
+}
+
+.primary-button:hover, .community-button:hover {
+  background-color: #f0f0f0;
+}
+
+.community-button {
+  display: block;
+  width: 100%;
 }
 
 .primary-button-highlight { /* Treating each element as a box */
@@ -83,7 +102,7 @@
   outline: none;
   border: none;
   background-color: rgb(15, 15, 15);
-  color: white;
+  color: rgb(249, 249, 249);
   width: 100%;
 }
 
@@ -138,18 +157,18 @@ body.dark .navbar, body.dark .header, body.dark .footer, body.dark a {
 }
 
 body.dark .custom-dropdown, body.dark .primary-button {
-  background-color: hsl(12 6.5% 15.1%);
+  background-color: hsl(12 6.5% 8.1%);
   color: hsl(60 9.1% 97.8%);
 }
 
 body.dark .header {
-  border-bottom: 0.05em solid hsl(12 6.5% 15.1%);
+  border-bottom: 0.05em solid hsl(12 6.5% 8.1%);
 }
 
 body.dark .search-bar { /* Targeting the input element */
   background-color: hsl(12, 6.5%, 15.1%); /* Corrected HSL syntax */
   color: hsl(60 9.1% 97.8%);
-  border-color: hsl(12 6.5% 15.1%);
+  border-color: hsl(12 6.5% 8.1%);
 }
 
 body.dark .search-bar::placeholder {
@@ -165,7 +184,7 @@ body.dark .search-bar::placeholder {
   padding-bottom: 0;
   background-color: #f9f9f9;
   border-radius: 15px;
-  border: solid 0.05em hsl(12 6.5% 15.1%);
+  border: solid 0.05em hsl(12 6.5% 8.1%);
   border-color: rgb(209, 209, 209);
 }
 
@@ -261,7 +280,7 @@ body.dark .primary-button:hover {
 
 /* Forum Dark Mode */
 body.dark #forum-body, body.dark .threadview, body.dark .load-posts, body.dark .post-container {
-  background-color: hsl(12 6.5% 15.1%); /* Darker background for navbar, header, footer */
+  background-color: hsl(12 6.5% 8.1%); /* Darker background for navbar, header, footer */
 }
 
 body.dark .load-posts {
@@ -400,3 +419,15 @@ body > #footer-placeholder { /* Sticky footer */
   display: inline-block;
 }
 
+.dark .recent-topics {
+  background-color: black;
+  border-style: solid 1px rgb(21, 21, 21);
+}
+
+.p {
+  background-color: black;
+}
+
+.dark .popular {
+  background-color: hsl(20 14.3% 4.1%);
+}
