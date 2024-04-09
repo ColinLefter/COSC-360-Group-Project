@@ -47,3 +47,20 @@ footer a {
 .footer-content:last-child, .footer-links:last-child {
   margin-right: 0;
 }
+/* Media query for smaller screens */
+@media screen and (max-width: 1300px) {
+  .col-12 {
+    flex-direction: column; /* Stack columns vertically on smaller screens */
+    align-items: flex-start; /* Align items to the start */
+  }
+
+  .footer-content, .footer-links {
+    margin-right: 0; /* Remove the negative margin */
+    margin-bottom: 1em; /* Add spacing between columns */
+  }
+
+  .footer-links {
+    justify-content: flex-start; /* Align links to the start */
+  }
+}
+
