@@ -44,8 +44,9 @@ if ($result -> num_rows > 0) {
     exit();
 } else {
     // Prepared statement for inserting user information
+    $accountAge = "30 days"; // Must be in a variable
     $insertStmt = $connection -> prepare("INSERT INTO user (userName, firstName, lastName, email, accountAge, password) VALUES (?, ?, ?, ?, ?, ?)");
-    $insertStmt -> bind_param("ssssss", $username, $firstname, $lastname, $email, "30 days", $passhash); // For now every account age is 30 days. We will change this later.
+    $insertStmt -> bind_param("ssssss", $username, $firstname, $lastname, $email, $accountAge, $passhash); // For now every account age is 30 days. We will change this later.
 
     if ($insertStmt -> execute()) {
         // We have to get the last created user's ID with the following approach:
