@@ -39,7 +39,7 @@ function loadPost(postId) {
         success : function (data) {
             
             // Debug
-            console.log(data);
+            // console.log(data);
             var result = data['result'];
             if (result == "FAIL") {
 
@@ -94,7 +94,7 @@ function insertPost(data) {
     $("div.post" + id + " div.post-header").append("<div></div>");
     $("div.post" + id + " div.post-header").append("<img class='profile-picture-small' src=res/img/" + data[0]['profilePicture'] + ">");
     $("div.post" + id + " div.post-header").append("<p class='post-author post-subheader'>&nbsp;" + data[0]['authorName'] + "</p>");
-    $("div.post" + id + " div.post-header").append("<p class='post-datetime post-subheader'> &nbsp;&#x2022; 17:04</p>");
+    $("div.post" + id + " div.post-header").append("<p class='post-datetime post-subheader'> &nbsp;&#x2022;&nbsp;" + parseDateTime(data[0]['creationDateTime']) + "</p>");
     $("div.post" + id + " div.post-header div").append("<h4 class='post-large-title-loaded'>" + data[0]['postTitle'] + "</h4>");
 
 }
@@ -168,9 +168,9 @@ function insertComments(data) {
         if (loggedIn) {
             $("div#" + id).append("<p class='post-datetime post-subheader reply' id='" + id + "'><a class='reply' id='" + id + "' href=''>Reply</a></p>");
         }
-        $("div#" + id + " div.post-header").append("<img class='profile-picture-small' src=res/img/" + data[0]['profilePicture'] + ">");
+        $("div#" + id + " div.post-header").append("<img class='profile-picture-small' src='res/img/" + data[i]['profilePicture'] + "'>");
         $("div#" + id + " div.post-header").append("<p class='post-author post-subheader'>&nbsp;" + data[i]['userName'] + "</p>");
-        $("div#" + id + " div.post-header").append("<p class='post-datetime post-subheader'> &nbsp;&#x2022; 17:04 </p>");
+        $("div#" + id + " div.post-header").append("<p class='post-datetime post-subheader'> &nbsp;&#x2022;&nbsp;" + parseDateTime(data[0]['creationDateTime']) + "</p>");
         
         if (data[i]['parentId'] != null) {
             // get parent comment username
@@ -192,4 +192,28 @@ function update(){
     loadComments(currentPostId);
 
     setTimeout(update, 5000);
+}
+
+// Returns string for use in post and comments
+function parseDateTime(creationDateTime) {
+
+    var t = creationDateTime.split(/[- :]/);
+
+    // Convert to milliseconds
+    var d = Date.UTC(t[0], t[1]-1, t[2], t[3], t[4], t[5]);
+
+    // Offset by 7 hours to convert from UTC to MST, consider doing this automatically
+    var timeAgo;
+    if ((Date.now()-7*60*60*1000) - d > 86400000) {
+        // More than 24 hours ago
+        timeAgo = ((Date.now()-7*60*60*1000) - d)/1000/60/60/24;
+        return Math.floor(timeAgo) + " day(s) ago";
+    } else if ((Date.now()-7*60*60*1000) - d > 3600000) {
+        timeAgo = ((Date.now()-7*60*60*1000) - d)/1000/60/60;
+        return Math.floor(timeAgo) + " hour(s) ago";
+    } else {
+        timeAgo = ((Date.now()-7*60*60*1000) - d)/1000/60;
+        return Math.floor(timeAgo) + " minute(s) ago";
+    }
+
 }

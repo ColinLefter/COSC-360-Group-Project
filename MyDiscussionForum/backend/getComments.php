@@ -21,7 +21,7 @@ if (empty($postId)) {
 $connection = connectToDB();
 
 // Prepared statement for fetching comments
-$sql = "SELECT postId, commentId, parentId, user.userName, commentContent, profilePicName FROM comment INNER JOIN user ON comment.userId=user.userId INNER JOIN userDetails ON user.userId=userDetails.userId WHERE postId= ? LIMIT 1000 OFFSET ?;";
+$sql = "SELECT postId, commentId, parentId, user.userName, commentContent, profilePicName, creationDate FROM comment INNER JOIN user ON comment.userId=user.userId INNER JOIN userDetails ON user.userId=userDetails.userId WHERE postId= ? LIMIT 1000 OFFSET ?;";
 $stmt = $connection->prepare($sql);
 
 // Bind parameters. The "si" string means we are binding one string and one integer
@@ -42,6 +42,7 @@ if ($result->num_rows > 0) {
             'userName' => $row['userName'],
             'commentContent' => $row['commentContent'],
             'profilePicture' => $row['profilePicName'],
+            'creationDateTime' => $row['creationDate'],
         );
         $i++;
     }

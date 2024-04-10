@@ -48,6 +48,11 @@ $fileName = mysqli_real_escape_string($connection, $fileName);
 // $result = mysqli_stmt_execute($stmt);
 // mysqli_stmt_close($stmt);
 // echo $fileName;
+
+// Eliminate strings
+str_replace("'","_", $fileName);
+str_replace('"',"_", $fileName);
+
 $fileName = $userName.$fileName;
 
 $sql = "UPDATE userDetails SET profilePicName='".$fileName."' WHERE userDetails.userId='".$userID."';";
