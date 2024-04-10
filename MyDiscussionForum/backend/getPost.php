@@ -5,6 +5,8 @@ include "databaseFunc.php";
 include "validation.php";
 include "commonFunctions.php";
 
+session_start();
+
 if (!validateMethodPost()) {
     exit(); // Stop script execution if not POST
 }

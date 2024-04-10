@@ -212,6 +212,16 @@ function returnData($msgType, $conn = false, $data = null) {
             $dataToReturn['type'] = $msgType;
             $dataToReturn['msg'] = "Profile picture not uploaded!";
             break; 
+        case "POST_DELETED":
+            $dataToReturn['result'] = "SUCCESS";
+            $dataToReturn['type'] = $msgType;
+            $dataToReturn['msg'] = "Post deleted successfully!";
+            break;
+        case "POST_NOT_DELETED":
+            $dataToReturn['result'] = "FAIL";
+            $dataToReturn['type'] = $msgType;
+            $dataToReturn['msg'] = "Post not deleted.";
+            break; 
         default:
             // TODO: Add error logging here
             break;

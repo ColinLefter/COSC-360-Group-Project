@@ -10,7 +10,7 @@
   }
 
 .post-large-title-loaded {
-  margin: auto;
+  margin-right: auto;
   /* width: 95%; */
   padding-top: 0.5em;
   padding-bottom: 0.1em;
@@ -27,4 +27,14 @@
   padding: 1em 1em 1em 1em;
   border-bottom: solid 0.05em rgb(209, 209, 209);
   transition: background-color 0.3s;
+}
+
+.post-delete-button {
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
+}
+
+.post-delete-button:hover {
+  filter: brightness(50%);
+  cursor: pointer;
 }
