@@ -19,7 +19,7 @@ if(isset($_SESSION['userLoggedIn']) && $_SESSION['userLoggedIn'] === true) {
 validateMethodPost();
 
 // Upload file
-$targetFile = "../res/img/". basename($_FILES["profilepicture"]["name"]);
+$targetFile = "../res/img/".$userName. basename($_FILES["profilepicture"]["name"]);
 $fileName = basename($_FILES["profilepicture"]["name"]);
 // $imagedata = file_get_contents($_FILES['profilepicture']['tmp_name']);
 // $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
@@ -48,6 +48,7 @@ $fileName = mysqli_real_escape_string($connection, $fileName);
 // $result = mysqli_stmt_execute($stmt);
 // mysqli_stmt_close($stmt);
 // echo $fileName;
+$fileName = $userName.$fileName;
 
 $sql = "UPDATE userDetails SET profilePicName='".$fileName."' WHERE userDetails.userId='".$userID."';";
 $results = mysqli_query($connection, $sql);

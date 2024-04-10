@@ -21,7 +21,7 @@ if ($postId <= 0) {
 $connection = connectToDB();
 
 // Prepared statement for fetching the post details
-$sql = "SELECT postId, user.userName, postTitle, postContent FROM post INNER JOIN user ON post.authorId=user.userId WHERE post.postId= ?;";    
+$sql = "SELECT postId, user.userName, postTitle, postContent, profilePicName FROM post INNER JOIN user ON post.authorId=user.userId INNER JOIN userDetails ON user.userId=userDetails.userId WHERE post.postId= ?;";    
 $stmt = $connection->prepare($sql);
 
 // Bind the integer parameter
@@ -40,6 +40,7 @@ if($result->num_rows > 0) {
             'authorName' => $row['userName'],
             'postTitle' => $row['postTitle'],
             'postContent' => $row['postContent'],
+            'profilePicture' => $row["profilePicName"],
         );
         $i++;
     }
