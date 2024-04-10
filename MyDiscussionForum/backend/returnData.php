@@ -243,6 +243,16 @@ function returnData($msgType, $conn = false, $data = null) {
             $dataToReturn['type'] = $msgType;
             $dataToReturn['msg'] = "Post not deleted.";
             break; 
+        case "COMMUNITY_ADDED":
+            $dataToReturn['result'] = "SUCCESS";
+            $dataToReturn['type'] = $msgType;
+            $dataToReturn['msg'] = "Community added successfully!";
+            break;
+        case "COMMUNITY_NOT_ADDED":
+            $dataToReturn['result'] = "FAIL";
+            $dataToReturn['type'] = $msgType;
+            $dataToReturn['msg'] = "Community not added!";
+            break;
         default:
             // TODO: Add error logging here
             break;

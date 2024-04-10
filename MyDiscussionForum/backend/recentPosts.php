@@ -30,7 +30,7 @@ if ($communityId == null) {
     // Bind parameters. The "ii" string means we are binding two integers
     $stmt->bind_param("ii", $numPosts, $rowOffset);
 } else {
-    $sql = "SELECT postId, user.userName, postTitle, postContent creationDate FROM post INNER JOIN user ON post.authorId=user.userId WHERE communityId=? ORDER BY creationDate DESC LIMIT ? OFFSET ?;";
+    $sql = "SELECT postId, user.userName, postTitle, postContent, creationDate FROM post INNER JOIN user ON post.authorId=user.userId WHERE communityId=? ORDER BY creationDate DESC LIMIT ? OFFSET ?;";
     $stmt = $connection->prepare($sql);
     $stmt->bind_param("iii", $communityId, $numPosts, $rowOffset);
 }
