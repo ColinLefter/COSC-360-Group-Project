@@ -27,6 +27,7 @@ $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
 
 // We are checking to see if the user actually changed anything before we update the database
 $changesMade = $firstName !== $_SESSION['firstName'] || $lastName !== $_SESSION['lastName'] || $email !== $_SESSION['email'] || $username !== $_SESSION['username'];
+$userId = $_SESSION['userId'];
 
 if ($changesMade) {
   $stmt = $connection->prepare("UPDATE user SET firstName = ?, lastName = ?, email = ?, userName = ? WHERE userId = ?;"); // Use userID as users can change usernames
