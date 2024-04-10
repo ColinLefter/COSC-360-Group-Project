@@ -22,7 +22,6 @@ $(document).ready( function () {
 
     } );
 
-
 });
 
 function loadPost(postId) {
@@ -55,6 +54,7 @@ function loadPost(postId) {
                 if (data['type'] == "CURRENT_POST") {
                     insertPost(data['data']);
                     update();
+                    checkisLoggedIn();
                 }
 
                 console.log("Post loaded sucessfully");
@@ -98,6 +98,90 @@ function insertPost(data) {
     $("div.post" + id + " div.post-header div").append("<h4 class='post-large-title-loaded'>" + data[0]['postTitle'] + "</h4>");
 
 }
+
+function checkisLoggedIn() {
+
+    $.ajax({
+        url : 'backend/isLoggedIn.php',
+        type : 'POST',
+        dataType : 'json',
+        success : function (data) {
+
+            var result = data['result'];
+            if (result == "FAIL") {
+                console.log(data['type']);
+                console.log(data['msg']);
+            } else if(result == "SUCCESS") {
+
+                console.log(currentPostUsername);
+                if (currentPostUsername == data['userName']) {
+                    // Load deletion button
+                    $("div.post-header div").attr("style", "display: flex; justify-content: space-between");
+                    $("div.post-header div").append("<p class='post-delete-button' style='font-size: x-small; height: min-content;'>&#10060;</p>");
+
+                    // Set listener
+                    $("div.post-header div p.post-delete-button").on("click", deletePostDialog);
+
+                }    
+            } else {
+                console.log("Unreachable Error, debug php.");
+            }
+        },
+        error : function (xhr, ajaxOptions, thrownError) {
+        alert("Error getting login information.");
+        }
+    })
+
+}
+
+function deletePostDialog() {
+
+    text = "Delete post?";
+    if (confirm(text) == true) {
+        // Delete post
+
+        var formData = {
+            id: currentPostId,
+            userName: currentPostUsername,
+        };
+    
+        $.ajax({
+            url : 'backend/deletePost.php',
+            type : 'POST',
+            data : formData,
+            dataType : 'json',
+            success : function (data) {
+                
+                // Debug
+                // console.log(data);
+                var result = data['result'];
+                if (result == "FAIL") {
+                
+                    console.log(data['type']);
+                    console.log(data['msg']);
+    
+                } else if(result == "SUCCESS") {
+    
+                    if (data['type'] == "POST_DELETED") {
+                        window.location.href = "index.html";
+                    }
+                    
+                } else {
+                    console.log("Unreachable Error, debug php.");
+                }
+            },
+            error : function (xhr, ajaxOptions, thrownError) {
+            alert("Error loading post page.");
+            console.log("STATUS: " + xhr.status);
+            console.log(thrownError);
+            }
+        })
+      } else {
+        // Do nothing
+    }
+
+}
+
 
 // This function talks to the database and pulls all relevant comments.
 // If comments have already been pulled, it only pulls any new comments added.
