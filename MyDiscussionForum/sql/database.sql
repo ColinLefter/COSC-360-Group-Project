@@ -133,6 +133,14 @@ INSERT INTO userDetails (userId) VALUES (7);
 INSERT INTO userDetails (userId) VALUES (8);
 INSERT INTO userDetails (userId) VALUES (9);
 
+-- Admin Account
+INSERT INTO user (userName, firstName, lastName, email, accountAge, password) VALUES ('admin', 'user', "admin", 'admin@mydiscussionforum.com', '90 days', '$2y$10$.sok79XTfH2Bj/ekkFMeRedU.8tp2SK2dUo.2eSNSueyjGTtIPeZW');
+INSERT INTO userDetails (userId, userAuthority) VALUES (10, 2);
+
+-- Moderator Account
+INSERT INTO user (userName, firstName, lastName, email, accountAge, password) VALUES ('moderator', 'user', "moderator", 'moderator@mydiscussionforum.com', '90 days', '$2y$10$LT4neTsMY/QUQGFxkKR3buSxbZPl/U9M8aOCFKdvZV7z0EM4dPkHq');
+INSERT INTO userDetails (userId, userAuthority) VALUES (11, 1);
+
 -- Sample data (userActivity)
 INSERT INTO userActivity (userId, activityDate, activityType) VALUES (3, '2024-03-04', 'LOGIN');
 INSERT INTO userActivity (userId, activityDate, activityType) VALUES (4, '2024-03-06', 'RESET_PASSWORD');
