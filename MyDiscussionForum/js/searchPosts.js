@@ -86,9 +86,33 @@ function insertPosts(data) {
         $("div.post" + id).append("<div class='post-preview'>" + data[i]['postContent'] + "</div>");
         $("div.post" + id + " div.post-header").append("<div></div>");
         $("div.post" + id + " div.post-header").append("<p class='post-author post-subheader'>" + data[i]['authorName'] + "</p>");
-        $("div.post" + id + " div.post-header").append("<p class='post-datetime post-subheader'> &nbsp;&#x2022; 17:04</p>");
+        $("div.post" + id + " div.post-header").append("<p class='post-datetime post-subheader'> &nbsp;&#x2022;&nbsp;" + parseDateTime(data[i]['creationDateTime']) + "</p>");
         $("div.post" + id + " div.post-header div").append("<h4 class='post-title'><a class='post-title' href='post.html?p=" + data[i]['postId'] + "'>" + data[i]['postTitle'] + "</a></h4>");
 
+    }
+
+}
+
+// Returns string for use in post and comments
+function parseDateTime(creationDateTime) {
+
+    var t = creationDateTime.split(/[- :]/);
+
+    // Convert to milliseconds
+    var d = Date.UTC(t[0], t[1]-1, t[2], t[3], t[4], t[5]);
+
+    // Offset by 7 hours to convert from UTC to MST, consider doing this automatically
+    var timeAgo;
+    if ((Date.now()-7*60*60*1000) - d > 86400000) {
+        // More than 24 hours ago
+        timeAgo = ((Date.now()-7*60*60*1000) - d)/1000/60/60/24;
+        return Math.floor(timeAgo) + " day(s) ago";
+    } else if ((Date.now()-7*60*60*1000) - d > 3600000) {
+        timeAgo = ((Date.now()-7*60*60*1000) - d)/1000/60/60;
+        return Math.floor(timeAgo) + " hour(s) ago";
+    } else {
+        timeAgo = ((Date.now()-7*60*60*1000) - d)/1000/60;
+        return Math.floor(timeAgo) + " minute(s) ago";
     }
 
 }

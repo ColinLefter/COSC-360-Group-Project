@@ -2,41 +2,8 @@
 
 $(document).ready( function () {
 
-
-    // Get profile picture directory
-    $.ajax({
-        url : 'backend/getProfilePicture.php',
-        type : 'POST',
-        dataType : 'json',
-        success : function (data) {
-            
-            // Debug
-            // console.log(data);
-            var result = data['result'];
-            if (result == "FAIL") {
-            
-                console.log(data['type']);
-                console.log(data['msg']);
-
-            } else if(result == "SUCCESS") {
-
-                // Load posts
-                if (data['type'] == "PROFILE_PICTURE") {
-                    $(".profile-picture-large img").attr("src", "res/img/" + data['data'][0]['profilepicture']);
-                }
-
-                console.log("Profile picture retrievec successfully");
-            
-            } else {
-                console.log("Unreachable Error, debug php.");
-            }
-        },
-        error : function (xhr, ajaxOptions, thrownError) {
-        alert("Error loading recent posts.");
-        console.log("STATUS: " + xhr.status);
-        console.log(thrownError);
-        }
-    })
+    // We must be logged in to get here, no need to check
+    getProfilePicture();
 
     // Upload image
     $(".profile-picture-large img").on("click", function() {
@@ -63,7 +30,7 @@ $(document).ready( function () {
 
         // Pass image to backend with ajax
         $.ajax({
-            url : 'backend/addProfilePicture.php',
+            url : 'backend/uploadProfilePicture.php',
             type : 'POST',
             data : formData,
             contentType: false,
@@ -86,7 +53,8 @@ $(document).ready( function () {
     
                     // Load posts
                     if (data['type'] == "PROFILE_PICTURE_UPLOADED") {
-                        $(".profile-picture-large img").attr("src", "res/img/" + profilePicture.name);
+                        // $(".profile-picture-large img").attr("src", "res/img/" + profilePicture.name);
+                        getProfilePicture();
                     }
     
                     console.log("Profile picture uploaded successfully");
@@ -105,3 +73,39 @@ $(document).ready( function () {
     })
 
 });
+
+function getProfilePicture () {    // Get profile picture directory
+    $.ajax({
+        url : 'backend/getProfilePicture.php',
+        type : 'POST',
+        dataType : 'json',
+        success : function (data) {
+            
+            // Debug
+            console.log(data);
+            var result = data['result'];
+            if (result == "FAIL") {
+            
+                console.log(data['type']);
+                console.log(data['msg']);
+
+            } else if(result == "SUCCESS") {
+
+                // Load posts
+                if (data['type'] == "PROFILE_PICTURE") {
+                    $(".profile-picture-large img").attr("src", "res/img/" + data['data'][0]['profilepicture']);
+                }
+
+                console.log("Profile picture retrieved successfully");
+            
+            } else {
+                console.log("Unreachable Error, debug php.");
+            }
+        },
+        error : function (xhr, ajaxOptions, thrownError) {
+        alert("Error loading recent posts.");
+        console.log("STATUS: " + xhr.status);
+        console.log(thrownError);
+        }
+    })
+}

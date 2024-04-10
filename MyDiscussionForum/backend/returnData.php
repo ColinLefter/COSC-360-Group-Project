@@ -212,6 +212,27 @@ function returnData($msgType, $conn = false, $data = null) {
             $dataToReturn['type'] = $msgType;
             $dataToReturn['msg'] = "Profile picture not uploaded!";
             break; 
+        case "PROFILE_PICTURE":
+            $dataToReturn['result'] = "SUCCESS";
+            $dataToReturn['type'] = $msgType;
+            $dataToReturn['msg'] = "Profile picture returned!";
+            $dataToReturn['data'] = $data;
+            break;
+        case "PROFILE_PICTURE_EMPTY":
+            $dataToReturn['result'] = "FAIL";
+            $dataToReturn['type'] = $msgType;
+            $dataToReturn['msg'] = "Profile picture not found!";
+            break; 
+        case "PROFILE_PICTURE_UPLOADED":
+            $dataToReturn['result'] = "SUCCESS";
+            $dataToReturn['type'] = $msgType;
+            $dataToReturn['msg'] = "Profile picture uploaded!";
+            break;
+        case "PROFILE_PICTURE_NOT_UPLOADED":
+            $dataToReturn['result'] = "FAIL";
+            $dataToReturn['type'] = $msgType;
+            $dataToReturn['msg'] = "Profile picture not uploaded!";
+            break; 
         default:
             // TODO: Add error logging here
             break;

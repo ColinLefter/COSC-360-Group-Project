@@ -16,6 +16,7 @@ if (!isset($_SESSION['userLoggedIn']) || $_SESSION['userLoggedIn'] !== true) {
     <link rel="stylesheet" type="text/css" href="css/reset.css">
     <link rel="stylesheet" type="text/css" href="css/styles.css">
     <link rel="stylesheet" type="text/css" href="css/myAccount.css">
+    <link rel="stylesheet" type="text/css" href="css/profilePicture.css">
     <link rel="stylesheet" type="text/css" href="css/footer.css">
     <link rel="stylesheet" type="text/css" href="css/profilePicture.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -99,10 +100,10 @@ if (!isset($_SESSION['userLoggedIn']) || $_SESSION['userLoggedIn'] !== true) {
       </form>
     </div>
     <div class="col-md-6 center-container right-column">
-      <div class="profile-picture-large">
+    <div class="profile-picture-large">
         <input type="file" id="profilePictureFile" style="display: none;" accept=".jpg, .jpeg, .png">
         <img>
-      </div>
+    </div>
 
       <h1 class="large-heading">My Account</h1>
       </div>

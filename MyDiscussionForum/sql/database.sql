@@ -121,6 +121,18 @@ INSERT INTO user (userName, firstName, lastName, email, accountAge, password) VA
 INSERT INTO user (userName, firstName, lastName, email, accountAge, password) VALUES ('roppenheimer', 'Robert', "Oppenheimer", 'rob@boom.com', '8 days', 'Iambecomedeath');
 INSERT INTO user (userName, firstName, lastName, email, accountAge, password) VALUES ('bross', 'Bob', "Ross", 'Bob@gmail.com', '4 days', 'illaddafunnylittlecloud');
 
+-- Sample Data (userDetails) 
+-- Fills in default, needed for profile pic
+INSERT INTO userDetails (userId) VALUES (1);
+INSERT INTO userDetails (userId) VALUES (2);
+INSERT INTO userDetails (userId) VALUES (3);
+INSERT INTO userDetails (userId) VALUES (4);
+INSERT INTO userDetails (userId) VALUES (5);
+INSERT INTO userDetails (userId) VALUES (6);
+INSERT INTO userDetails (userId) VALUES (7);
+INSERT INTO userDetails (userId) VALUES (8);
+INSERT INTO userDetails (userId) VALUES (9);
+
 -- Sample data (userActivity)
 INSERT INTO userActivity (userId, activityDate, activityType) VALUES (3, '2024-03-04', 'LOGIN');
 INSERT INTO userActivity (userId, activityDate, activityType) VALUES (4, '2024-03-06', 'RESET_PASSWORD');

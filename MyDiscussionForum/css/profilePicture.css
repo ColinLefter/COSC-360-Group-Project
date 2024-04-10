@@ -1,6 +1,10 @@
 .profile-picture-large {
-    display: block;
+    /* display: block; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 150px; 
+    min-width: 150px;
     height: 150px; 
     border-radius: 50%; 
     overflow: hidden;

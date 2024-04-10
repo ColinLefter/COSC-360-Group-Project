@@ -13,13 +13,11 @@ if (!validateMethodPost()) {
 // Connect to the database
 $connection = connectToDB();
 
-$username = $_SESSION['username'];
+$userId = $_SESSION['userId'];
 
-// Since prepared statements do not support binding LIMIT and OFFSET directly, these must be integers
-// if ($communtyId == null) {
-$sql = "SELECT profilePicFileName FROM userdetails INNER JOIN user ON userDetails.userId=user.userId WHERE userName=?;";
+$sql = "SELECT profilePicName FROM userdetails WHERE userId=?;";
 $stmt = $connection->prepare($sql);
-$stmt->bind_param("i", $username);
+$stmt->bind_param("i", $userId);
 
 
 // Execute the query
@@ -30,7 +28,8 @@ $picData = array();
 if ($result -> num_rows > 0) {
     $row = $result -> fetch_assoc();
         $picData[0] = array(
-            'profilepicture' => $row['profilePicFileName'],
+            'profilepicture' => $row['profilePicName'],
+            // 'userId' => $_SESSION['userId'],
         );
 
     returnData("PROFILE_PICTURE", $connection, $picData);

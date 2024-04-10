@@ -32,7 +32,7 @@ $topic = mysqli_real_escape_string($connection, $topic);
 // Get statement for query, or prepared statement for topic query
 
 $values = explode(' ',$query);
-$sql = "SELECT postId, user.userName, postTitle, postContent, 
+$sql = "SELECT postId, user.userName, postTitle, postContent, creationDate, 
     MATCH (postTitle) AGAINST ('".$query."' IN BOOLEAN MODE) AS titleRel,
     MATCH (postContent) AGAINST ('".$query."' IN BOOLEAN MODE) AS contentRel
     FROM post INNER JOIN user ON post.authorId=user.userId WHERE ";
@@ -71,6 +71,7 @@ if(mysqli_num_rows($results) > 0) {
         $postData[$i]['authorName'] = $row['userName'];
         $postData[$i]['postTitle'] = $row['postTitle'];
         $postData[$i]['postContent'] = $row['postContent'];
+        $postData[$i]['creationDateTime'] = $row['creationDate'];
         $i++;
     }
 
