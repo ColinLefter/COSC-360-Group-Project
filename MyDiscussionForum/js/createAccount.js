@@ -31,6 +31,7 @@ $(document).ready(function() {
                 data: formData,
                 dataType: 'json',
                 success: function(data) {
+                    // console.log(data);
                     if (data['result'] === "FAIL") {
                         let msg = data['msg'];
                         $('form').after("<div style='color: red;'>" + msg + "</div>");
@@ -42,6 +43,8 @@ $(document).ready(function() {
                 },
                 error: function(xhr, status, error) {
                     alert("Error registering account. Please try again.");
+                    console.log("STATUS: " + xhr.status);
+                    console.log(thrownError);
                 }
             });
         }

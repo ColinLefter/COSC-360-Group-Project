@@ -49,9 +49,16 @@ if ($result -> num_rows > 0) {
     $insertStmt -> bind_param("ssssss", $username, $firstname, $lastname, $email, $accountAge, $passhash); // For now every account age is 30 days. We will change this later.
 
     if ($insertStmt -> execute()) {
+
         // We have to get the last created user's ID with the following approach:
         $lastInsertedId = $connection -> insert_id; 
         trackUserActivity($connection, $lastInsertedId, "ACCOUNT_CREATED");
+
+        // Add user details
+        $userDetailsStmt = $connection -> prepare("INSERT INTO userdetails (userId) SELECT userId FROM user WHERE email=? LIMIT 1;");
+        $userDetailsStmt -> bind_param("s", $email);
+        $userDetailsStmt -> execute();
+
         returnData("ACCOUNT_CREATION_SUCCESS", $connection);
     } else {
         // Handle potential errors in account creation
