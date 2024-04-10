@@ -69,7 +69,6 @@
   margin: 0.5em 0 0.5em 0;
   padding: 0.5em;
   border-radius: 5px;
-  transition: background-color 0.3s;
   outline: none;
   border: none;
   background-color: rgb(249, 249, 249);
@@ -81,12 +80,20 @@
   color: rgb(249, 249, 249);
 }
 
+.dark .h1 .h2 .h3 .h4 .h5 .h6 {
+  background-color: rgb(249, 249, 249);
+}
+
 .primary-button {
   display: inline-block;
 }
 
 .primary-button:hover, .community-button:hover {
   background-color: #f0f0f0;
+}
+
+.dark .primary-button:hover, .dark .community-button:hover {
+  background-color: hsl(12 6.5% 15%);
 }
 
 .community-button {
@@ -98,7 +105,6 @@
   padding: 0.5em; /* Create a box-like highlight */
   display: inline-block; /* Allows padding to be applied properly */
   border-radius: 5px; /* Rounded corners */
-  transition: background-color 0.3s; /* Smooth transition for background color */
   outline: none;
   border: none;
   background-color: rgb(15, 15, 15);
@@ -184,8 +190,11 @@ body.dark .search-bar::placeholder {
   padding-bottom: 0;
   background-color: #f9f9f9;
   border-radius: 15px;
-  border: solid 0.05em hsl(12 6.5% 8.1%);
-  border-color: rgb(209, 209, 209);
+  border-color: hsl(0, 0%, 90%);
+}
+
+.dark #forum-body {
+  background-color: hsl(20 14.3% 4.1%);
 }
 
 .threadview {
@@ -209,7 +218,6 @@ body.dark .search-bar::placeholder {
   margin-top: 0.1em;
   padding: 1em 1em 1em 1em;
   border-bottom: solid 0.05em rgb(209, 209, 209);
-  transition: background-color 0.3s;
 }
 
 .post-container:hover {
@@ -232,22 +240,7 @@ body.dark .primary-button:hover {
 .post-title:hover {
   text-decoration: underline;
 }
-/* .post-topic, .post-topic a  {
-  display: inline-block;
-  text-decoration: none;
-  width: fit-content;
-  justify-content: center;
-  margin: 0%;
-  margin-left: 1em;
-  margin-right: 1em;
-  padding: 0.1em;
-  font-size: 95%;
-  font-weight: bold;
-  border-radius: 3px;
-  color: darkred;
-  background-color: lightcoral;
-  border: solid 0.05em darkred;
-} */
+
 .post-author, .post-datetime {
   display: inline-block;
   font-style: italic;
@@ -269,7 +262,6 @@ body.dark .primary-button:hover {
   padding: 1em 0em 1em 0em;
   color: #1b1b1b;
   text-decoration: none;
-  transition: background-color 0.3s;
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
 }
@@ -280,7 +272,7 @@ body.dark .primary-button:hover {
 
 /* Forum Dark Mode */
 body.dark #forum-body, body.dark .threadview, body.dark .load-posts, body.dark .post-container {
-  background-color: hsl(12 6.5% 8.1%); /* Darker background for navbar, header, footer */
+  background-color: hsl(20 14.3% 4.1%);
 }
 
 body.dark .load-posts {
@@ -327,16 +319,23 @@ body.dark .post-title { /* .post-title refuses to use the right background color
   margin-top: 60px;
   border-radius: 15px;
   text-align: center;
-  border: solid 0.05em hsl(10, 14%, 84%);
   background-color: #f9f9f9;
 }
+
+.dark #left-side {
+  background-color: hsl(20 14.3% 4.1%);
+}
+
 #right-side{
   text-align: center;
   margin: auto;
   margin-top: 60px;
   border-radius: 15px;
-  border: solid 0.05em hsl(10, 14%, 84%);
   background-color: #f9f9f9;
+}
+
+.dark #right-side {
+  background-color: hsl(20 14.3% 4.1%);
 }
 
 .recent-container, .topic-container, .popular-container{
@@ -420,7 +419,7 @@ body > #footer-placeholder { /* Sticky footer */
 }
 
 .dark .recent-topics {
-  background-color: black;
+  background-color: hsl(20 14.3% 4.1%);
   border-style: solid 1px rgb(21, 21, 21);
 }
 
@@ -430,4 +429,8 @@ body > #footer-placeholder { /* Sticky footer */
 
 .dark .popular {
   background-color: hsl(20 14.3% 4.1%);
+}
+
+.dark .light-accent {
+  background-color: hsl(20 14.3% 6.1%);
 }
