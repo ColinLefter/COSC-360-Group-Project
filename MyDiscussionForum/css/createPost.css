@@ -6,8 +6,10 @@
     padding-bottom: 0;
     background-color: #f9f9f9;
     border-radius: 15px;
-    border: solid 0.05em hsl(12 6.5% 15.1%);
-    border-color: rgb(209, 209, 209);
+}
+
+.dark #create-post-body {
+    background-color: hsl(20 14.3% 6.1%);
 }
 
 .create-post-inner {

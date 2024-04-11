@@ -4,7 +4,7 @@ $(document).ready(function() {
         type: 'GET',
         dataType: 'json',
         success: function(data) {
-            const dropdownMenu = $(".dropdown-menu.custom-dropdown");
+            const dropdownMenu = $("#settings-dropdown");
   
             if (data.authority >= 1) { // Moderator or higher
                 dropdownMenu.append('<li><a class="dropdown-item custom-dropdown" href="moderatorDashboard.php">Moderator Dashboard</a></li>');
