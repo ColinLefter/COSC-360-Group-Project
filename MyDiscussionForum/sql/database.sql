@@ -25,7 +25,7 @@ CREATE TABLE userActivity ( -- This is to track whenever a user performs an acti
     activityType VARCHAR(30) NOT NULL,
     PRIMARY KEY(activityId),
     FOREIGN KEY(userId) REFERENCES user(userId)
-    ON DELETE CASCADE
+    ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE adminAnnouncement(

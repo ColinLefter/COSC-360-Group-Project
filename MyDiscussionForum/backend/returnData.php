@@ -41,6 +41,11 @@ function returnData($msgType, $conn = false, $data = null) {
             $dataToReturn['type'] = $msgType;
             $dataToReturn['msg'] = "Password is invalid!";
             break;
+        case "IS_BANNED":
+            $dataToReturn['result'] = "FAIL";
+            $dataToReturn['type'] = $msgType;
+            $dataToReturn['msg'] = "User is banned!";
+            break;
         case "PASSWORDS_DO_NOT_MATCH":
             $dataToReturn['result'] = "FAIL";
             $dataToReturn['type'] = $msgType;

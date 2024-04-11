@@ -23,9 +23,11 @@ $(document).ready(function () {
 
                   if (type == "INVALID_PASSWORD") {
                       $('form').after("<p class='login-feedback' style='color: red; text-align: center;'>" + msg + "</p>");
-                  } else {
-                      console.log(type);
-                      console.log(msg);
+                  } else if (type == "IS_BANNED") {
+                    $('form').after("<p class='login-feedback' style='color: red; text-align: center;'>Your account has been banned!</p>");
+                    } else {
+                        console.log(type);
+                        console.log(msg);
                   }
               } else if (result == "SUCCESS") {
                   console.log("Success! Logged in.");

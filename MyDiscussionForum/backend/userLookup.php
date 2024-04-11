@@ -24,7 +24,7 @@ if (empty($username)) {
   exit();
 }
 
-$stmt = $connection -> prepare("SELECT * FROM user WHERE userName = ?;"); // We are always guaranteed a unique user since we don't allow duplicate usernames
+$stmt = $connection -> prepare("SELECT * FROM user INNER JOIN userDetails ON user.userId=userDetails.userId WHERE userName = ?;"); // We are always guaranteed a unique user since we don't allow duplicate usernames
 $stmt -> bind_param("s", $username);
 $stmt -> execute();
 $result = $stmt -> get_result();
@@ -35,6 +35,7 @@ if ($result -> num_rows > 0) {
     'username' => $row['userName'],
     'email' => $row['email'],
     'accountAge' => $row['accountAge'],
+    'isBanned' => $row['isBanned']
     // 'communities' => $row['communities'] will be implemented at a later date
   ];
   echo json_encode(['result' => 'SUCCESS', 'userData' => $userData]);

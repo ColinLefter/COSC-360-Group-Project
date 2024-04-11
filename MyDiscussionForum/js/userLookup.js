@@ -16,6 +16,7 @@ $(document).ready(function() {
             $('.user-username').text(data.userData.username);
             $('.user-email').text(data.userData.email);
             $('.user-account-age').text(data.userData.accountAge);
+            $('.user-is-banned').text(data.userData.isBanned == 0 ? "False" : "True");
             // let communitiesHtml = '';
             // data.userData.communities.forEach(function(community) {
             //   communitiesHtml += `<span class="badge">${community}</span> `;
@@ -26,6 +27,7 @@ $(document).ready(function() {
             $('.user-username').text("N/A");
             $('.user-email').text("N/A");
             $('.user-account-age').text("N/A");
+            $('.user-is-banned').text("N/A");
             let communitiesHtml = `<span class="badge">N/A</span>`;
             $('.user-communities').html(communitiesHtml);
             console.log('Failed to fetch user data:', data.msg ? data.msg : 'Unknown error');
