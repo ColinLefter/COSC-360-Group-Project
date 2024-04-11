@@ -10,6 +10,8 @@
     border-color: rgb(209, 209, 209);
 }
 
+
+
 #comment-text-area {
     margin: 1em;
     display: flex;
@@ -18,6 +20,16 @@
     border-radius: 2px;
     padding-left: 0.5em;
     padding-right: 0.5em;
+}
+
+.dark #comment-box {
+    background-color: hsl(20 14.3% 6.1%);
+    border: solid 0.05em hsl(12 6.5% 15.1%);
+}
+
+.dark #comment-text-area {
+    background-color: hsl(20 14.3% 6.1%);
+    border: solid 0.05em hsl(12 6.5% 15.1%);
 }
 
 .reply-to {

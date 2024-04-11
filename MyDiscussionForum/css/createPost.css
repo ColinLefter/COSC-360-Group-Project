@@ -40,6 +40,10 @@
     padding: 0.5em;
 }
 
+.dark #create-post-inner #create-post-content {
+    background-color: hsl(20 14.3% 6.1%);
+}
+
 #create-post-topics {
     flex: 1;
 }
