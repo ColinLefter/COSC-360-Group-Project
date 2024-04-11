@@ -2,7 +2,6 @@ footer {
   display: flex;
   flex-direction: column;
   justify-content: flex-end; /* Aligns content to the bottom */
-  margin-top: 3em;
   padding: 3em; /* Padding around the footer */
 }
 

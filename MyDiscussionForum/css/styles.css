@@ -445,6 +445,10 @@ body > #footer-placeholder { /* Sticky footer */
   display: inline-block;
 }
 
+.dark .bullet-point::before {
+  color: hsl(0, 0%, 93%);
+}
+
 .dark .recent-topics {
   background-color: hsl(20 14.3% 4.1%);
   border-style: solid 1px rgb(21, 21, 21);
