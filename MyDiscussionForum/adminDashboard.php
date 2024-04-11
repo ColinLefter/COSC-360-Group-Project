@@ -107,7 +107,7 @@
 <script src="js/handleAnnouncements.js"></script>
 <script>
   $(function(){
-    $("#navbar-placeholder").load("components/navbarNoSearch.html");
+    $("#navbar-placeholder").load("components/navbarNoSearch.php");
   });
 </script>
 <script>

@@ -29,3 +29,31 @@
   flex-direction: column; 
   width: 100%;
 }
+
+.dark .announcement {
+  background-color: hsl(20 14.3% 6.1%);
+  color: hsl(0, 0%, 93%);
+}
+
+/* Apply styles to textarea in dark mode, including when it is focused */
+.dark textarea, .dark textarea:focus {
+  background-color: hsl(20 14.3% 6.1%); /* Dark mode background color */
+  color: hsl(0, 0%, 93%); /* Text color */
+  border-color: hsl(20 14.3% 10.1%); /* Adjust border color as needed */
+}
+
+/* Optional: Adjust the placeholder text color in dark mode */
+.dark textarea::placeholder {
+  color: hsl(0, 0%, 75%); /* Lighter text color for placeholder */
+  opacity: 1; /* Ensure full opacity */
+}
+
+.dark .card {
+  background-color: hsl(20 14.3% 6.1%);
+  color: hsl(0, 0%, 93%);
+}
+
+.dark textarea {
+  background-color: hsl(20 14.3% 6.1%);
+  color: hsl(0, 0%, 93%);
+}
