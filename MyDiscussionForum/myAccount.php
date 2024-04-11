@@ -123,7 +123,7 @@ if (!isset($_SESSION['userLoggedIn']) || $_SESSION['userLoggedIn'] !== true) {
 </script>
 <script>
   $(function(){
-    $("#footer-placeholder").load("components/footer.html");
+    $("#footer-placeholder").load("components/footer.php");
   });
 </script>
 <script src="js/profilePicture.js"></script>

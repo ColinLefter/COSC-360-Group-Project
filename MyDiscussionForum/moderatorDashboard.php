@@ -122,7 +122,7 @@
 </script>
 <script>
   $(function(){
-    $("#footer-placeholder").load("components/footer.html");
+    $("#footer-placeholder").load("components/footer.php");
   });
 </script>
 </body>
