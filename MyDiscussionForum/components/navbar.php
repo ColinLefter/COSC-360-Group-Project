@@ -54,8 +54,6 @@
       </button>
       <ul class="dropdown-menu dropdown-menu-end custom-dropdown">
         <li><a class="dropdown-item custom-dropdown" href="myAccount.php">My account</a></li>
-        <li><a class="dropdown-item custom-dropdown" href="adminDashboard.php">Admin Dashboard</a></li>
-        <li><a class="dropdown-item custom-dropdown" href="moderatorDashboard.php">Moderator Dashboard</a></li>
       </ul>
     </div>
   </div>

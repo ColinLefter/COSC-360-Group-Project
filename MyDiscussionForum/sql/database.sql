@@ -39,13 +39,13 @@ CREATE TABLE adminAnnouncement(
 
 CREATE TABLE userDetails (
     userId int NOT NULL,
-    useLightMode boolean DEFAULT 1,
+    useLightMode boolean DEFAULT 0,
     userAuthority int DEFAULT 0, -- For now, 0 = normal user, 1 = moderator, 2 = admin
     isBanned boolean DEFAULT 0,
     accountDate TIMESTAMP NOT NULL DEFAULT NOW(),
     dateOfBirth DATE,
     bio VARCHAR(250),
-    profilePicFileName VARCHAR(50) DEFAULT 'default.png',
+    profilePicName VARCHAR(50) DEFAULT 'default.png',
     FOREIGN KEY(userId) REFERENCES user(userId)
     ON DELETE CASCADE
 );
