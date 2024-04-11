@@ -20,28 +20,39 @@ validateMethodPost();
 
 $topics = $_POST['topics'];
 
-if (!isset($communityId) || !isset($postTitle) || !isset($postContent)) {
+if (!isset($topics)) {
     returnData("EMPTY_INPUT_GENERAL");
 }
+
+$topicsData = json_decode($topics, true);
 
 // Connect
 $connection = connectToDB();
 
 // // Sanitize
-$communityId = mysqli_real_escape_string($connection, $communityId);
-$postTitle = mysqli_real_escape_string($connection, $postTitle);
-$postContent = mysqli_real_escape_string($connection, $postContent);
+for ($i = 0; $i < count($topicsData); $i++) {
+    $topicsData[$i] = mysqli_real_escape_string($connection, $topicsData[$i]);
+}
 
-$sql = "INSERT INTO post (authorId, communityId, postTitle, postContent) VALUES ((SELECT userId from user WHERE userName='".$userName."'), '".$communityId."', '".$postTitle."', '".$postContent."');";    
+// Get most recent post
+$sql = "SELECT MAX(postId) AS id FROM post;";
+$results = mysqli_query($connection, $sql);
+$row = mysqli_fetch_assoc($results);
+$id = $row['id']; // Will always be the latest post
 
-// echo $sql;
+// Insert
+for ($i = 0; $i < count($topicsData); $i++) {
+    $sql = "INSERT INTO topic (postId, topicName) VALUES ('".$id."', '".$topicsData[$i]."');";  
+    $results = mysqli_query($connection, $sql);  
+}
+
 $results = mysqli_query($connection, $sql);
 
 if(mysqli_affected_rows($connection) > 0) {
-    returnData("POST_ADDED", $connection);
+    returnData("TOPICS_ADDED", $connection);
 
 } else {
-    returnData("POST_NOT_ADDED", $connection);
+    returnData("TOPICS_NOT_ADDED", $connection);
 }
 
 ?>

@@ -101,6 +101,7 @@ CREATE TABLE topic (
     topicName VARCHAR(10) NOT NULL,
     topicDesc VARCHAR(100),
     FOREIGN KEY(postId) REFERENCES post(postId)
+    ON DELETE CASCADE
 );
 
 -- Modify as necessary

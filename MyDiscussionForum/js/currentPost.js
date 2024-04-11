@@ -92,7 +92,7 @@ function insertPost(data) {
         $("div.post" + id).append("<p class='post-datetime post-subheader'><a class='reply' id='0' href=''>Reply</a></p>");
     }
     $("div.post" + id + " div.post-header").append("<div></div>");
-    $("div.post" + id + " div.post-header").append("<img class='profile-picture-small' src=res/img/" + data[0]['profilePicture'] + ">");
+    $("div.post" + id + " div.post-header").append("<img class='profile-picture-small' src='res/img/" + data[0]['profilePicture'] + "'>");
     $("div.post" + id + " div.post-header").append("<p class='post-author post-subheader'>&nbsp;" + data[0]['authorName'] + "</p>");
     $("div.post" + id + " div.post-header").append("<p class='post-datetime post-subheader'> &nbsp;&#x2022;&nbsp;" + parseDateTime(data[0]['creationDateTime']) + "</p>");
     $("div.post" + id + " div.post-header div").append("<h4 class='post-large-title-loaded'>" + data[0]['postTitle'] + "</h4>");

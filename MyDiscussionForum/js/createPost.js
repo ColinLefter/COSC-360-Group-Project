@@ -201,7 +201,8 @@ function addTopics() {
             } else if(result == "SUCCESS") {
 
                 // Load post
-                if (data['type'] == "TAGS_ADDED") {
+                if (data['type'] == "TOPICS_ADDED") {
+                    return;
                 }
 
                 console.log("Comment added sucessfully");

@@ -253,6 +253,16 @@ function returnData($msgType, $conn = false, $data = null) {
             $dataToReturn['type'] = $msgType;
             $dataToReturn['msg'] = "Community not added!";
             break;
+        case "TOPICS_ADDED":
+            $dataToReturn['result'] = "SUCCESS";
+            $dataToReturn['type'] = $msgType;
+            $dataToReturn['msg'] = "Topics added successfully!";
+            break;
+        case "TOPICS_NOT_ADDED":
+            $dataToReturn['result'] = "FAIL";
+            $dataToReturn['type'] = $msgType;
+            $dataToReturn['msg'] = "Topics not added!";
+            break;
         default:
             // TODO: Add error logging here
             break;
