@@ -1,10 +1,31 @@
+/* Adjust the flex properties of the columns */
+.left-column {
+  flex: 2;
+  padding: 3em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.right-column {
+  flex: 3; /* Adjust this value as needed to balance the layout */
+  text-align: center;
+}
+
+/* Ensuring the form fills the vertical space */
+#accountForm {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Distributes space between items */
+}
+
+/* Other styles remain the same */
 .large-heading {
   font-size: 5em;
   font-weight: 700;
-}
-
-.right-column {
-  text-align: center;
 }
 
 .setting {
@@ -17,10 +38,33 @@
 }
 
 .row-margin-bottom {
-  margin-bottom: 1.5em;
+  margin-bottom: 1em;
 }
 
+.dark input {
+  color: hsl(0, 0%, 94%);
+}
+
+.dark #profilePictureFile {
+  background-color: white;
+}
+
+.right-column {
+  background-image: url('../public/styled-banner.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+}
+
+.container, body, html {
+  height: 100%;
+}
+
+/* Adjust the max-height and overflow properties as needed */
 .left-column, .right-column {
-  max-height: 50vh; /* This will limit the height of the columns */
-  overflow-y: auto; /* This will add a scrollbar if the content exceeds the column height */
+  max-height: 60vh;
+}
+
+.dark .large-heading {
+  color: hsl(20 14.3% 6.1%);
 }

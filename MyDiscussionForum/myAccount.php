@@ -29,10 +29,8 @@ if (!isset($_SESSION['userLoggedIn']) || $_SESSION['userLoggedIn'] !== true) {
 <header class="header">
     <div id="navbar-placeholder"></div>
 </header>
-
-<div class="container my-5">
   <div class="row">
-    <div class="col-md-6 center-container left-column">
+    <div class="col-md-6 left-column">
       <!-- Account settings in the first column -->
       <form id="accountForm" action="backend/updateAccount.php" method="POST">
         <div class="row">
@@ -100,17 +98,17 @@ if (!isset($_SESSION['userLoggedIn']) || $_SESSION['userLoggedIn'] !== true) {
       </form>
     </div>
     <div class="col-md-6 center-container right-column">
-    <div class="profile-picture-large">
-        <input type="file" id="profilePictureFile" style="display: none;" accept=".jpg, .jpeg, .png">
-        <img>
-    </div>
 
-      <h1 class="large-heading">My Account</h1>
+      <div class="col center-container">
+        <div class="profile-picture-large">
+          <input type="file" id="profilePictureFile" style="display: none;" accept=".jpg, .jpeg, .png">
+          <img>
+        </div>
+        <h1 class="large-heading">My Account</h1>
+        </div>
+        </div>
       </div>
-    </div>
   </div>
-</div>
-
 <div id="footer-placeholder"></div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
@@ -118,7 +116,7 @@ if (!isset($_SESSION['userLoggedIn']) || $_SESSION['userLoggedIn'] !== true) {
 <script src="js/updateAccount.js"></script>
 <script>
   $(function(){
-    $("#navbar-placeholder").load("components/navbarNoSearch.html");
+    $("#navbar-placeholder").load("components/navbarNoSearch.php");
   });
 </script>
 <script>

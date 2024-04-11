@@ -22,7 +22,7 @@
   display: flex;
   font-family: 'Inter', sans-serif;
   align-items: center;
-  padding: 1em;
+  padding: 0.5em;
   justify-content: space-between;
 }
 
@@ -55,6 +55,22 @@
 
 .search-bar .form-control {
   width: 100%; /* Stretching the input field for the form, given by Bootstrap's form-control */
+}
+
+.dark input {
+  background-color: hsl(20 14.3% 6.1%);
+  border-color: hsl(20 14.3% 10.1%);
+}
+
+.dark input::placeholder { 
+  color: hsl(0, 0%, 94%);
+  opacity: 1;
+}
+
+.dark input:focus {
+  background-color: hsl(20, 14.3%, 6.1%);
+  border-color: hsl(20, 14.3%, 20.1%);
+  color: hsl(0, 0%, 94%);
 }
 
 .header {
@@ -112,12 +128,17 @@
   width: 100%;
 }
 
+.dark .primary-button-highlight {
+  background-color: hsl(20, 14%, 10%);
+  color: rgb(249, 249, 249);
+}
+
 .primary-button-highlight:hover {
-  background-color: rgb(53, 53, 53);
+  background-color: hsl(20, 14%, 15%);
 }
 
 .navbar-right button {
-  margin-right: 10px; /* Add margin between all buttons */
+  margin-right: 0.5em; /* Add margin between all buttons */
 }
 
 .nav-logo {
@@ -157,8 +178,12 @@ body.dark {
   color: hsl(60 9.1% 97.8%); /* Light text for body */
 }
 
-body.dark .navbar, body.dark .header, body.dark .footer, body.dark a {
+body.dark .navbar, body.dark .header, body.dark .footer, body.dark {
   background-color: hsl(20 14.3% 4.1%); /* Darker background for navbar, header, footer, and links */
+  color: hsl(60 9.1% 97.8%);
+}
+
+.dark a {
   color: hsl(60 9.1% 97.8%);
 }
 
@@ -347,12 +372,10 @@ body.dark .post-title { /* .post-title refuses to use the right background color
   display: block;
   margin-bottom: 15px;
   padding: 0.5em;
-  background-color: #f8f4f4;
   border-radius: 2px;
   text-decoration: none;
 }
 .recent-communities a, .topic-communities a, .popular-communities a {
-  color: inherit;
   text-decoration: none;
 }
 
@@ -370,6 +393,10 @@ body.dark .post-title { /* .post-title refuses to use the right background color
 
 .secondary-accent {
   background-color: hsl(0, 0%, 93%);
+}
+
+.dark .secondary-accent  {
+  background-color: hsl(20 14.3% 6.1%);
 }
 
 html, body {
@@ -423,8 +450,8 @@ body > #footer-placeholder { /* Sticky footer */
   border-style: solid 1px rgb(21, 21, 21);
 }
 
-.p {
-  background-color: black;
+p {
+  text-decoration: none;
 }
 
 .dark .popular {

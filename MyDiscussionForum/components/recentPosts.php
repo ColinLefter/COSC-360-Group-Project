@@ -18,7 +18,7 @@
         <div class="threadview">
           <h2 style="display: flex" class="threadview-category"><strong>Recent Posts</strong>
             <?php if(isset($_SESSION['userLoggedIn']) && $_SESSION['userLoggedIn'] === true): ?>
-              <input action="action" onclick="window.location.assign('createPost.html');" style="display: inline-block; margin: 0em 0em 0.1em auto; font-size: initial; justify-content: right;" type="submit" class="primary-button" value="Create a post">
+              <input action="action" onclick="window.location.assign('createPost.html');" style="display: inline-block; margin: 0em 0em 0.1em auto; font-size: initial; justify-content: right;" type="submit" class="button-base primary-button" value="Create a post">
             <?php endif; ?>
           </h2>
             <!-- Recent Posts are loaded here -->
