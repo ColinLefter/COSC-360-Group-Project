@@ -31,7 +31,7 @@ $(document).ready(function() {
                     console.log(data['msg']);
                 } else if(result == "SUCCESS") {
                     alert("User " + $("h6.user-username").html() + " successfully deleted.");
-                    // $('#userLookupInput').trigger($.Event('keypress', { keyCode: 13 }));
+                    $('#userLookupInput').trigger($.Event('keypress', { keyCode: 13 }));
                 } else {
                     console.log("Unreachable Error, debug php.");
                 }
@@ -72,7 +72,7 @@ $(document).ready(function() {
                     console.log(data['msg']);
                 } else if(result == "SUCCESS") {
                     alert("User " + $("h6.user-username").html() + " ban toggled.");
-                    // $('#userLookupInput').trigger($.Event('keypress', { keyCode: 13 }));
+                    $('.user-is-banned').text($('.user-is-banned').text() == "True" ? "False" : "True");
                 } else {
                     console.log("Unreachable Error, debug php.");
                 }
