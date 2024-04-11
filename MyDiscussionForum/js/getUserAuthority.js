@@ -5,7 +5,6 @@ $(document).ready(function() {
         dataType: 'json',
         success: function(data) {
             const dropdownMenu = $(".dropdown-menu.custom-dropdown");
-            dropdownMenu.append('<li><a class="dropdown-item custom-dropdown" href="myAccount.php">My account</a></li>');
   
             if (data.authority >= 1) { // Moderator or higher
                 dropdownMenu.append('<li><a class="dropdown-item custom-dropdown" href="moderatorDashboard.php">Moderator Dashboard</a></li>');
