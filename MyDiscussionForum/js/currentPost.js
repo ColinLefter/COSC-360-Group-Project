@@ -18,7 +18,12 @@ $(document).ready( function () {
         replyToId = e.target.id; // if this id is 0, it is the original post
 
         // Load jquery
-        $("#comment-box-placeholder").load("components/commentBox.php");
+        $("#comment-box-placeholder").load("components/commentBox.php", function() {
+            // Scroll to the comment box placeholder after the content is loaded
+            $('html, body').animate({
+                scrollTop: $("#comment-box-placeholder").offset().top
+            }, 100); // 100 milliseconds for animation
+        });
 
     } );
 
@@ -309,17 +314,3 @@ function parseDateTime(creationDateTime) {
         return Math.floor(timeAgo) + " minute(s) ago";
     }
 }
-
-$(document).on("click", "a.reply", function(e) {
-    e.preventDefault();
-    replyToId = e.target.id; // if this id is 0, it is the original post
-
-    // Load jquery
-    $("#comment-box-placeholder").load("components/commentBox.php", function() {
-        // Scroll to the comment box placeholder after the content is loaded
-        $('html, body').animate({
-            scrollTop: $("#comment-box-placeholder").offset().top
-        }, 100); // 100 milliseconds for animation
-    });
-
-});

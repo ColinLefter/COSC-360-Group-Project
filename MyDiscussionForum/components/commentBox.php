@@ -15,18 +15,16 @@
   </head>
   <body>
  
-    <section id="comment-box">
-          <p class='reply-to'>Replying to <a href='#'></a></p>
-          <form id='comment'>
-            <div style='display: flex;'>
-              <textarea id='comment-text-area' name='comment-content' rows='5'></textarea>
-            </div>
-            <div>
-              <input type='submit' id='comment-submit-button' class='button-base primary-button' value='Comment'>
-              <input type='button' id='comment-discard-button' class='button-base primary-button' value='Discard'>
-            </div>
-          </form>
-    </section>
+  <section id="comment-box" class="container mt-4 px-4 py-3">
+    <p class='reply-to mb-2'>Replying to <a href='#' class='link-info'></a></p>
+    <form id='comment' class="d-flex flex-column">
+      <textarea id='comment-text-area' name='comment-content' rows='5' class="form-control"></textarea>
+      <div class="d-flex justify-content-start gap-2">
+          <input type='submit' id='comment-submit-button' class='button-base primary-button' value='Comment'>
+          <input type='button' id='comment-discard-button' class='button-base primary-button' value='Discard'>
+      </div>
+    </form>
+  </section>
 
   <script src="js/functions.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
