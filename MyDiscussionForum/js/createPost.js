@@ -1,3 +1,5 @@
+var topics = new Array();
+var topicCount = 0;
 $(document).ready( function () {
 
     /* GET COMMUNITY ID */
@@ -6,6 +8,46 @@ $(document).ready( function () {
 
     // Load communities to dropdown, passed community Id first
     loadCommunities(communityId);
+
+    // Listener for topics
+    $("input.add-topic-button").on("click", function(e) {
+        e.preventDefault();
+
+        var topic = $("input#create-post-topics").val();
+        topic = topic.toLowerCase();
+
+        // Check if the topics box has text in it
+        if(topic == "") {
+            return;
+        }
+
+        // Check for duplicates
+        if (topics.includes(topic)) {
+            $("input#create-post-topics").val("");
+            return;
+        }
+
+        // If so, add the text as an element
+        topics.push(topic);
+
+        // Add html element with listener
+        topicCount += 1;        
+        $('div#create-post-header').after("<p class='topic-box' id='topic" + topicCount + "'>" + topic + "</p>");
+
+        // Clear
+        $("input#create-post-topics").val("");
+
+        // Create a listener for the newly created topic
+        $("p#topic"+topicCount).on("click", function (e) {
+            e.preventDefault();
+
+            var clickedTopic = $(this).text();
+
+            topics = topics.filter(item => item !== clickedTopic);
+            $(this).remove();
+        });
+
+    });
 
     // Listener for submitting post
     $(document).on("submit", "form", function(e) {
@@ -115,6 +157,7 @@ function addPost () {
 
                 // Load post
                 if (data['type'] == "POST_ADDED") {
+                    addTopics();
                     window.location.assign("index.html");
                 }
 
@@ -129,7 +172,48 @@ function addPost () {
         console.log("STATUS: " + xhr.status);
         console.log(thrownError);
         }
-    })
+    });
 
 
+}
+
+function addTopics() {
+    
+    var formData =  {
+        topics: JSON.stringify(topics),
+    };
+    
+    $.ajax({
+        url : 'backend/addTopics.php',
+        type : 'POST',
+        data : formData,
+        dataType : 'json',
+        success : function (data) {
+            
+            // Debug
+            // console.log(data);
+            var result = data['result'];
+            if (result == "FAIL") {
+            
+                console.log(data['type']);
+                console.log(data['msg']);
+
+            } else if(result == "SUCCESS") {
+
+                // Load post
+                if (data['type'] == "TAGS_ADDED") {
+                }
+
+                console.log("Comment added sucessfully");
+            
+            } else {
+                console.log("Unreachable Error, debug php.");
+            }
+        },
+        error : function (xhr, ajaxOptions, thrownError) {
+        alert("Error adding tags.");
+        console.log("STATUS: " + xhr.status);
+        console.log(thrownError);
+        }
+    });
 }

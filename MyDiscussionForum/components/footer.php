@@ -28,14 +28,9 @@
               <a href="#">
                 <p>Entertainment</p>
               </a>
-
-              <?php session_start();
-                if(isset($_SESSION['userLoggedIn']) && $_SESSION['userLoggedIn'] === true) {
-                  echo "<a href='createTopic.html'>
-                            <p>Create a Topic</p>
-                        </a>";
-                }
-                ?>
+              <a href="#">
+                <p>News</p>
+              </a>
 
             </div>
             <div class="footer-content">
@@ -49,7 +44,7 @@
               <a href="community.html?c=3">
                 <p>Computer Science</p>
 
-                <?php // Do not session start here
+                <?php session_start();
                 if(isset($_SESSION['userLoggedIn']) && $_SESSION['userLoggedIn'] === true) {
                   echo "<a href='createCommunity.html'>
                             <p>Create a Community</p>

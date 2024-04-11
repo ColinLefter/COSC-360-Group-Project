@@ -1,4 +1,4 @@
-#create-post-body {
+#create-community-body {
     margin: auto;
     width: 100%; /*  */
     margin-top: 60px;
@@ -10,11 +10,11 @@
     border-color: rgb(209, 209, 209);
 }
 
-.create-post-inner {
+.create-community-inner {
     border-radius: 15px;
   }
 
-.create-post-header {
+.create-community-header {
     margin: auto;
     width: 95%;
     padding-top: 0.5em;
@@ -25,24 +25,16 @@
     border-bottom: solid 0.05em rgb(21, 21, 21);
 }
 
-.create-post-community-dropdown {
-    margin: 1em 1em 0em 1em;
-}
-
-#create-post-title, #create-post-content, #create-post-topics {
+#create-community-title, #create-community-description {
     margin: 1em;
     display: flex;
-    flex: 4;
+    flex: 1;
     border-radius: 5px;
     border-width: 1px;
     padding: 0.5em;
 }
 
-#create-post-topics {
-    flex: 1;
-}
-
-.create-post-button, .add-topic-button {
+.create-community-button {
     padding: 0.5em;
     display: inline-block;
     border-radius: 5px;
@@ -54,32 +46,6 @@
     margin-bottom: 1em;
 }
 
-.add-topic-button {
-    margin: 0;
-    margin-right: 1em;
-    margin-left: 1em;
-    align-items: center;
-}
-
-.create-post-button:hover, .add-topic-button:hover {
+.create-community-button:hover {
     background-color: rgb(244, 243, 243);
-}
-
-.topic-box {
-    display: inline-block;
-    margin-left: 1em;
-    margin-right: 1em;
-    margin-bottom: 0;
-    margin-top: 1em;
-    border: 2px solid black;
-    border-radius: 8px;
-    background-color: lightcoral;
-    color: black;
-    padding: 0.5em;
-}
-
-.topic-box:hover {
-    background-color: red;
-    transition: 0.2s;
-    cursor: pointer;
 }

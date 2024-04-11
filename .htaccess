@@ -1,1 +1,4 @@
+RewriteEngine On
+RewriteRule ^$ COSC-360-Group-Project/MyDiscussionForum/index.html [L]
+
 ErrorDocument 404   /COSC-360-Group-Project/MyDiscussionForum/pages/pageNotFound.html

@@ -36,8 +36,10 @@
                     </div>
                     
                     <form id="create-post">
-                        <div style='display: flex;'>
+                        <div style='display: flex; align-items: center; flex-wrap: wrap;' id='create-post-header'>
                             <input type="text" id="create-post-title" name="post-title" placeholder="Title" required>
+                            <input type="text" id="create-post-topics" name="post-topics" placeholder="Topic">
+                            <input type="button" class="add-topic-button" value="Add Topic">
                         </div>
                         <div style='display: flex;'>
                             <textarea id="create-post-content" name="post-content" placeholder="Lorem Ipsum..." rows="10" required></textarea>
