@@ -19,7 +19,9 @@ function loadPosts(numPosts) {
     if (typeof communityId !== 'undefined') {
         formData['cid'] = communityId;
     }
-
+    if (typeof topic !== 'undefined') {
+        formData['topic'] = topic;
+    }
 
     $.ajax({
         url : 'backend/recentPosts.php',
