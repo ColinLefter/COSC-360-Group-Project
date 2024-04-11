@@ -15,10 +15,11 @@ if (!isset($_SESSION['userLoggedIn']) || $_SESSION['userLoggedIn'] !== true) {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="css/reset.css">
     <link rel="stylesheet" type="text/css" href="css/styles.css">
-    <link rel="stylesheet" type="text/css" href="css/myAccount.css">
+    
     <link rel="stylesheet" type="text/css" href="css/profilePicture.css">
     <link rel="stylesheet" type="text/css" href="css/footer.css">
     <link rel="stylesheet" type="text/css" href="css/profilePicture.css">
+    <link rel="stylesheet" type="text/css" href="css/myAccount.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -29,12 +30,10 @@ if (!isset($_SESSION['userLoggedIn']) || $_SESSION['userLoggedIn'] !== true) {
 <header class="header">
     <div id="navbar-placeholder"></div>
 </header>
-
-<div class="container my-5">
   <div class="row">
-    <div class="col-md-6 center-container left-column">
+    <div class="col-md-6 left-column px-5">
       <!-- Account settings in the first column -->
-      <form id="accountForm" action="backend/updateAccount.php" method="POST">
+      <form id="accountForm" style="justify-content: center;" action="backend/updateAccount.php" method="POST">
         <div class="row">
           <h2 class="minor-spacer">Account Settings</h2>
 
@@ -100,17 +99,15 @@ if (!isset($_SESSION['userLoggedIn']) || $_SESSION['userLoggedIn'] !== true) {
       </form>
     </div>
     <div class="col-md-6 center-container right-column">
-    <div class="profile-picture-large">
-        <input type="file" id="profilePictureFile" style="display: none;" accept=".jpg, .jpeg, .png">
-        <img>
-    </div>
-
-      <h1 class="large-heading">My Account</h1>
+      <div class="col center-container">
+        <div class="profile-picture-large">
+          <input type="file" id="profilePictureFile" style="display: none;" accept=".jpg, .jpeg, .png">
+          <img>
+        </div>
+        <h1 class="large-heading">My Account</h1>
+        </div>
+        </div>
       </div>
-    </div>
-  </div>
-</div>
-
 <div id="footer-placeholder"></div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
@@ -118,7 +115,7 @@ if (!isset($_SESSION['userLoggedIn']) || $_SESSION['userLoggedIn'] !== true) {
 <script src="js/updateAccount.js"></script>
 <script>
   $(function(){
-    $("#navbar-placeholder").load("components/navbarNoSearch.html");
+    $("#navbar-placeholder").load("components/navbarNoSearch.php");
   });
 </script>
 <script>

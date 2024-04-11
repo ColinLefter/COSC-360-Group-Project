@@ -9,6 +9,10 @@
   font-weight: 700;
 }
 
+.dark .form-heading-text {
+  color: rgb(249, 249, 249);
+}
+
 .create-account-form {
   width: 40%;
   padding: 2em;
