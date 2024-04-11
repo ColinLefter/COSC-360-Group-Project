@@ -70,7 +70,6 @@
         window.location.assign("login.html");
       });
   }
-
   // Handling search form submission
   $("#searchForm").on("submit", function (e) {
       e.preventDefault();
