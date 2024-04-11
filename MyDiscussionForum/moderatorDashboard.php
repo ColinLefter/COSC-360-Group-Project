@@ -117,8 +117,10 @@
 <script src="js/userLookup.js"></script>
 <script src="js/deleteUser.js"></script>
 <script>
-  $(function(){
-    $("#navbar-placeholder").load("components/navbarNoSearch.php");
+  $(function() {
+    $("#navbar-placeholder").load("components/navbarNoSearch.php", function() {
+      $(document).trigger('contentLoaded');
+    });
   });
 </script>
 <script>
