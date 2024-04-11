@@ -39,7 +39,7 @@ CREATE TABLE adminAnnouncement(
 
 CREATE TABLE userDetails (
     userId int NOT NULL,
-    useLightMode boolean DEFAULT 1,
+    useLightMode boolean DEFAULT 0,
     userAuthority int DEFAULT 0, -- For now, 0 = normal user, 1 = moderator, 2 = admin
     isBanned boolean DEFAULT 0,
     accountDate TIMESTAMP NOT NULL DEFAULT NOW(),

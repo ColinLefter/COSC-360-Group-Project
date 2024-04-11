@@ -22,7 +22,6 @@
             <?php endif; ?>
           </h2>
             <!-- Recent Posts are loaded here -->
-
         </div>
   
         <div class="threadview-more">
