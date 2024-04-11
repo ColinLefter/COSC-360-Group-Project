@@ -46,8 +46,6 @@ for ($i = 0; $i < count($topicsData); $i++) {
     $results = mysqli_query($connection, $sql);  
 }
 
-$results = mysqli_query($connection, $sql);
-
 if(mysqli_affected_rows($connection) > 0) {
     returnData("TOPICS_ADDED", $connection);
 

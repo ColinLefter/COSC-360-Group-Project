@@ -48,6 +48,26 @@ if($result->num_rows > 0) {
         $i++;
     }
 
+    // Get all topics
+    $sql = "SELECT topicName FROM post INNER JOIN topic ON post.postId=topic.postId WHERE post.postId= ?;";    
+    $stmt = $connection->prepare($sql);
+    
+    // Bind the integer parameter
+    $stmt->bind_param("i", $postId);
+    
+    // Execute the query
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if($result->num_rows > 0) {
+        $postData[0]['topics'] = array();
+        $i = 0;
+        while ($row = $result->fetch_assoc()) {
+            $postData[0]['topics'][$i] = $row['topicName'];
+            $i++;
+        }
+    }
+
     returnData("CURRENT_POST", $connection, $postData);
 
 } else {
