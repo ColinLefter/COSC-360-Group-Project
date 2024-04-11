@@ -91,20 +91,19 @@ function insertPost(data) {
     if (loggedIn) {
         $("div.post" + id).append("<p class='post-datetime post-subheader'><a class='reply' id='0' href=''>Reply</a></p>");
     }
-    // topics
-    // console.log(data[0]['topics']);
-    if (typeof data[0]['topics'] !== 'undefined') { // We have topics
-        var topicsString = "<p class='post-datetime post-subheader'>Topics: ";
-        for (var i = 0; i < data[0]['topics'].length; i++) {
-            topicsString += " <a href='topics.html?t=" + data[0]['topics'][i] + "'>" + data[0]['topics'][i] + "</a>";
-        }
-        topicsString += "</p>";
-        $("div.post" + id).append("<div>" + topicsString + "</div>");
-    }
     $("div.post" + id + " div.post-header").append("<div></div>");
     $("div.post" + id + " div.post-header").append("<img class='profile-picture-small' src='res/img/" + data[0]['profilePicture'] + "'>");
     $("div.post" + id + " div.post-header").append("<p class='post-author post-subheader'>&nbsp;" + data[0]['authorName'] + "</p>");
     $("div.post" + id + " div.post-header").append("<p class='post-datetime post-subheader'> &nbsp;&#x2022;&nbsp;" + parseDateTime(data[0]['creationDateTime']) + "</p>");
+    // topics
+    if (typeof data[0]['topics'] !== 'undefined') { // We have topics
+        var topicsString = "<p class='post-datetime post-subheader'>&nbsp;&#x2022;&nbsp;topics: ";
+        for (var i = 0; i < data[0]['topics'].length; i++) {
+            topicsString += " <a href='topics.html?t=" + data[0]['topics'][i] + "'>" + data[0]['topics'][i] + "</a>";
+        }
+        topicsString += "</p>";
+        $("div.post" + id + " div.post-header").append(topicsString);
+    }
     $("div.post" + id + " div.post-header div").append("<h4 class='post-large-title-loaded'>" + data[0]['postTitle'] + "</h4>");
 
 }

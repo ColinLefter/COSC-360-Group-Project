@@ -77,7 +77,8 @@ CREATE TABLE post (
     PRIMARY KEY(postId),
     FULLTEXT INDEX (postTitle),
     FULLTEXT INDEX (postContent),
-    FOREIGN KEY(authorId) REFERENCES user(userId),
+    FOREIGN KEY(authorId) REFERENCES user(userId)
+    ON DELETE CASCADE,
     FOREIGN KEY(communityId) REFERENCES community(communityId)
 );
 
@@ -92,13 +93,15 @@ CREATE TABLE comment (-- Comments belong to a parent post
     PRIMARY KEY(commentId),
     FOREIGN KEY(postId) REFERENCES post(postId)
     ON DELETE CASCADE, -- Only delete a comment if its post is deleted. If the parent comment is deleted, keep the comment.
-    FOREIGN KEY(parentId) REFERENCES comment(commentId),
+    FOREIGN KEY(parentId) REFERENCES comment(commentId)
+    ON DELETE CASCADE,
     FOREIGN KEY(userId) REFERENCES user(userId)
+    ON DELETE CASCADE
 );
 
 CREATE TABLE topic (
     postId int NOT NULL,
-    topicName VARCHAR(10) NOT NULL,
+    topicName VARCHAR(20) NOT NULL,
     topicDesc VARCHAR(100),
     FOREIGN KEY(postId) REFERENCES post(postId)
     ON DELETE CASCADE

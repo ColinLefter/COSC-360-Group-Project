@@ -80,10 +80,10 @@
       <h2 class="my-3">Actions</h2>
       <div class="row">
         <div class="col pe-1">
-          <button class="primary-button-highlight" type="submit" style="align-self: center;">Temporary ban</button>
+          <button class="primary-button-highlight" id="ban-user" type="submit" style="align-self: center;">Temporary ban</button>
         </div>
         <div class="col ps-1">
-          <button class="primary-button-highlight" type="submit" style="align-self: center;">Delete user</button>
+          <button class="primary-button-highlight" id="delete-user" type="submit" style="align-self: center;">Delete user</button>
         </div>
       </div>
     </div>
@@ -115,6 +115,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 <script src="js/handleAnnouncements.js"></script>
 <script src="js/userLookup.js"></script>
+<script src="js/deleteUser.js"></script>
 <script>
   $(function(){
     $("#navbar-placeholder").load("components/navbarNoSearch.php");

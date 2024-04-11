@@ -19,16 +19,16 @@
           <div class="col-12 d-flex justify-content-between"> <!-- Use Flexbox here -->
             <div class="footer-content">
               <h6>Topics</h6>
-              <a href="#">
+              <a href="topics.html?t=gaming">
                 <p>Gaming</p>
               </a>
-              <a href="#">
+              <a href="topics.html?t=sports">
                 <p>Sports</p>
               </a>
-              <a href="#">
+              <a href="topics.html?t=entertainment">
                 <p>Entertainment</p>
               </a>
-              <a href="#">
+              <a href="topics.html?t=news">
                 <p>News</p>
               </a>
 
