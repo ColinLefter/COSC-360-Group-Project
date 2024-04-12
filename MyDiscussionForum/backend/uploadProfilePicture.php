@@ -53,16 +53,17 @@ $fileName = mysqli_real_escape_string($connection, $fileName);
 str_replace("'","_", $fileName);
 str_replace('"',"_", $fileName);
 
-$fileName = $userName.$fileName;
+$stmt = $connection->prepare("UPDATE userDetails SET profilePicName = ? WHERE userId = ?");
+$preparedFileName = $userName . $fileName; // This assumes you want to prepend the username to the file name
+$stmt->bind_param("si", $preparedFileName, $userID);
 
-$sql = "UPDATE userDetails SET profilePicName='".$fileName."' WHERE userDetails.userId='".$userID."';";
-$results = mysqli_query($connection, $sql);
-
-if(mysqli_affected_rows($connection) > 0) {
+if ($stmt->execute()) {
     returnData("PROFILE_PICTURE_UPLOADED", $connection);
-
 } else {
     returnData("PROFILE_PICTURE_NOT_UPLOADED", $connection);
 }
+
+$stmt->close();
+$connection->close();
 
 ?>

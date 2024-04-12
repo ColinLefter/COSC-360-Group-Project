@@ -25,6 +25,21 @@ function returnData($msgType, $conn = false, $data = null) {
             $dataToReturn['type'] = $msgType;
             $dataToReturn['msg'] = "No new account changes.";
             break;
+        case "NOT_LOGGED_IN":
+            $dataToReturn['result'] = "FAIL";
+            $dataToReturn['type'] = $msgType;
+            $dataToReturn['msg'] = "Not logged in.";
+            break;
+        case "NOT_FILE_PROVIDED":
+            $dataToReturn['result'] = "FAIL";
+            $dataToReturn['type'] = $msgType;
+            $dataToReturn['msg'] = "No file provided. Please upload a file.";
+            break;
+        case "FAILED_TO_UPLOAD_FILE":
+            $dataToReturn['result'] = "FAIL";
+            $dataToReturn['type'] = $msgType;
+            $dataToReturn['msg'] = "Unable to upload file.";
+            break;
         case "USER_NOT_FOUND":
             $dataToReturn['result'] = "FAIL";
             $dataToReturn['type'] = $msgType;
