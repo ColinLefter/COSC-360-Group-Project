@@ -57,10 +57,29 @@
   width: 100%; /* Stretching the input field for the form, given by Bootstrap's form-control */
 }
 
+input, textarea {
+  background-color: #ffffff; /* White background for light mode */
+  color: #333333; /* Darker text color for readability */
+  border: 1px solid #ccc; /* Light grey border in normal state */
+}
+
+input::placeholder, textarea::placeholder { 
+  color: #666666; /* Grey color for placeholders */
+  opacity: 1;
+}
+
+input:focus, textarea:focus {
+  background-color: #ffffff; /* White background remains on focus */
+  border-color: rgba(0, 0, 0, 0.9); /* Nearly black border on focus */
+  color: #333333;
+  outline: none; /* Remove default outline */
+  box-shadow: none; /* Ensure no box-shadow is applied */
+}
+
 .dark input, .dark textarea {
   background-color: hsl(20, 14.3%, 6.1%);
-  color: hsl(0, 0%, 94%); /* Light color for text */
-  border-color: hsl(20, 14.3%, 10.1%);
+  color: hsl(0, 0%, 94%);
+  border: 1px solid hsl(20, 14.3%, 10.1%);
 }
 
 .dark input::placeholder, .dark textarea::placeholder { 
@@ -68,10 +87,12 @@
   opacity: 1;
 }
 
-.dark input:focus, .dark textarea:focus {
+body.dark input:focus, body.dark textarea:focus {
   background-color: hsl(20, 14.3%, 6.1%);
-  border-color: hsl(20, 14.3%, 20.1%);
+  border-color: hsl(0, 0%, 100%); /* White border */
   color: hsl(0, 0%, 94%);
+  outline: none; /* Ensures overriding of Bootstrap's default focus outline */
+  box-shadow: none; /* Bootstrap sometimes uses box-shadow to create focus outlines */
 }
 
 .header {

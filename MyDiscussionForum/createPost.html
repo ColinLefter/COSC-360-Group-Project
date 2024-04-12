@@ -31,8 +31,8 @@
                     <h2 class="create-post-header"><strong>Create a Post</strong></h2>
                     <div>
                         <select class="create-post-community-dropdown" name="communities" id="create-post-communities">
-                              <!-- Communities go here -->
-                          </select>
+                        <!-- Communities go here -->
+                        </select>
                     </div>
                     
                     <form id="create-post">
@@ -42,14 +42,18 @@
                             <input type="button" class="add-topic-button" value="Add Topic">
                         </div>
                         <div style='display: flex;'>
-                            <textarea id="create-post-content" name="post-content" placeholder="Lorem Ipsum..." rows="10" required></textarea>
+                          <textarea id="create-post-content" name="post-content" placeholder="Post details..." rows="10" required></textarea>
                         </div>
-                        <button type="submit" class="button-base primary-button">Add Post</button>
-                        <button action="action"class="button-base primary-button" onclick="window.history.go(-1); return false;" class="button-base primary-button" type="submit" class="create-post-button">Cancel</button>
-                    </form>
-
+                        <div class='row px-3 py-0'>
+                          <div class="col-6">
+                              <button type="submit" class="button-base primary-button w-100">Add Post</button>
+                          </div>
+                          <div class="col-6">
+                              <button type="button" class="button-base primary-button w-100" onclick="window.history.go(-1); return false;">Cancel</button>
+                          </div>
+                        </div>                      
+                      </form>
                 </div>
-
             </section>
         </div>
 
