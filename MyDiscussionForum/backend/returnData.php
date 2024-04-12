@@ -5,7 +5,6 @@
 // If we only need confirmation that we succeeded, we only need to return the result
 
 function returnData($msgType, $conn = false, $data = null) {
-
     // Big ol' switch
     $dataToReturn = array();
 

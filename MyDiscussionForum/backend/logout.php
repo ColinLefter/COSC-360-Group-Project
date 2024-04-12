@@ -3,16 +3,16 @@
 include "commonFunctions.php";
 include "databaseFunc.php";
 
-// First start the session to access the session variables
+// Starting the session to access the session variables
 session_start();
 
 $connection = connectToDB();
 trackUserActivity($connection, $_SESSION['userId'], "LOGOUT");
 
-// Unset all of the session variables
-$_SESSION = array(); // Setting the session to an empty array
+// Unsetting all of the session variables
+$_SESSION = array();
 
-// Destroy the session
+// Destroying the session
 session_destroy();
 
 // For production:

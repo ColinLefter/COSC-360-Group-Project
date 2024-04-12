@@ -11,68 +11,78 @@ if (!validateMethodPost()) {
     exit(); // Stop script execution if not POST
 }
 
-$rowOffset = $_POST['offset'];
-$numPosts = $_POST['posts'];
-$query = $_POST['query'];
-$topic = $_POST['topic'];
+$rowOffset = $_POST['offset'] ?? 0;
+$numPosts = $_POST['posts'] ?? 10;
+$query = $_POST['query'] ?? '';
+$topic = $_POST['topic'] ?? 'none';
 
-if (!isset($rowOffset) || !isset($numPosts) || !isset($query) || !isset($topic)) {
+if (empty($query)) {
     returnData("EMPTY_INPUT_GENERAL");
+    exit;
 }
 
-// Connect
+// Connect to the database
 $connection = connectToDB();
 
-// Sanitize
-$rowOffset = mysqli_real_escape_string($connection, $rowOffset);
-$numPosts = mysqli_real_escape_string($connection, $numPosts);
-$query = mysqli_real_escape_string($connection, $query);
-$topic = mysqli_real_escape_string($connection, $topic);
+// Sanitize the input
+$query = $connection->real_escape_string($query);
+$values = explode(' ', $query);
+$topicCondition = '';
 
-// Get statement for query, or prepared statement for topic query
-
-$values = explode(' ',$query);
-$sql = "SELECT postId, user.userName, postTitle, postContent, creationDate, 
-    MATCH (postTitle) AGAINST ('".$query."' IN BOOLEAN MODE) AS titleRel,
-    MATCH (postContent) AGAINST ('".$query."' IN BOOLEAN MODE) AS contentRel
-    FROM post INNER JOIN user ON post.authorId=user.userId WHERE ";
-
-$i = 0;
-foreach($values as $v){
-    $v=trim($v);
-
-    if($i==0) {
-        $sql.=" (postTitle LIKE '%".$v."%' OR postContent LIKE '%".$v."%'";
-    }
-    else {
-        $sql.=" OR postTitle LIKE '%".$v."%' OR postContent LIKE '%".$v."%'";
-    }
-    $i++;
+if ($topic !== 'none') {
+    $topic = $connection->real_escape_string($topic);
+    $topicCondition = " AND topicName = ?";
 }
 
-$sql = $sql.") ";
+$searchConditions = [];
 
-if  (strcmp($topic, "none") == 0) {
-    $sql = $sql."ORDER BY (titleRel + contentRel) DESC LIMIT ".$numPosts." OFFSET ".$rowOffset.";";
+foreach ($values as $value) {
+    $value = trim($value);
+    if (!empty($value)) {
+        $searchConditions[] = "postTitle LIKE CONCAT('%', ?, '%') OR postContent LIKE CONCAT('%', ?, '%')";
+    }
+}
+
+if (empty($searchConditions)) {
+    returnData("EMPTY_INPUT_GENERAL");
+    exit;
+}
+
+$sql = "SELECT postId, user.userName, postTitle, postContent, creationDate,
+        MATCH (postTitle, postContent) AGAINST (? IN BOOLEAN MODE) AS relevance
+        FROM post
+        INNER JOIN user ON post.authorId=user.userId
+        WHERE (" . implode(' OR ', $searchConditions) . ")" . $topicCondition . "
+        ORDER BY relevance DESC LIMIT ? OFFSET ?";
+
+$stmt = $connection->prepare($sql);
+
+$types = str_repeat('s', count($values) * 2 + 1); // Each value needs two bindings (title and content), plus one for the full-text search
+$params = array_merge($values, $values); // Bind each value twice (once for title, once for content)
+array_push($params, $query); // For full-text search
+
+if ($topic !== 'none') {
+    $types .= 'si'; // Add string type for topic and integers for limit and offset
+    array_push($params, $topic, (int)$numPosts, (int)$rowOffset);
 } else {
-    // Figure out topics
-    // $sql = $sql." AND LIMIT ".$numPosts." OFFSET ".$rowOffset";";    
+    $types .= 'ii'; // Add integer types for limit and offset
+    array_push($params, (int)$numPosts, (int)$rowOffset);
 }
-// echo $sql;
 
+$stmt->bind_param($types, ...$params);
+$stmt->execute();
+$result = $stmt->get_result();
 $postData = array();
-$results = mysqli_query($connection, $sql);
 
-if(mysqli_num_rows($results) > 0) {
-    $i = 0;
-    while ($row = mysqli_fetch_assoc($results)) {
-        $postData[$i] = array();
-        $postData[$i]['postId'] = $row['postId'];
-        $postData[$i]['authorName'] = $row['userName'];
-        $postData[$i]['postTitle'] = $row['postTitle'];
-        $postData[$i]['postContent'] = $row['postContent'];
-        $postData[$i]['creationDateTime'] = $row['creationDate'];
-        $i++;
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        $postData[] = array(
+            'postId' => $row['postId'],
+            'authorName' => $row['userName'],
+            'postTitle' => $row['postTitle'],
+            'postContent' => $row['postContent'],
+            'creationDateTime' => $row['creationDate']
+        );
     }
 
     trackUserActivity($connection, $_SESSION['userId'], "SEARCH_POSTS");
@@ -81,5 +91,8 @@ if(mysqli_num_rows($results) > 0) {
 } else {
     returnData("QUERIED_POSTS_EMPTY", $connection);
 }
+
+$stmt->close();
+closeDB($connection);
 
 ?>
