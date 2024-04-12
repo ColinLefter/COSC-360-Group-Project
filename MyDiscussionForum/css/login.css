@@ -1,13 +1,39 @@
+#bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.login-container {
+  position: relative; 
+  z-index: 2;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.dark .login-container {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
 .create-account-form {
   width: 30%;
   padding: 2em;
   border-radius: 10px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  margin: auto;
 }
 
-.no-account-text {
-  margin-bottom: 0; /* Reduce or remove the bottom margin */
+.dark .create-account-form {
+  background-color: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.10);
 }
 
-.text-icon-wrapper {
-  margin-top: 0; /* Reduce or remove the top margin */
+.no-account-text, .text-icon-wrapper {
+  margin-top: 1em;
 }
