@@ -49,6 +49,8 @@
                   echo "<a href='createCommunity.html'>
                             <p>Create a Community</p>
                         </a>";
+                } else {
+                  echo "<p>&nbsp;</p>";
                 }
                 ?>
 

@@ -113,6 +113,17 @@ CREATE TABLE statistic (
     dailyVisitors int
 );
 
+CREATE TABLE recentActivity  (
+    activityId int AUTO_INCREMENT NOT NULL,
+    userId int NOT NULL,
+    isCommunity boolean NOT NULL,
+    cid int,
+    name VARCHAR(30) NOT NULL,
+    PRIMARY KEY(activityId),
+    FOREIGN KEY(userId) REFERENCES user(userId)
+    ON DELETE CASCADE
+);
+
 -- Sample data (users)
 -- Does not matter that the password is hashed, since its only for consistency
 INSERT INTO user (userName, firstName, lastName, email, accountAge, password) VALUES ('jsmith', 'John', "Smith", 'john@smith.com', '3 days', 'password1');

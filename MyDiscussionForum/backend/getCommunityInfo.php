@@ -42,6 +42,13 @@ if ($isPost === "0") { // community page
     }
     
     $stmt->close();
+
+    // Log an entry for a community page visit
+    session_start();
+    if(isset($_SESSION['userId'])) {
+        $sql = "INSERT INTO recentActivity (userId, isCommunity, name, cid) VALUES ('".$_SESSION['userId']."','1', '".$row['communityName']."', '".$id."');";
+        $results = mysqli_query($connection, $sql);
+    }
     returnData("COMMUNITY_INFO", $connection, $communityData);
 } else { // post page
     $stmt = $connection->prepare("SELECT communityName, description, community.communityId FROM community INNER JOIN post ON community.communityId = post.communityId WHERE postId = ?");
