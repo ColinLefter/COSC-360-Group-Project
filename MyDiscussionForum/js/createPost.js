@@ -32,7 +32,7 @@ $(document).ready( function () {
 
         // Add html element with listener
         topicCount += 1;        
-        $('div#create-post-header').after("<p class='badge topic-box' id='topic" + topicCount + "'>" + topic + "</p>");
+        $('div#create-post-header').after("<p class='badge topic-box' id='topic" + topicCount + "'>" + topic + " &#10060;</p>");
 
         // Clear
         $("input#create-post-topics").val("");
