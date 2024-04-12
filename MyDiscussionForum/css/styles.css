@@ -201,7 +201,7 @@ body.dark {
 }
 
 body.dark .navbar, body.dark .header, body.dark .footer, body.dark {
-  background-color: hsl(20 14.3% 4.1%); /* Darker background for navbar, header, footer, and links */
+  background-color: hsl(20 14.3% 6.1%); /* Darker background for navbar, header, footer, and links */
   color: hsl(60 9.1% 97.8%);
 }
 
@@ -241,7 +241,7 @@ body.dark .search-bar::placeholder {
 }
 
 .dark #forum-body {
-  background-color: hsl(20 14.3% 4.1%);
+  background-color: hsl(20 14.3% 6.1%);
 }
 
 .threadview {
@@ -319,7 +319,7 @@ body.dark .primary-button:hover {
 
 /* Forum Dark Mode */
 body.dark #forum-body, body.dark .threadview, body.dark .load-posts, body.dark .post-container {
-  background-color: hsl(20 14.3% 4.1%);
+  background-color: hsl(20 14.3% 6.1%);
 }
 
 body.dark .load-posts {
@@ -331,7 +331,7 @@ body.dark .threadview-category {
 }
 
 body.dark .post-container:hover, body.dark .load-posts:hover {
-  background-color: hsl(20 14.3% 4.1%);
+  background-color: hsl(20 14.3% 6.1%);
 }
 
 body.dark .post-title { /* .post-title refuses to use the right background color otherwise */
@@ -370,7 +370,7 @@ body.dark .post-title { /* .post-title refuses to use the right background color
 }
 
 .dark #left-side {
-  background-color: hsl(20 14.3% 4.1%);
+  background-color: hsl(20 14.3% 6.1%);
 }
 
 #right-side{
@@ -382,7 +382,7 @@ body.dark .post-title { /* .post-title refuses to use the right background color
 }
 
 .dark #right-side {
-  background-color: hsl(20 14.3% 4.1%);
+  background-color: hsl(20 14.3% 6.1%);
 }
 
 .recent-container, .topic-container, .popular-container{
@@ -472,7 +472,7 @@ body > #footer-placeholder { /* Sticky footer */
 }
 
 .dark .recent-topics {
-  background-color: hsl(20 14.3% 4.1%);
+  background-color: hsl(20 14.3% 6.1%);
   border-style: solid 1px rgb(21, 21, 21);
 }
 
@@ -481,7 +481,7 @@ p {
 }
 
 .dark .popular {
-  background-color: hsl(20 14.3% 4.1%);
+  background-color: hsl(20 14.3% 6.1%);
 }
 
 .dark .light-accent {
