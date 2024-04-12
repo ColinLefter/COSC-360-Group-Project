@@ -1,3 +1,13 @@
+<?php
+session_start();
+include "databaseFunc.php";
+
+// Default redirection if not logged in or not an admin
+if (!isset($_SESSION['userId']) || !isset($_SESSION['userAuthority']) || $_SESSION['userAuthority'] != 2) {
+    header("Location: login.html"); // Redirect to the login page or home page if not an admin
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>

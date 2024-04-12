@@ -39,9 +39,16 @@ if (strcmp($isPost, "0") == 0) { // community page
 
     // Log an entry for a community page visit
     session_start();
-    if(isset($_SESSION['userId'])) {
-        $sql = "INSERT INTO recentActivity (userId, isCommunity, name, cid) VALUES ('".$_SESSION['userId']."','1', '".$row['communityName']."', '".$id."');";
-        $results = mysqli_query($connection, $sql);
+    if (isset($_SESSION['userId'])) {
+        $userId = $_SESSION['userId'];
+        $isCommunity = 1;
+        $communityName = $row['communityName']; // Assuming this is fetched above
+        $cid = $id; // Assuming this is the communityId
+    
+        $stmt = $connection->prepare("INSERT INTO recentActivity (userId, isCommunity, name, cid) VALUES (?, ?, ?, ?)");
+        $stmt->bind_param("iisi", $userId, $isCommunity, $communityName, $cid);
+        $stmt->execute();
+        $stmt->close();
     }
     returnData("COMMUNITY_INFO", $connection, $communityData);
 } else { // post page
