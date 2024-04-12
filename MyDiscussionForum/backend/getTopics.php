@@ -14,7 +14,7 @@ $connection = connectToDB();
 
 // Nothing to sanitize
 
-$sql = "SELECT communityName, communityId FROM community ORDER BY communityId DESC;";    
+$sql = "SELECT topicName, postId FROM topic ORDER BY postId DESC;";    
 
 $results = mysqli_query($connection, $sql);
 $communityData = array();
@@ -23,15 +23,14 @@ if(mysqli_num_rows($results) > 0) {
     $i = 0;
     while ($row = mysqli_fetch_assoc($results)) {
         $communityData[$i] = array();
-        $communityData[$i]['communityId'] = $row['communityId'];
-        $communityData[$i]['communityName'] = $row['communityName'];
+        $communityData[$i]['topicName'] = $row['topicName'];
         $i++;
     }
 
-    returnData("CREATE_POST_COMMUNITIES", $connection, $communityData);
+    returnData("TOPICS_RETURNED", $connection, $communityData);
 
 } else {
-    returnData("CREATE_POST_COMMUNITIES_EMPTY", $connection);
+    returnData("TOPICS_NOT_RETURNED", $connection);
 }
 
 ?>

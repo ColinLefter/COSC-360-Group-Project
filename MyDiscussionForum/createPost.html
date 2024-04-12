@@ -38,8 +38,8 @@
                     <form id="create-post">
                         <div style='display: flex; align-items: center; flex-wrap: wrap;' id='create-post-header'>
                             <input type="text" id="create-post-title" name="post-title" placeholder="Title" required>
-                            <input type="text" id="create-post-topics" name="post-topics" placeholder="Topic">
-                            <input type="button" class="add-topic-button" value="Add Topic">
+                            <input type="text" id="create-post-topics" class='create-post-content' name="post-topics" placeholder="Topic">
+                            <input type="button" class="button-base primary-button add-topic-button" value="Add Topic" style='margin-right: 1em;'>
                         </div>
                         <div style='display: flex;'>
                           <textarea id="create-post-content" name="post-content" placeholder="Post details..." rows="10" required></textarea>
@@ -53,6 +53,10 @@
                           </div>
                         </div>                      
                       </form>
+                        <button type="submit" id="create-post-submit-button" class="button-base primary-button" style='margin-left: 1em;'>Add Post</button>
+                        <button action="action" onclick="window.history.go(-1); return false;" class="button-base primary-button" type="submit" class="create-post-button">Cancel</button>
+                    </form>
+
                 </div>
             </section>
         </div>

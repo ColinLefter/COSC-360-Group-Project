@@ -20,16 +20,16 @@
             <div class="footer-content">
               <h6>Topics</h6>
               <a href="topics.html?t=gaming">
-                <p>Gaming</p>
+                <p>gaming</p>
               </a>
               <a href="topics.html?t=sports">
-                <p>Sports</p>
+                <p>sports</p>
               </a>
               <a href="topics.html?t=entertainment">
-                <p>Entertainment</p>
+                <p>entertainment</p>
               </a>
               <a href="topics.html?t=news">
-                <p>News</p>
+                <p>news</p>
               </a>
 
             </div>
