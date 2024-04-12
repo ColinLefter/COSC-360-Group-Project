@@ -26,12 +26,10 @@
 
   <div class="navbar-right">
     <?php if(isset($_SESSION['userLoggedIn']) && $_SESSION['userLoggedIn'] === true): ?>
-      <!-- Display logout button -->
       <form action="backend/logout.php" method="POST">
         <button type="submit" class="button-base community-button">Log Out</button>
       </form>
     <?php else: ?>
-      <!-- Display login button -->
       <button id="loginButton" class="button-base primary-button">Log In</button>
     <?php endif; ?>
   

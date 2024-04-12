@@ -6,14 +6,10 @@
   padding: 1em;
   background-color: black;
   color: white;
+  border: 1px solid hsl(0, 0%, 80%);
 }
 
 .announcements-container {
   max-height: 25em;
   overflow-y: auto; /* Enables vertical scrolling */
-}
-
-.dark .card {
-  background-color: hsl(20 14.3% 6.1%);
-  color: hsl(0, 0%, 93%);
 }
