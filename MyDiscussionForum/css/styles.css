@@ -159,8 +159,9 @@ body.dark input:focus, body.dark textarea:focus {
   background-color: hsl(20, 14%, 15%);
 }
 
-.navbar-right button {
-  margin-right: 0.5em; /* Add margin between all buttons */
+.navbar-right button,
+.navbar-right form {
+  margin-right: 0.5em;
 }
 
 .nav-logo {

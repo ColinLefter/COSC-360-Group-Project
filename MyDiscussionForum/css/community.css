@@ -60,22 +60,6 @@
     padding: 1em;
 }
 
-.topics-header-buttons {
-    border: none;
-    vertical-align: middle;
-    background-color: white;
-    display:inline-block;
-    border-radius: 5px;
-    padding: 0.5em;
-    margin-right: 0.5em;
-    margin-bottom: 0.5em;
-    transition: background-color 0.3s; /* Smooth transition for background color */
-}
-
-.topics-header-buttons:hover, .topics-header-buttons:focus {
-    background-color: rgb(244, 243, 243);
-  }
-
 .dark #community-topics-header-body {
     background-color: hsl(20 14.3% 6.1%);
     border-color: hsl(20, 14.3%, 10.1%);
