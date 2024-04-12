@@ -54,7 +54,7 @@
 }
 
 .dark .right-column {
-  background-image: url('../public/styled-banner.jpg');
+  background-image: url('../public/styled-banner-dark-2.jpg');
 }
 
 .container, body, html {
@@ -67,7 +67,7 @@
 }
 
 .dark .large-heading {
-  color: hsl(20 14.3% 6.1%);
+  color: hsl(20 14.3% 90.1%);
 }
 
 footer {

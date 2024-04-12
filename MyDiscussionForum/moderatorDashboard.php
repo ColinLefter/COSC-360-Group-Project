@@ -72,19 +72,12 @@
 
       <div class="row row-spacing">
         <div class="col">
-          <h6>Banned?</h6>
+          <h6>Account status</h6>
         </div>
 
         <div class="col">
           <h6 class="right-align user-is-banned"></h6>
         </div>
-      </div>
-
-      <div class="row row-spacing">
-        <div class="col">
-          <h6>Frequent communities:</h6>
-        </div>
-        <div class="col right-align user-communities"></div>
       </div>
 
       <h2 class="my-3">Actions</h2>

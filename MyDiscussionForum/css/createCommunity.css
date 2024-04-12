@@ -1,6 +1,6 @@
 #create-community-body {
     margin: auto;
-    width: 100%; /*  */
+    width: 100%;
     margin-top: 60px;
     margin-bottom: 25px;
     padding-bottom: 0;
@@ -12,13 +12,12 @@
 
 .create-community-inner {
     border-radius: 15px;
-  }
+}
 
 .create-community-header {
     margin: auto;
     width: 95%;
     padding-top: 0.5em;
-    /* padding-bottom: 0.1em; */
     padding-left: 0.1em;
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
@@ -48,4 +47,29 @@
 
 .create-community-button:hover {
     background-color: rgb(244, 243, 243);
+}
+
+/* Dark Theme support */
+.dark #create-community-body {
+    background-color: hsl(20, 14.3%, 6.1%);
+    border-color: hsl(20, 14.3%, 10.1%);
+}
+
+.dark .create-community-header {
+    color: hsl(0, 0%, 94%);
+}
+
+.dark #create-community-title, .dark #create-community-description {
+    background-color: hsl(20, 14.3%, 6.1%);
+    color: hsl(0, 0%, 94%);
+    border-color: hsl(20, 14.3%, 10.1%);
+}
+
+.dark .create-community-button {
+    background-color: hsl(12, 6.5%, 8.1%);
+    color: hsl(0, 0%, 94%);
+}
+
+.dark .create-community-button:hover {
+    background-color: hsl(12, 6.5%, 15%);
 }

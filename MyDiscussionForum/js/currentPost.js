@@ -18,7 +18,12 @@ $(document).ready( function () {
         replyToId = e.target.id; // if this id is 0, it is the original post
 
         // Load jquery
-        $("#comment-box-placeholder").load("components/commentBox.php");
+        $("#comment-box-placeholder").load("components/commentBox.php", function() {
+            // Scroll to the comment box placeholder after the content is loaded
+            $('html, body').animate({
+                scrollTop: $("#comment-box-placeholder").offset().top
+            }, 100); // 100 milliseconds for animation
+        });
 
     } );
 
@@ -308,5 +313,4 @@ function parseDateTime(creationDateTime) {
         timeAgo = ((Date.now()-7*60*60*1000) - d)/1000/60;
         return Math.floor(timeAgo) + " minute(s) ago";
     }
-
 }

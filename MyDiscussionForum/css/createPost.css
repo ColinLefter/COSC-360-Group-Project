@@ -16,6 +16,12 @@
     border-radius: 15px;
   }
 
+.dark .create-post-community-dropdown {
+    background-color: hsl(20, 14.3%, 6.1%);
+    color: hsl(0, 0%, 94%);
+    border-color: hsl(20, 14.3%, 10.1%);
+}
+
 .create-post-header {
     margin: auto;
     width: 95%;
@@ -38,6 +44,10 @@
     border-radius: 5px;
     border-width: 1px;
     padding: 0.5em;
+}
+
+.dark #create-post-inner #create-post-content {
+    background-color: hsl(20 14.3% 6.1%);
 }
 
 #create-post-topics {

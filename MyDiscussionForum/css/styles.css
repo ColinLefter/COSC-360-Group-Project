@@ -57,20 +57,42 @@
   width: 100%; /* Stretching the input field for the form, given by Bootstrap's form-control */
 }
 
-.dark input {
-  background-color: hsl(20 14.3% 6.1%);
-  border-color: hsl(20 14.3% 10.1%);
+input, textarea {
+  background-color: #ffffff; /* White background for light mode */
+  color: #333333; /* Darker text color for readability */
+  border: 1px solid #ccc; /* Light grey border in normal state */
 }
 
-.dark input::placeholder { 
+input::placeholder, textarea::placeholder { 
+  color: #666666; /* Grey color for placeholders */
+  opacity: 1;
+}
+
+input:focus, textarea:focus {
+  background-color: #ffffff; /* White background remains on focus */
+  border-color: rgba(0, 0, 0, 0.9); /* Nearly black border on focus */
+  color: #333333;
+  outline: none; /* Remove default outline */
+  box-shadow: none; /* Ensure no box-shadow is applied */
+}
+
+.dark input, .dark textarea {
+  background-color: hsl(20, 14.3%, 6.1%);
+  color: hsl(0, 0%, 94%);
+  border: 1px solid hsl(20, 14.3%, 10.1%);
+}
+
+.dark input::placeholder, .dark textarea::placeholder { 
   color: hsl(0, 0%, 94%);
   opacity: 1;
 }
 
-.dark input:focus {
+body.dark input:focus, body.dark textarea:focus {
   background-color: hsl(20, 14.3%, 6.1%);
-  border-color: hsl(20, 14.3%, 20.1%);
+  border-color: hsl(0, 0%, 100%); /* White border */
   color: hsl(0, 0%, 94%);
+  outline: none; /* Ensures overriding of Bootstrap's default focus outline */
+  box-shadow: none; /* Bootstrap sometimes uses box-shadow to create focus outlines */
 }
 
 .header {
@@ -137,15 +159,16 @@
   background-color: hsl(20, 14%, 15%);
 }
 
-.navbar-right button {
-  margin-right: 0.5em; /* Add margin between all buttons */
+.navbar-right button,
+.navbar-right form {
+  margin-right: 0.5em;
 }
 
 .nav-logo {
   text-decoration: none; /* No underline */
   font-size: 1.1rem;
   color: #1b1b1b;
-  font-weight: 400;
+  font-weight: 300;
 }
 
 .nav-menu {
@@ -179,7 +202,7 @@ body.dark {
 }
 
 body.dark .navbar, body.dark .header, body.dark .footer, body.dark {
-  background-color: hsl(20 14.3% 4.1%); /* Darker background for navbar, header, footer, and links */
+  background-color: hsl(20 14.3% 6.1%); /* Darker background for navbar, header, footer, and links */
   color: hsl(60 9.1% 97.8%);
 }
 
@@ -219,7 +242,7 @@ body.dark .search-bar::placeholder {
 }
 
 .dark #forum-body {
-  background-color: hsl(20 14.3% 4.1%);
+  background-color: hsl(20 14.3% 6.1%);
 }
 
 .threadview {
@@ -297,7 +320,7 @@ body.dark .primary-button:hover {
 
 /* Forum Dark Mode */
 body.dark #forum-body, body.dark .threadview, body.dark .load-posts, body.dark .post-container {
-  background-color: hsl(20 14.3% 4.1%);
+  background-color: hsl(20 14.3% 6.1%);
 }
 
 body.dark .load-posts {
@@ -309,7 +332,7 @@ body.dark .threadview-category {
 }
 
 body.dark .post-container:hover, body.dark .load-posts:hover {
-  background-color: hsl(20 14.3% 4.1%);
+  background-color: hsl(20 14.3% 6.1%);
 }
 
 body.dark .post-title { /* .post-title refuses to use the right background color otherwise */
@@ -348,7 +371,7 @@ body.dark .post-title { /* .post-title refuses to use the right background color
 }
 
 .dark #left-side {
-  background-color: hsl(20 14.3% 4.1%);
+  background-color: hsl(20 14.3% 6.1%);
 }
 
 #right-side{
@@ -360,7 +383,7 @@ body.dark .post-title { /* .post-title refuses to use the right background color
 }
 
 .dark #right-side {
-  background-color: hsl(20 14.3% 4.1%);
+  background-color: hsl(20 14.3% 6.1%);
 }
 
 .recent-container, .topic-container, .popular-container{
@@ -450,7 +473,7 @@ body > #footer-placeholder { /* Sticky footer */
 }
 
 .dark .recent-topics {
-  background-color: hsl(20 14.3% 4.1%);
+  background-color: hsl(20 14.3% 6.1%);
   border-style: solid 1px rgb(21, 21, 21);
 }
 
@@ -459,9 +482,19 @@ p {
 }
 
 .dark .popular {
-  background-color: hsl(20 14.3% 4.1%);
+  background-color: hsl(20 14.3% 6.1%);
 }
 
 .dark .light-accent {
   background-color: hsl(20 14.3% 6.1%);
+}
+
+.dark .card {
+  background-color: hsl(20 14.3% 6.1%);
+  color: hsl(0, 0%, 93%);
+  border: 1px solid hsl(20 14.3% 10.1%);
+}
+
+.dark .badge {
+  background-color: hsl(20 14.3% 10.1%);
 }
