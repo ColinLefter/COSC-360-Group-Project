@@ -1,3 +1,23 @@
 .faq-content {
   padding: 5em;
 }
+
+.dark .accordion-button {
+  background-color: hsl(20, 14.3%, 8.1%);
+  color: hsl(0, 0%, 94%);
+  border-color: hsl(20, 14.3%, 10.1%);
+}
+
+.dark .accordion-button:not(.collapsed) {
+  background-color: hsl(20, 14.3%, 6.1%); /* Slightly darker for active accordion */
+  color: hsl(0, 0%, 94%);
+}
+
+.dark .accordion-body {
+  background-color: hsl(20, 14.3%, 6.1%);
+  color: hsl(0, 0%, 94%);
+}
+
+.dark .accordion-item {
+  border-bottom: 1px solid hsl(20, 14.3%, 10.1%);
+}
