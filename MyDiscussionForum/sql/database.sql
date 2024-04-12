@@ -178,12 +178,14 @@ INSERT INTO adminAnnouncement (announcementTitle, announcementAuthor, announceme
 
 
 -- Sample data (community)
-INSERT INTO community (communityName, description) VALUES ('general', 'A place for general topics, ideas, and such.');
-INSERT INTO community (communityName, description) VALUES ('sports', 'Football, soccer, baseball, et cetera.');
-INSERT INTO community (communityName, description) VALUES ('computer science', 'Discussion for computer science topics.');
-INSERT INTO community (communityName, description) VALUES ('kelowna', 'Talk about the Okanagan valley. And wine.');
-INSERT INTO community (communityName, description) VALUES ('books', 'We like reading. MAke sure to support local book stores!');
-INSERT INTO community (communityName, description) VALUES ('ubco', 'All things UBCO. Whether it be computer science, engineering, arts, feel free to talk about it here!');
+INSERT INTO community (communityName, description) VALUES ('General', 'A place for general topics, ideas, and such.');
+INSERT INTO community (communityName, description) VALUES ('Sports', 'Football, soccer, baseball, et cetera.');
+INSERT INTO community (communityName, description) VALUES ('Computer Science', 'Discussion for computer science topics.');
+INSERT INTO community (communityName, description) VALUES ('Kelowna', 'Talk about the Okanagan valley. And wine.');
+INSERT INTO community (communityName, description) VALUES ('Books', 'We like reading. MAke sure to support local book stores!');
+INSERT INTO community (communityName, description) VALUES ('UBCO', 'All things UBCO. Whether it be computer science, engineering, arts, feel free to talk about it here!');
+INSERT INTO community (communityName, description) VALUES ('Gaming', 'PC and xbox welcome.');
+
 
 -- Sample data (posts)
 INSERT INTO post (authorId, communityId, postTitle, postContent) VALUES ('1', '1', 'This is my first post', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.');

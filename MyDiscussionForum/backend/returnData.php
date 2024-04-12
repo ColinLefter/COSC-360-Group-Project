@@ -268,6 +268,17 @@ function returnData($msgType, $conn = false, $data = null) {
             $dataToReturn['type'] = $msgType;
             $dataToReturn['msg'] = "Topics not added!";
             break;
+        case "TOPICS_RETURNED":
+            $dataToReturn['result'] = "SUCCESS";
+            $dataToReturn['type'] = $msgType;
+            $dataToReturn['msg'] = "Topics returned successfully!";
+            $dataToReturn['data'] = $data;
+            break;
+        case "TOPICS_NOT_RETURNED":
+            $dataToReturn['result'] = "FAIL";
+            $dataToReturn['type'] = $msgType;
+            $dataToReturn['msg'] = "Topics not returned!";
+            break;
         default:
             // TODO: Add error logging here
             break;
