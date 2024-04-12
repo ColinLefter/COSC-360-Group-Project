@@ -75,7 +75,9 @@ if(mysqli_num_rows($results) > 0) {
         $i++;
     }
 
-    trackUserActivity($connection, $_SESSION['userId'], "SEARCH_POSTS");
+    if (!isset($_SESSION['userId'])) {
+        trackUserActivity($connection, $_SESSION['userId'], "SEARCH_POSTS");
+    }
     returnData("QUERIED_POSTS", $connection, $postData);
 
 } else {
