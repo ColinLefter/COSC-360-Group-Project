@@ -24,7 +24,8 @@ if (!$connection) { // Something went wrong, so we call our custom handleError f
     handleError("Database connection failed", $connection);
 }
 
-$stmt = $connection -> prepare("SELECT * FROM user INNER JOIN userDetails ON user.userId=userDetails.userId WHERE userName = ?;"); // We are always guaranteed a unique user since we don't allow duplicate usernames
+// We are always guaranteed a unique user since we don't allow duplicate usernames
+$stmt = $connection -> prepare("SELECT * FROM user INNER JOIN userDetails ON user.userId=userDetails.userId WHERE userName = ?;");
 $stmt -> bind_param("s", $username);
 $stmt -> execute();
 $result = $stmt -> get_result();

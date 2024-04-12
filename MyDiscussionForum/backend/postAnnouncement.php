@@ -17,7 +17,7 @@ if (!$connection) {
 header('Content-Type: application/json');
 
 if (!isset($_SESSION["username"])) {
-  echo json_encode(['result' => 'FAIL', 'msg' => 'You are not logged in as an admin!']); // For now we are not checking if the user is an admin. That will be in the final submission.
+  echo json_encode(['result' => 'FAIL', 'msg' => 'You are not logged in as an admin!']);
   exit();
 }
 

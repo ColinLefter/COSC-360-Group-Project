@@ -12,8 +12,6 @@ validateMethodPost();
 // Connect
 $connection = connectToDB();
 
-// Nothing to sanitize
-
 $sql = "SELECT topicName, postId FROM topic ORDER BY postId DESC;";    
 
 $results = mysqli_query($connection, $sql);

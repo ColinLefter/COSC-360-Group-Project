@@ -1,5 +1,4 @@
 <?php
-
 /* For use on createPost page, adding post */
 
 include_once "returnData.php";
@@ -18,30 +17,32 @@ if(isset($_SESSION['userLoggedIn']) && $_SESSION['userLoggedIn'] === true) {
 // Validate post
 validateMethodPost();
 
-$communityName = $_POST['communityName'];
-$communityDescription = $_POST['communityDescription'];
+$communityName = $_POST['communityName'] ?? null;
+$communityDescription = $_POST['communityDescription'] ?? null;
 
-if (!isset($communityName) || !isset($communityDescription)) {
+if (empty($communityName) || empty($communityDescription)) {
     returnData("EMPTY_INPUT_GENERAL");
+    exit();
 }
 
-// Connect
+// Connect to the database
 $connection = connectToDB();
 
-// // Sanitize
-$communityName = mysqli_real_escape_string($connection, $communityName);
-$communityDescription = mysqli_real_escape_string($connection, $communityDescription);
+// Prepare the SQL statement
+$stmt = $connection->prepare("INSERT INTO community (communityName, description) VALUES (?, ?)");
 
-$sql = "INSERT INTO community (communityName, description) VALUES ('".$communityName."', '".$communityDescription."');";    
+// Bind the parameters
+$stmt->bind_param("ss", $communityName, $communityDescription);
 
-// echo $sql;
-$results = mysqli_query($connection, $sql);
-
-if(mysqli_affected_rows($connection) > 0) {
+// Execute the query
+if ($stmt->execute()) {
     returnData("COMMUNITY_ADDED", $connection);
-
 } else {
     returnData("COMMUNITY_NOT_ADDED", $connection);
 }
+
+// Close the prepared statement and the connection
+$stmt->close();
+$connection->close();
 
 ?>

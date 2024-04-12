@@ -11,77 +11,55 @@ if (!validateMethodPost()) {
     exit(); // Stop script execution if not POST
 }
 
-$rowOffset = $_POST['offset'];
-$numPosts = $_POST['posts'];
 $query = $_POST['query'];
-$topic = $_POST['topic'];
-
-if (!isset($rowOffset) || !isset($numPosts) || !isset($query) || !isset($topic)) {
-    returnData("EMPTY_INPUT_GENERAL");
-}
+$values = explode(' ', $query);
+$paramTypes = ''; // This will hold the types of the parameters
+$paramValues = []; // This array will hold the actual values to bind
 
 // Connect
 $connection = connectToDB();
 
-// Sanitize
-$rowOffset = mysqli_real_escape_string($connection, $rowOffset);
-$numPosts = mysqli_real_escape_string($connection, $numPosts);
-$query = mysqli_real_escape_string($connection, $query);
-$topic = mysqli_real_escape_string($connection, $topic);
+$sql = "SELECT postId, user.userName, postTitle, postContent, creationDate FROM post INNER JOIN user ON post.authorId = user.userId WHERE ";
 
-// Get statement for query, or prepared statement for topic query
-
-$values = explode(' ',$query);
-$sql = "SELECT postId, user.userName, postTitle, postContent, creationDate, 
-    MATCH (postTitle) AGAINST ('".$query."' IN BOOLEAN MODE) AS titleRel,
-    MATCH (postContent) AGAINST ('".$query."' IN BOOLEAN MODE) AS contentRel
-    FROM post INNER JOIN user ON post.authorId=user.userId WHERE ";
-
-$i = 0;
-foreach($values as $v){
-    $v=trim($v);
-
-    if($i==0) {
-        $sql.=" (postTitle LIKE '%".$v."%' OR postContent LIKE '%".$v."%'";
+$conditions = [];
+foreach ($values as $value) {
+    $value = trim($value);
+    if (!empty($value)) {
+        $conditions[] = "(postTitle LIKE CONCAT('%', ?, '%') OR postContent LIKE CONCAT('%', ?, '%'))";
+        $paramTypes .= 'ss'; // Adding two string types for each value
+        $paramValues[] = &$value; // Adding the value twice (once for title and once for content)
+        $paramValues[] = &$value;
     }
-    else {
-        $sql.=" OR postTitle LIKE '%".$v."%' OR postContent LIKE '%".$v."%'";
-    }
-    $i++;
 }
 
-$sql = $sql.") ";
-
-if  (strcmp($topic, "none") == 0) {
-    $sql = $sql."ORDER BY (titleRel + contentRel) DESC LIMIT ".$numPosts." OFFSET ".$rowOffset.";";
-} else {
-    // Figure out topics
-    // $sql = $sql." AND LIMIT ".$numPosts." OFFSET ".$rowOffset";";    
-}
-// echo $sql;
-
-$postData = array();
-$results = mysqli_query($connection, $sql);
-
-if(mysqli_num_rows($results) > 0) {
-    $i = 0;
-    while ($row = mysqli_fetch_assoc($results)) {
-        $postData[$i] = array();
-        $postData[$i]['postId'] = $row['postId'];
-        $postData[$i]['authorName'] = $row['userName'];
-        $postData[$i]['postTitle'] = $row['postTitle'];
-        $postData[$i]['postContent'] = $row['postContent'];
-        $postData[$i]['creationDateTime'] = $row['creationDate'];
-        $i++;
-    }
-
-    if (!isset($_SESSION['userId'])) {
-        trackUserActivity($connection, $_SESSION['userId'], "SEARCH_POSTS");
-    }
-    returnData("QUERIED_POSTS", $connection, $postData);
-
-} else {
-    returnData("QUERIED_POSTS_EMPTY", $connection);
+// Concatenating all conditions with OR
+if (count($conditions) > 0) {
+    $sql .= implode(' OR ', $conditions);
 }
 
+$stmt = $connection->prepare($sql);
+
+// Bind parameters
+array_unshift($paramValues, $paramTypes); // Prepend types at the beginning of the array
+call_user_func_array([$stmt, 'bind_param'], $paramValues);
+
+// Execute and process results
+$stmt->execute();
+$result = $stmt->get_result();
+$postData = [];
+
+while ($row = $result->fetch_assoc()) {
+    $postData[] = [
+        'postId' => $row['postId'],
+        'authorName' => $row['userName'],
+        'postTitle' => $row['postTitle'],
+        'postContent' => $row['postContent'],
+        'creationDateTime' => $row['creationDate'],
+    ];
+}
+
+returnData("QUERIED_POSTS", $connection, $postData);
+
+$stmt->close();
+$connection->close();
 ?>
