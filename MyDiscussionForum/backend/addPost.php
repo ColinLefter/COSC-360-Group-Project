@@ -8,9 +8,7 @@ include "validation.php";
 
 // Check for login
 session_start();
-if(isset($_SESSION['userLoggedIn']) && $_SESSION['userLoggedIn'] === true) {
-    $userName = $_SESSION['username'];
-} else {
+if (!isset($_SESSION['userLoggedIn']) || $_SESSION['userLoggedIn'] !== true) {
     returnData("POST_NOT_ADDED");
     exit();
 }
@@ -18,32 +16,42 @@ if(isset($_SESSION['userLoggedIn']) && $_SESSION['userLoggedIn'] === true) {
 // Validate post
 validateMethodPost();
 
-$communityId = $_POST['communityId'];
-$postTitle = $_POST['postTitle'];
-$postContent = $_POST['postContent'];
+$communityId = $_POST['communityId'] ?? null;
+$postTitle = $_POST['postTitle'] ?? null;
+$postContent = $_POST['postContent'] ?? null;
 
-if (!isset($communityId) || !isset($postTitle) || !isset($postContent)) {
+if (empty($communityId) || empty($postTitle) || empty($postContent)) {
     returnData("EMPTY_INPUT_GENERAL");
+    exit();
 }
 
-// Connect
+// Connect to the database
 $connection = connectToDB();
 
-// // Sanitize
-$communityId = mysqli_real_escape_string($connection, $communityId);
-$postTitle = mysqli_real_escape_string($connection, $postTitle);
-$postContent = mysqli_real_escape_string($connection, $postContent);
+// Getting the userId for the logged-in user
+$stmt = $connection->prepare("SELECT userId FROM user WHERE userName = ?");
+$stmt->bind_param("s", $_SESSION['username']);
+$stmt->execute();
+$result = $stmt->get_result();
+if ($row = $result->fetch_assoc()) {
+    $userId = $row['userId'];
+} else {
+    returnData("USER_NOT_FOUND", $connection);
+    exit;
+}
 
-$sql = "INSERT INTO post (authorId, communityId, postTitle, postContent) VALUES ((SELECT userId from user WHERE userName='".$userName."'), '".$communityId."', '".$postTitle."', '".$postContent."');";    
+// Prepare the insert statement for the post
+$stmt = $connection->prepare("INSERT INTO post (authorId, communityId, postTitle, postContent) VALUES (?, ?, ?, ?)");
+$stmt->bind_param("iiss", $userId, $communityId, $postTitle, $postContent);
 
-// echo $sql;
-$results = mysqli_query($connection, $sql);
-
-if(mysqli_affected_rows($connection) > 0) {
+// Execute the statement
+if ($stmt->execute()) {
     returnData("POST_ADDED", $connection);
-
 } else {
     returnData("POST_NOT_ADDED", $connection);
 }
+
+$stmt->close();
+$connection->close();
 
 ?>
