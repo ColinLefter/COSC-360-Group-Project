@@ -1,3 +1,13 @@
+<?php
+session_start();
+include "databaseFunc.php";
+
+// Redirect if not logged in or not at least a moderator
+if (!isset($_SESSION['userId']) || !isset($_SESSION['userAuthority']) || $_SESSION['userAuthority'] < 1) {
+    header("Location: login.html"); // Redirect to the login page or home page if not at least a moderator
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
