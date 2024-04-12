@@ -167,7 +167,7 @@ body.dark input:focus, body.dark textarea:focus {
   text-decoration: none; /* No underline */
   font-size: 1.1rem;
   color: #1b1b1b;
-  font-weight: 400;
+  font-weight: 300;
 }
 
 .nav-menu {
@@ -486,4 +486,14 @@ p {
 
 .dark .light-accent {
   background-color: hsl(20 14.3% 6.1%);
+}
+
+.dark .card {
+  background-color: hsl(20 14.3% 6.1%);
+  color: hsl(0, 0%, 93%);
+  border: 1px solid hsl(20 14.3% 10.1%);
+}
+
+.dark .badge {
+  background-color: hsl(20 14.3% 10.1%);
 }

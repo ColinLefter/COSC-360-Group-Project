@@ -1,8 +1,8 @@
 .card {
-  display: flex; /* Make the card a flex container */
-  flex-direction: column; /* Stack children vertically */
-  padding: 2em; /* Maintain padding */
-  box-sizing: border-box; /* Include padding in the element's total width and height */
+  display: flex;
+  flex-direction: column;
+  padding: 2em;
+  box-sizing: border-box;
 }
 
 .card-title {
@@ -35,22 +35,15 @@
   color: hsl(0, 0%, 93%);
 }
 
-/* Apply styles to textarea in dark mode, including when it is focused */
 .dark textarea, .dark textarea:focus {
-  background-color: hsl(20 14.3% 6.1%); /* Dark mode background color */
-  color: hsl(0, 0%, 93%); /* Text color */
-  border-color: hsl(20 14.3% 10.1%); /* Adjust border color as needed */
-}
-
-/* Optional: Adjust the placeholder text color in dark mode */
-.dark textarea::placeholder {
-  color: hsl(0, 0%, 75%); /* Lighter text color for placeholder */
-  opacity: 1; /* Ensure full opacity */
-}
-
-.dark .card {
   background-color: hsl(20 14.3% 6.1%);
   color: hsl(0, 0%, 93%);
+  border-color: hsl(20 14.3% 10.1%);
+}
+
+.dark textarea::placeholder {
+  color: hsl(0, 0%, 75%);
+  opacity: 1;
 }
 
 .dark textarea {
