@@ -1,6 +1,6 @@
 <?php
 
-/* For use on createPost.html */
+/* For use on createPost.html and right column */
 
 include_once "returnData.php";
 include "databaseFunc.php";
@@ -14,7 +14,7 @@ $connection = connectToDB();
 
 // Nothing to sanitize
 
-$sql = "SELECT communityName, communityId FROM community;";    
+$sql = "SELECT communityName, communityId FROM community ORDER BY communityId DESC;";    
 
 $results = mysqli_query($connection, $sql);
 $communityData = array();

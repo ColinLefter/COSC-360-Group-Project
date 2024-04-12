@@ -181,6 +181,9 @@ INSERT INTO adminAnnouncement (announcementTitle, announcementAuthor, announceme
 INSERT INTO community (communityName, description) VALUES ('general', 'A place for general topics, ideas, and such.');
 INSERT INTO community (communityName, description) VALUES ('sports', 'Football, soccer, baseball, et cetera.');
 INSERT INTO community (communityName, description) VALUES ('computer science', 'Discussion for computer science topics.');
+INSERT INTO community (communityName, description) VALUES ('kelowna', 'Talk about the Okanagan valley. And wine.');
+INSERT INTO community (communityName, description) VALUES ('books', 'We like reading. MAke sure to support local book stores!');
+INSERT INTO community (communityName, description) VALUES ('ubco', 'All things UBCO. Whether it be computer science, engineering, arts, feel free to talk about it here!');
 
 -- Sample data (posts)
 INSERT INTO post (authorId, communityId, postTitle, postContent) VALUES ('1', '1', 'This is my first post', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.');
@@ -199,3 +202,20 @@ INSERT INTO comment (postId, userId, parentId, commentContent) VALUES ('1', '5',
 INSERT INTO comment (postId, userId, parentId, commentContent) VALUES ('1', '6', '1', 'Is it your first comment, though?');
 INSERT INTO comment (postId, userId, parentId, commentContent) VALUES ('1', '4', '3', 'Must be. Their comment Id is 1.');
 
+-- Sample topics
+INSERT INTO topic (postId, topicName) VALUES ('1', 'newbie');
+INSERT INTO topic (postId, topicName) VALUES ('2', 'question');
+INSERT INTO topic (postId, topicName) VALUES ('2', 'serious');
+INSERT INTO topic (postId, topicName) VALUES ('3', 'question');
+INSERT INTO topic (postId, topicName) VALUES ('3', 'serious');
+INSERT INTO topic (postId, topicName) VALUES ('4', 'technical');
+INSERT INTO topic (postId, topicName) VALUES ('4', 'question');
+INSERT INTO topic (postId, topicName) VALUES ('4', 'joke');
+INSERT INTO topic (postId, topicName) VALUES ('5', 'opinion');
+INSERT INTO topic (postId, topicName) VALUES ('5', 'food');
+INSERT INTO topic (postId, topicName) VALUES ('5', 'discussion');
+INSERT INTO topic (postId, topicName) VALUES ('6', 'question'); 
+INSERT INTO topic (postId, topicName) VALUES ('6', 'serious');
+INSERT INTO topic (postId, topicName) VALUES ('7', 'story');
+INSERT INTO topic (postId, topicName) VALUES ('8', 'opinion');
+INSERT INTO topic (postId, topicName) VALUES ('8', 'rant');
